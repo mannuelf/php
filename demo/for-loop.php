@@ -12,10 +12,8 @@
 <body>
 
 <?php
-	$counter = 0;
-	while(4 <= 10) {
-		echo $counter;
-		$counter++;
+	for($counter = 0; $counter < 10; $counter++) {
+		echo $counter . "<br>";
 	}
 ?>
 
