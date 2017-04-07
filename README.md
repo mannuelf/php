@@ -1,5 +1,5 @@
 # PHP
-To run files clone repo to you local and run command in root 
+To run files clone repo to your local and run command in root
 ```
 php -S localhost:8000
 ```
