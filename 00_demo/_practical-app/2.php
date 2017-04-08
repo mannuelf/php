@@ -31,7 +31,7 @@
 
 		echo $number1 + $number2;
 
-		echo "<br/>";
+		echo "<hr/>";
 
 		$numbers1 = array(1, 10);
 
@@ -42,13 +42,13 @@
 
 		echo $number1[0] . $numbers1[1];
 
-		echo "<br/>";
+		echo "<hr/>";
 
 		echo $numbers["number1"] . $numbers["number2"];
 
-		echo "<br/>";
+		echo "<hr/>";
 
-		define("PHP", "Is Pretty Awesome");
+		define("PHP", "PHP Is Pretty Awesome");
 		echo PHP;
 
 		?>

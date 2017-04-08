@@ -24,7 +24,7 @@
 
 	addNumbers();
 
-	echo "<br/>";
+	echo "<hr/>";
 
 	// example 2
 	function calculation() {
@@ -37,7 +37,7 @@
 	$theSum = calculation();
 	echo $theSum;
 
-	echo "<br/>";
+	echo "<hr/>";
 
 	/*
 		Step 2: Make a function that passes parameters and call it using
@@ -51,7 +51,7 @@
 
 	calculate(100,11);
 
-	echo "<br/>";
+	echo "<hr/>";
 
 	// example 2
 	function hola($hello) {

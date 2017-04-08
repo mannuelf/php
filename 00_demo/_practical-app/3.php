@@ -28,13 +28,13 @@
 		echo "Maybe here";
 	}
 
-	echo "<br/>";
+	echo "<hr/>";
 
 	for($counter = 0; $counter <= 10; $counter++) {
 		echo $counter . ', ';
 	}
 
-	echo "<br/>";
+	echo "<hr/>";
 
 	$number = 5;
 	switch($number) {
