@@ -17,8 +17,8 @@
 		$x = "outside"; // global
 
 		function convert() {
-			global $x;
-			$x = "inside"; // local
+			global $number;
+			$number = "inside"; // local
 		}
 
 		echo $x;

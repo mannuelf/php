@@ -14,9 +14,14 @@
 <h2>
 	<?php
 
-		$number = "outside";
+		$number = 100;
+		$number = 1000;
 
-		echo $number;
+		$number = "Manny";
+		echo $number . "<br/>";
+
+		define("NAME", 1000);
+		echo NAME;
 
 	?>
 </h2>
