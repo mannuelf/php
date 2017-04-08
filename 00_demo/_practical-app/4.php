@@ -26,6 +26,19 @@
 
 	echo "<br/>";
 
+	// example 2
+	function calculation() {
+		$number1 = 300;
+		$number2 = 300;
+		$sum = $number1 + $number2;
+		return $sum;
+	}
+
+	$theSum = calculation();
+	echo $theSum;
+
+	echo "<br/>";
+
 	/*
 		Step 2: Make a function that passes parameters and call it using
 		parameter values
@@ -38,11 +51,16 @@
 
 	calculate(100,11);
 
+	echo "<br/>";
+
+	// example 2
+	function hola($hello) {
+		echo $hello;
+	}
+
+	hola('Hey , hello, passing a parameter yay');
+
 ?>
-
-
-
-
 
 </article><!--MAIN CONTENT-->
 
