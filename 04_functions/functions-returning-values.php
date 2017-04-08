@@ -5,7 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Functions passing parameters</title>
+  <title>Functions returning values</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 </head>
@@ -13,20 +13,20 @@
 
 <?php
 
-	function greeting($message) {
-		echo $message;
+	function addNumbers($number1, $number2 ) {
+		$sum =  $number1 + $number2;
+		return $sum;
 	}
 
-	greeting("Hello world whats up");
+	$result = addNumbers(30, 20);
+
+	echo $result;
 
 	echo "<br/>";
 
-	function calculate($number1, $number2 ) {
-		$sum =  $number1 + $number2;
-		echo $sum;
-	}
+	$result = addNumbers(100, $result);
 
-	calculate(30, 20);
+	echo $result;
 
 	?>
 
