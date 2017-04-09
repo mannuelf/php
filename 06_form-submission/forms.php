@@ -5,7 +5,7 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Array Functions</title>
+	<title>Math Functions</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 </head>
@@ -14,15 +14,20 @@
 <h2>
 <?php
 
-	$list = [9867625, 989,232,673,2347,23456,246373,77332,445];
-	echo max($list);
-	echo "<hr/>";
+	$string = "Hello whats up, hows it going";
+	echo strlen($string);
+	echo "<br/>";
 
-	echo min($list);
-	echo "<hr/>";
+	echo strtoupper($string);
+	echo "<br/>";
 
-	sort($list);
-	print_r($list);
+	echo strtolower($string);
+	echo "<br/>";
+
+	echo str_repeat($string, 4);
+	echo "<br/>";
+
+	echo str_shuffle($string);
 ?>
 </h2>
 </body>
