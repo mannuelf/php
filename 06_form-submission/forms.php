@@ -1,6 +1,10 @@
 <?php
     if(isset($_POST['submit'])) {
-        echo "Yes it works";
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        echo "Hello" . ' ' . $username;
+        echo "<br/>";
+        echo "Your Password is" . ' ' . $password;
     }
 ?>
 <!doctype html>
@@ -21,10 +25,6 @@
     <input type="password" placeholder="Enter Password" name="password">
     <input type="submit" name="submit">
 </form>
-
-<?php
-
-?>
 
 </body>
 </html>
