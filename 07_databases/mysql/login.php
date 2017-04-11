@@ -59,8 +59,8 @@
 			<div class="mdl-cell mdl-cell--8-col">
 				<?php
 				if(isset($_POST['submit'])) {
-//					$username = $_POST['username'];
-//					$password = $_POST['password'];
+					$username = $_POST['username'];
+					$password = $_POST['password'];
 //					if ($username && $password) {
 //						echo $username . '<br/>';
 //						echo $password;
@@ -71,9 +71,18 @@
 					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
 
 					if($connection) {
-						echo "<h1>We are connected<h1/>";
+						echo "<h3>We are connected<h3/>";
 					} else {
 						die("Database connection failed");
+					}
+
+					$query = "INSERT INTO users(username, password) VALUES";
+					$query .= "VALUES ('$username', '$password')";
+
+					$result = mysqli_query($connection, $query);
+
+					if(!$result) {
+						die('Query FAILED' . mysqli_error());
 					}
 
 				}
@@ -81,11 +90,9 @@
 				<form action="login.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="username">
-						<label class="mdl-textfield__label" for="name">Name</label>
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="password"  name="password">
-						<label class="mdl-textfield__label" for="name">Password</label>
 					</div>
 					<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</form>
