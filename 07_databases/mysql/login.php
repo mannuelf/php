@@ -22,6 +22,10 @@
                your background is light. */
 			color: white;
 		}
+		.mdl-textfield__input {
+			border: none;
+			border-bottom: 1px solid rgba(255,255,255, 0.8);
+		}
 	</style>
 </head>
 <body>
@@ -55,10 +59,23 @@
 			<div class="mdl-cell mdl-cell--8-col">
 				<?php
 				if(isset($_POST['submit'])) {
-					$username = $_POST['username'];
-					$password = $_POST['password'];
-					echo $username;
-					echo $password;
+//					$username = $_POST['username'];
+//					$password = $_POST['password'];
+//					if ($username && $password) {
+//						echo $username . '<br/>';
+//						echo $password;
+//					} else {
+//						echo "this form cannot be blank";
+//					}
+
+					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
+
+					if($connection) {
+						echo "<h1>We are connected<h1/>";
+					} else {
+						die("Database connection failed");
+					}
+
 				}
 				?>
 				<form action="login.php" method="post">
