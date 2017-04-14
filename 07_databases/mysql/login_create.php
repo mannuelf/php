@@ -59,26 +59,27 @@
 			<div class="mdl-cell mdl-cell--8-col">
 				<?php
 				if(isset($_POST['submit'])) {
-					$username = $_POST['username'];
+					$username = $_POST['name'];
 					$password = $_POST['password'];
+					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
 					if($connection) {
-						echo "<h1>We are connnected</h1>";
+						echo "<h1>We are connected</h1>";
 					} else {
 						echo "<h1>Connection Failed</h1>";
 					}
-					$query = "INSERT INTO users(username, password)";
+					$query = "INSERT INTO users(name, password)";
 					$query .= "VALUES ('$username', '$password')";
 
 					// take two parameters, connection and query
 					$result = mysqli_query($connection, $query);
 					if(!$result) {
-						die('Query FAILED' . mysqli_error());
+						die('Query FAILED' . mysqli_error($connection));
 					}
 				}
 				?>
 				<form action="login.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" name="username">
+						<input class="mdl-textfield__input" type="text" name="name">
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="password"  name="password">
