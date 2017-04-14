@@ -61,33 +61,22 @@
 				if(isset($_POST['submit'])) {
 					$username = $_POST['username'];
 					$password = $_POST['password'];
-//					if ($username && $password) {
-//						echo $username . '<br/>';
-//						echo $password;
-//					} else {
-//						echo "this form cannot be blank";
-//					}
-
-					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
-
 					if($connection) {
-						echo "<h3>We are connected<h3/>";
+						echo "<h1>We are connnected</h1>";
 					} else {
-						die("Database connection failed");
+						echo "<h1>Connection Failed</h1>";
 					}
-
 					$query = "INSERT INTO users(username, password)";
 					$query .= "VALUES ('$username', '$password')";
 
+					// take two parameters, connection and query
 					$result = mysqli_query($connection, $query);
-
 					if(!$result) {
 						die('Query FAILED' . mysqli_error());
 					}
-
 				}
 				?>
-				<form action="login_create.php" method="post">
+				<form action="login.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="username">
 					</div>
