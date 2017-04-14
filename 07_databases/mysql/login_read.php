@@ -8,6 +8,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<!-- Uses a transparent header that draws on top of the layout's background -->
 	<style>
 		body {
@@ -55,13 +56,7 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<?php
-					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
-					if($connection) {
-						echo "<h1>We are connected</h1>";
-					} else {
-						echo "<h1>Connection Failed</h1>";
-					}
+				<?php include "db.php";
 					$query = "SELECT * FROM users";
 
 					// take two parameters, connection and query

@@ -8,7 +8,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-	<!-- Uses a transparent header that draws on top of the layout's background -->
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script><!-- Uses a transparent header that draws on top of the layout's background -->
 	<style>
 		body {
 			color: white;
@@ -55,16 +55,11 @@
 	<main class="mdl-layout__content">
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<?php
+				<?php include "db.php";
 				if(isset($_POST['submit'])) {
 					$username = $_POST['name'];
 					$password = $_POST['password'];
-					$connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
-					if($connection) {
-						echo "<h1>We are connected</h1>";
-					} else {
-						echo "<h1>Connection Failed</h1>";
-					}
+
 					$query = "INSERT INTO users(name, password)";
 					$query .= "VALUES ('$username', '$password')";
 
@@ -78,9 +73,11 @@
 				<form action="login.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="name">
+						<label class="mdl-textfield__label" for="name">Name</label>
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="password"  name="password">
+						<label class="mdl-textfield__label" for="password">Password</label>
 					</div>
 					<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</form>
