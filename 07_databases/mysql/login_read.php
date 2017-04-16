@@ -15,11 +15,14 @@
 			color: white;
 			background: url('moon-landing-60582_1280.jpg') center / cover;
 		}
-		.textfield__label, .demo-layout-transparent .mdl-layout__header,
+		.demo-layout-transparent .mdl-layout__header,
 		.demo-layout-transparent .mdl-layout__drawer-button {
 			/* This background is dark, so we set text to white. Use 87% black instead if
                your background is light. */
 			color: white;
+		}
+		.mdl-textfield__label {
+			color: rgba(255, 255, 255, 0.7);
 		}
 		.mdl-textfield__input {
 			border: none;
@@ -75,8 +78,6 @@
 						<?php
 					}
 				?>
-
-
 			</div>
 		</div>
 	</main>

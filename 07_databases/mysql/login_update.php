@@ -1,3 +1,10 @@
+<?php include "db.php";
+	$query = "SELECT * FROM users";
+	$result = mysqli_query($connection, $query);
+	if(!$result) {
+		die('Query FAILED' . mysqli_error($connection));
+	}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -57,6 +64,7 @@
 		</nav>
 	</div>
 	<main class="mdl-layout__content">
+		<div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
 				<form action="login.php" method="post">
@@ -69,8 +77,13 @@
 						<label class="mdl-textfield__label" for="password">Password</label>
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
-						<select name="" id="">
-							<option value="">1</option>
+						<select name="id" id="">
+							<?php
+								while($row = mysqli_fetch_assoc($result)) {
+									$id = $row['id'];
+									echo "<option value='$id'>$id</option>";
+								}
+							?>
 						</select>
 					</div>
 					<input value="UPDATE" type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
