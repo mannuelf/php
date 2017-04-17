@@ -5,7 +5,7 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Login</title>
+	<title>READ</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -28,6 +28,12 @@
 			border: none;
 			border-bottom: 1px solid rgba(255,255,255, 0.8);
 		}
+        pre {
+            color: greenyellow;
+            font-family: Hack, Arial;
+            font-weight: 800;
+            text-shadow: 1px 2px 2px #000;
+        }
 	</style>
 </head>
 <body>

@@ -1,6 +1,10 @@
 <?php
     include "db.php";
     include "functions.php";
+
+    if(isset($_POST['submit'])) {
+        updateUser();
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,7 +13,7 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Login</title>
+	<title>UPDATE</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -53,7 +57,7 @@
 		<div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<form action="login.php" method="post">
+				<form action="login_update.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="name">
 						<label class="mdl-textfield__label" for="name">Name</label>

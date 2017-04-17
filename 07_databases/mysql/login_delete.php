@@ -1,3 +1,11 @@
+<?php
+    include "db.php";
+    include "functions.php";
+
+    if(isset($_POST['submit'])) {
+        deleteUser();
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,10 +13,11 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Login</title>
+	<title>DELETE</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script><!-- Uses a transparent header that draws on top of the layout's background -->
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<!-- Uses a transparent header that draws on top of the layout's background -->
 	<style>
 		body {
 			color: white;
@@ -41,43 +50,14 @@
             <?php require './navigation.php'; ?>
 		</div>
 	</header>
-	<div class="mdl-layout__drawer">
-		<span class="mdl-layout-title">Databases</span>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Databases</span>
         <?php require './navigation.php'; ?>
-	</div>
-	<main class="mdl-layout__content">
+    </div>	<main class="mdl-layout__content">
 		<div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<?php
-
-                    /*
-                     * please check the  README for more details on creating a
-                     * local test database for this demo
-                     * */
-                    include "db.php";
-                    include "functions.php";
-
-                    if(isset($_POST['submit'])) {
-                        $username = $_POST['name'];
-                        $password = $_POST['password'];
-                        $connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
-
-                        if($connection) {
-                            echo "<h6>Access Granted<h6/>";
-                        } else {
-                            die("Database connection failed");
-                        }
-
-                        $query = "INSERT INTO users(name, password)";
-                        $query .= "VALUES ('$username', '$password')";
-                        $result = mysqli_query($connection, $query);
-                        if(!$result) {
-                            die("Query FAILED" . mysqli_error($connection));
-                        }
-                    }
-				?>
-				<form action="login.php" method="post">
+				<form action="login_delete.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="name">
 						<label class="mdl-textfield__label" for="name">Name</label>
@@ -86,8 +66,16 @@
 						<input class="mdl-textfield__input" type="password"  name="password">
 						<label class="mdl-textfield__label" for="password">Password</label>
 					</div>
-					<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					<div class="mdl-textfield mdl-js-textfield">
+						<select name="id" id="">
+							<?php
+                                showAllData()
+							?>
+						</select>
+					</div>
+					<input value="DELETE" type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</form>
+
 			</div>
 		</div>
 	</main>
