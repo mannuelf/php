@@ -60,6 +60,10 @@
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
 				<?php
+                /*
+                 * please check the  README for more details on creating a
+                 * local test database for this demo
+                 */
 				if(isset($_POST['submit'])) {
 					$username = $_POST['name'];
 					$password = $_POST['password'];
