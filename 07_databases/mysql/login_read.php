@@ -39,24 +39,13 @@
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation -->
-			<nav class="mdl-navigation">
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-				<a class="mdl-navigation__link" href="">Link</a>
-			</nav>
+            <?php require './navigation.php'; ?>
 		</div>
 	</header>
-	<div class="mdl-layout__drawer">
-		<span class="mdl-layout-title">Title</span>
-		<nav class="mdl-navigation">
-			<a class="mdl-navigation__link" href="">Link</a>
-			<a class="mdl-navigation__link" href="">Link</a>
-			<a class="mdl-navigation__link" href="">Link</a>
-			<a class="mdl-navigation__link" href="">Link</a>
-		</nav>
-	</div>
-	<main class="mdl-layout__content">
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Databases</span>
+        <?php require './navigation.php'; ?>
+    </div>	<main class="mdl-layout__content">
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
 				<?php include "db.php";
