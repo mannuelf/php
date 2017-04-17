@@ -1,9 +1,6 @@
-<?php include "db.php";
-	$query = "SELECT * FROM users";
-	$result = mysqli_query($connection, $query);
-	if(!$result) {
-		die('Query FAILED' . mysqli_error($connection));
-	}
+<?php
+    include "db.php";
+    include "functions.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,10 +65,7 @@
 					<div class="mdl-textfield mdl-js-textfield">
 						<select name="id" id="">
 							<?php
-								while($row = mysqli_fetch_assoc($result)) {
-									$id = $row['id'];
-									echo "<option value='$id'>$id</option>";
-								}
+                                showAllData()
 							?>
 						</select>
 					</div>
