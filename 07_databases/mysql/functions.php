@@ -1,5 +1,24 @@
 <?php
 
+	function createUser() {
+		global $connection;
+		if(isset($_POST['submit'])) {
+			$username = $_POST['name'];
+			$password = $_POST['password'];
+
+			$query = "INSERT INTO users(name, password)";
+			$query .= "VALUES ('$username', '$password')";
+
+			// take two parameters, connection and query
+			$result = mysqli_query($connection, $query);
+			if(!$result) {
+				die('Query FAILED' . mysqli_error($connection));
+			} else {
+				echo "User CREATED";
+			}
+		}
+	}
+
     function showAllData() {
         global $connection; // make variable global
         $query = "SELECT * FROM users";
@@ -30,7 +49,7 @@
         if(!$result) {
             die("Query FAILED ->" . mysqli_error($connection));
         } else {
-            echo "<h5>Record UPATED</h5>";
+            echo "<h5>Record UPDATED</h5>";
         }
     }
 

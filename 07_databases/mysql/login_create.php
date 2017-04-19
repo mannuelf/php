@@ -33,38 +33,24 @@
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
 	<header class="mdl-layout__header mdl-layout__header--transparent">
 		<div class="mdl-layout__header-row">
-			<!-- Title -->
-			<span class="mdl-layout-title">Databases [".][",]</span>
-			<!-- Add spacer, to align navigation to the right -->
+			<span class="mdl-layout-title">CREATE USER [".][",]</span>
 			<div class="mdl-layout-spacer"></div>
-			<!-- Navigation -->
             <?php require './navigation.php'; ?>
 		</div>
 	</header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Databases</span>
+        <span class="mdl-layout-title">CREATE USER</span>
         <?php require './navigation.php'; ?>
     </div>
 	<main class="mdl-layout__content">
         <div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<?php include "db.php";
-				if(isset($_POST['submit'])) {
-					$username = $_POST['name'];
-					$password = $_POST['password'];
-
-					$query = "INSERT INTO users(name, password)";
-					$query .= "VALUES ('$username', '$password')";
-
-					// take two parameters, connection and query
-					$result = mysqli_query($connection, $query);
-					if(!$result) {
-						die('Query FAILED' . mysqli_error($connection));
-					}
-				}
+				<?php
+					include "db.php";
+					include "functions.php";
 				?>
-				<form action="login.php" method="post">
+				<form action="login_create.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="name">
 						<label class="mdl-textfield__label" for="name">Name</label>
@@ -73,7 +59,9 @@
 						<input class="mdl-textfield__input" type="password"  name="password">
 						<label class="mdl-textfield__label" for="password">Password</label>
 					</div>
-					<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					<div class="mdl-textfield mdl-js-textfield">
+						<input type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					</div>
 				</form>
 			</div>
 		</div>
