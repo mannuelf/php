@@ -18,6 +18,11 @@
         <div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
+				<h3>
+					<?php
+						createUser();
+					?>
+				</h3>
 				<form action="login_create.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="username">

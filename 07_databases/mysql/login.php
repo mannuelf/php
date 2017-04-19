@@ -30,7 +30,7 @@
                     include "functions.php";
 
                     if(isset($_POST['submit'])) {
-                        $username = $_POST['name'];
+                        $username = $_POST['username'];
                         $password = $_POST['password'];
                         $connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
 
@@ -40,7 +40,7 @@
                             die("Database connection failed");
                         }
 
-                        $query = "INSERT INTO users(name, password)";
+                        $query = "INSERT INTO users(username, password)";
                         $query .= "VALUES ('$username', '$password')";
                         $result = mysqli_query($connection, $query);
                         if(!$result) {
