@@ -1,35 +1,18 @@
-<?php
-    include "db.php";
-    include "functions.php";
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
+<?php include "./includes/header.php"; ?>
 
-    if(isset($_POST['submit'])) {
-        updateUser();
-    }
-?>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>UPDATE</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
 	<header class="mdl-layout__header mdl-layout__header--transparent">
 		<div class="mdl-layout__header-row">
 			<span class="mdl-layout-title">UPDATE USERS [".][",]</span>
 			<div class="mdl-layout-spacer"></div>
-            <?php require './navigation.php'; ?>
+            <?php require "./includes/navigation.php"; ?>
 		</div>
 	</header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">UPDATE USERS</span>
-        <?php require './navigation.php'; ?>
+        <?php require "./includes/navigation.php"; ?>
     </div>
 	<main class="mdl-layout__content">
 		<div class="mdl-grid"></div>
@@ -40,8 +23,8 @@
 				?>
 				<form action="login_update.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" name="name">
-						<label class="mdl-textfield__label" for="name">Name</label>
+						<input class="mdl-textfield__input" type="text" name="username">
+						<label class="mdl-textfield__label" for="username">Username</label>
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="password"  name="password">
@@ -64,5 +47,4 @@
 	</main>
 </div>
 
-</body>
-</html>
+<?php include "./includes/footer.php"; ?>

@@ -9,5 +9,4 @@ For this demo to work please do the following
 
 Here is helpful SQL query to speed this up for you:
 
-`CREATE TABLE users ( id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20) NOT NULL, password VARCHAR(40), reg_date TIMESTAMP);`
- 
+`CREATE TABLE users ( id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, username VARCHAR(20) NOT NULL, password VARCHAR(40), reg_date TIMESTAMP);`
