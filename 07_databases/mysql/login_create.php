@@ -2,32 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>CREATE</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script><!-- Uses a transparent header that draws on top of the layout's background -->
-	<style>
-		body {
-			color: white;
-			background: url('moon-landing-60582_1280.jpg') center / cover;
-		}
-		.demo-layout-transparent .mdl-layout__header,
-		.demo-layout-transparent .mdl-layout__drawer-button {
-			/* This background is dark, so we set text to white. Use 87% black instead if
-               your background is light. */
-			color: white;
-		}
-		.mdl-textfield__label {
-			color: rgba(255, 255, 255, 0.7);
-		}
-		.mdl-textfield__input {
-			border: none;
-			border-bottom: 1px solid rgba(255,255,255, 0.8);
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
