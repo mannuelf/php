@@ -1,14 +1,7 @@
-<?php
-    include "db.php";
-    include "functions.php";
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
+<?php include "./includes/header.php"; ?>
 
-    if(isset($_POST['submit'])) {
-        deleteUser();
-    }
-?>
-<?php
-	include "./includes/header.php";
-?>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
 	<header class="mdl-layout__header mdl-layout__header--transparent">
 		<div class="mdl-layout__header-row">
@@ -24,7 +17,8 @@
 		<div class="mdl-grid"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--8-col">
-				<form action="login_delete.php" method="post">
+                <?php deleteUser(); ?>
+                <form action="login_delete.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="username">
 						<label class="mdl-textfield__label" for="username">Username</label>
@@ -36,7 +30,7 @@
 					<div class="mdl-textfield mdl-js-textfield">
 						<select name="id" id="">
 							<?php
-                                showAllData()
+                            showAllData();
 							?>
 						</select>
 					</div>
