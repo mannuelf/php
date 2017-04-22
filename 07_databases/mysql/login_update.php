@@ -41,7 +41,6 @@
 						<input value="UPDATE" type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</main>

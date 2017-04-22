@@ -34,7 +34,9 @@
 							?>
 						</select>
 					</div>
-					<input value="DELETE" type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input value="DELETE" type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    </div>
 				</form>
 
 			</div>

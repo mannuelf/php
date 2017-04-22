@@ -1,6 +1,7 @@
 body {
 	color: white;
-	background: url('moon-landing-60582_1280.jpg') center / cover;
+	background: url('moon-landing-60582_1280.jpg') no-repeat top left;
+	background-size: cover;
 }
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
