@@ -103,6 +103,9 @@
         </div>
     </form>
         <br>
+        <!--
+            Print out the stuff
+            -->
         <pre style="background-color: greenyellow;"><?php showRecords(); ?></pre>
 
     </article><!--MAIN CONTENT-->
