@@ -9,6 +9,11 @@
 			$username = mysqli_real_escape_string($connection, $username);
 			$password = mysqli_real_escape_string($connection, $username);
 
+			$hashFormat = "$2y$10$";
+			$salt = "iusesomecrazystrings22";
+			$hashFormatAndSalt =  $hashFormat . $salt;
+			$password = crypt($password, $hashFormatAndSalt);
+
 			$query = "INSERT INTO users(username, password)";
 			$query .= "VALUES ('$username', '$password')";
 
