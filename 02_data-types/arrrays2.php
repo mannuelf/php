@@ -1,3 +1,5 @@
+
+<?php include "./includes/header.php"; ?>
 <?php
 
 $swagger = [
@@ -762,3 +764,20 @@ $paths = [
 		]
 	]
 ];
+//var_dump($swagger);
+//var_dump($consumes);
+//var_dump($info);
+//var_dump($externalDocs);
+//var_dump($paths);
+//var_dump($produces);
+//var_dump($security);
+//var_dump($securityDefinitions);
+//var_dump($tags);
+
+print_r(array_change_key_case($swagger, CASE_UPPER));
+print_r(array_chunk($swagger, 2));
+print_r(array_chunk($swagger, true));
+
+?>
+
+<?php include "./includes/footer.php"; ?>
