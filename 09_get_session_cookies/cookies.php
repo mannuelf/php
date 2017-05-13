@@ -3,6 +3,7 @@
 	$value = 100;
 	$expiration = time() + (60*60*24*7); // one week.
 	setcookie($name,$value,$expiration);
+
 ?>
 
 <!doctype html>
@@ -15,5 +16,13 @@
 </head>
 <body>
 
+<?php
+	if(isset($_COOKIE["Manny"])) {
+		$someOne = $_COOKIE["Manny"];
+		echo $someOne;
+	} else {
+		$someOne = "";
+	}
+?>
 </body>
 </html>
