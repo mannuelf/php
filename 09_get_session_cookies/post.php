@@ -1,3 +1,8 @@
+<?php
+	echo $_POST['name'];
+	print_r($_POST['name']);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +13,9 @@
 	<title>Post</title>
 </head>
 <body>
-
+<form action="./post.php" method="post">
+	<input type="text" name="name" value="">
+	<input type="button" value="submit">
+</form>
 </body>
 </html>
