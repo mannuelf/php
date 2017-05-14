@@ -1,7 +1,9 @@
 <?php
 
 class Car {
-
+	function MoveWheels {
+		echo "Moving wheels"
+	}
 }
 
 if(class_exists("Car")) {
