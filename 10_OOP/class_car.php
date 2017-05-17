@@ -1,8 +1,9 @@
 <?php
 
 class Car {
-	function MoveWheels {
-		echo "Moving wheels"
+	function MoveWheels()
+	{
+		echo "Moving wheels";
 	}
 }
 
