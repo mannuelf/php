@@ -5,14 +5,14 @@
 	<aside class="col-xs-4">
 
 		<?php Navigation();?>
-			
-			
+
+
 	</aside><!--SIDEBAR-->
 
 <article class="main-content col-xs-8">
 
-	
-	<?php  
+
+	<?php
 
 	/*  Step 1: Use the Make a class called Dog
 
@@ -22,13 +22,24 @@
 
 		Step 5: Instantiate the class / create object and call it pitbull
 
-Step 6: Call the method ShowAll
+		Step 6: Call the method ShowAll
 
-	
-
-		
 	*/
-	
+
+	class Dog {
+		var $eyes = 2;
+		var $colour = "brown";
+		var $nose = 1;
+
+		function ShowAll() {
+			echo $this->eyes;
+			echo $this->colour;
+			echo $this->$nose;
+		}
+	}
+
+	$pitbull = new Dog();
+	echo $pitbull->ShowAll();
 	?>
 
 
