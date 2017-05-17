@@ -32,9 +32,9 @@
 		var $nose = 1;
 
 		function ShowAll() {
-			echo $this->eyes;
-			echo $this->colour;
-			echo $this->$nose;
+			echo $this->eyes . "<br>";
+			echo $this->colour . "<br>";
+			echo $this->nose;
 		}
 	}
 
