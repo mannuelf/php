@@ -25,8 +25,8 @@
 			Posted on <?php echo $post_date ?>
 		</p>
 		<hr>
-		<img class="img-responsive" src="http://placehold.it/900x300"
-			 alt="">
+		<img src="images/<?php echo $post_image ?>"
+			 class="img-responsive" alt="<?php echo $post_title ?>">
 		<hr>
 		<p><?php echo $post_content ?></p>
 		<a class="btn btn-primary" href="#">Read More <span
