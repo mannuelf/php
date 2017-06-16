@@ -17,14 +17,14 @@
 				<?php
 					global $dbConnection;
 
-					$query = "SELECT * FROM categories ";
-					$result = mysqli_query($dbConnection, $query);
+					$query = "SELECT * FROM cms.categories";
+					$select_all_categories = mysqli_query($dbConnection, $query);
 
-					if(! $result) {
-						echo mysqli_error($result);
+					if(! $select_all_categories) {
+						echo mysqli_error($select_all_categories);
 					}
 
-					while($row = mysqli_fetch_assoc($result)) {
+					while($row = mysqli_fetch_assoc($select_all_categories)) {
 						$cat_title = $row['cat_title'];
 						echo "<li><a href='#'>{$cat_title}</a></li>";
 					}
