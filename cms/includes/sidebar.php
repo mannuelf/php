@@ -8,6 +8,10 @@
 			if (!$searchQuery) {
 				die("QUERY FAILED" . mysqli_error($dbConnection));
 			}
+			$count = mysqli_num_rows($searchQuery);
+			if ($count == 0) {
+				echo "<h2>No result.</h2>";
+			}
 		}
 	?>
 	<!-- Blog Search Well -->
