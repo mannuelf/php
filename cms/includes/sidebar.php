@@ -1,9 +1,13 @@
 <!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
-
 	<?php
 		if (isset($_POST['submit'])) {
-			echo $search = $_POST['search'];
+			$search = $_POST['search'];
+			$query = "SELECT * FROM cms.posts WHERE post_tags LIKE '%$search%'";
+			$searchQuery = mysqli_query($dbConnection, $query);
+			if (!$searchQuery) {
+				die("QUERY FAILED" . mysqli_error($dbConnection));
+			}
 		}
 	?>
 	<!-- Blog Search Well -->
