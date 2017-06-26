@@ -1,5 +1,13 @@
 <?php
-while ($row = mysqli_fetch_assoc($searchQuery)) {
+$query = "SELECT * FROM cms.posts";
+
+$select_all_posts = mysqli_query($dbConnection, $query);
+
+if (!$select_all_posts) {
+	echo mysqli_error($select_all_posts);
+}
+
+while ($row = mysqli_fetch_assoc($select_all_posts)) {
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];
 	$post_date = $row['post_date'];
@@ -17,7 +25,7 @@ while ($row = mysqli_fetch_assoc($searchQuery)) {
 			<span class="glyphicon glyphicon-time"></span>
 			Posted on <?php echo $post_date ?>
 			<span class="glyphicon glyphicon-tags"></span>
-			<?php echo $post_tags ?></small>
+			Tags: <?php echo $post_tags ?></small>
 	</p>
 	<hr>
 	<img src="images/<?php echo $post_image ?>"
