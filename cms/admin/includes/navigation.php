@@ -40,7 +40,8 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav side-nav">
 			<li>
-				<a href="index.php"><i class="fa fa-fw fa-dashboard"></i>
+				<a href="index.php">
+					<i class="fa fa-fw fa-dashboard"></i>
 					Dashboard</a>
 			</li>
 			<li>
@@ -58,7 +59,7 @@
 			</li>
 
 			<li>
-				<a href="bootstrap-grid.html">
+				<a href="categories.php">
 					<i class="fa fa-fw fa-wrench"></i> Categories</a>
 			</li>
 
@@ -67,12 +68,12 @@
 					Comments</a>
 			</li>
 			<li>
-				<a href="index-rtl.html">
+				<a href="users.php">
 					<i	class="fa fa-fw fa-users"></i> Users</a>
 			</li>
 
 			<li>
-				<a href="bootstrap-elements.html">
+				<a href="proile.php">
 					<i class="fa fa-fw fa-user"></i>
 					Profile</a>
 			</li>
