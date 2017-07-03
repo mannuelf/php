@@ -64,7 +64,7 @@
 			</li>
 
 			<li class="active">
-				<a href="blank-page.html"><i class="fa fa-fw fa-comment"></i>
+				<a href="comments.php"><i class="fa fa-fw fa-comment"></i>
 					Comments</a>
 			</li>
 			<li>

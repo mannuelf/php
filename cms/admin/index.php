@@ -24,19 +24,6 @@
 					</ol>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<form action="" method="post" aria-labelledby="categories" class="">
-						<div class="form-group">
-							<label aria-label="category title" for="cat_title">Add Category</label>
-							<input type="text" name="cat_title" aria-labelledby="category title" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="submit" aria-labelledby="submit" value="Add Category" class="btn btn-default">
-						</div>
-					</form>
-				</div>
-			</div>
 			<!-- /.row -->
 		</div>
 		<!-- /.container-fluid -->
