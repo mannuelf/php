@@ -1,4 +1,6 @@
+<?php ob_start(); ?>
 <?php include "../database/db.php" ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Admin</title>
+	<title>Blog Admin</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
