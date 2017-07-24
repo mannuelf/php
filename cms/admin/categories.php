@@ -31,7 +31,7 @@
 								echo "This field cannot be empty";
 							} else {
 								// construct query
-								$query = "INSERT INTO cms.categories ";
+								$query = "INSERT INTO cms.categories(cat_title) ";
 								$query .= "VALUE('{$cat_title}') ";
 								// submit to db
 								$create_category_query = mysqli_query($dbConnection, $query);
@@ -48,7 +48,7 @@
 							<input type="text" name="cat_title" aria-labelledby="cat_title" title="cat_title" class="form-control">
 						</div>
 						<div class="form-group">
-							<input type="submit" aria-labelledby="submit" value="Add Category" class="btn btn-primary">
+							<input type="submit" name="submit" aria-labelledby="submit" value="Add Category" class="btn btn-primary">
 						</div>
 					</form>
 				</div>
