@@ -42,16 +42,6 @@
 							}
 						}
 					?>
-					<?php
-						// DELETE QUERY
-						global $dbConnection;
-						if (isset($_GET['delete'])) {
-							$the_cat_id = $_GET['delete'];
-							$query = "DELETE FROM cms.categories WHERE cat_id = {$the_cat_id}";
-							$delete_query = mysqli_query($dbConnection. $query);
-							header("Location: categories.php");
-						}
-					?>
 					<form action="categories.php" method="post" aria-labelledby="categories" class="form">
 						<div class="form-group">
 							<label aria-label="cat_title" for="cat_title">Add Category</label>
@@ -90,6 +80,16 @@
 								echo "<td>{$cat_title}</td>";
 								echo "<td><a href='categories.php?delete={$cat_id}'> <i class='fa fa-fw fa-remove'></i> </a></td>";
 								echo "</tr>";
+							}
+						?>
+						<?php
+							// DELETE QUERY
+							global $dbConnection;
+							if (isset($_GET['delete'])) {
+								$the_cat_id = $_GET['delete'];
+								$query = "DELETE FROM cms.categories WHERE cat_id = {$the_cat_id}";
+								$delete_query = mysqli_query($dbConnection, $query);
+								header("Location: categories.php");
 							}
 						?>
 						</tbody>
