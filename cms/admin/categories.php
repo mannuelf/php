@@ -1,5 +1,4 @@
 <?php include "includes/header.php" ?>
-
 <div id="wrapper" class="categories">
 	<!-- Navigation -->
 	<?php include "includes/navigation.php" ?>
@@ -25,22 +24,25 @@
 			<div class="row">
 				<div class="col-xs-6">
 					<?php
+						global $dbConnection;
 						if(isset($_POST['submit'])) {
 							$cat_title = $_POST['cat_title'];
 							if ($cat_title == "" || empty($cat_title)) {
-								echo "This cannot be empty";
+								echo "This field cannot be empty";
 							} else {
-								$query = "INSERT INTO cms.categories";
+								// construct query
+								$query = "INSERT INTO cms.categories ";
 								$query .= "VALUE('{$cat_title}') ";
-
+								// submit to db
 								$create_category_query = mysqli_query($dbConnection, $query);
+								echo "SUCCESS you have added a new category";
 								if (!$create_category_query) {
 									die('Query Failed' . mysqli_error($dbConnection));
 								}
 							}
 						}
 					?>
-					<form action="" method="post" aria-labelledby="categories" class="form">
+					<form action="categories.php" method="post" aria-labelledby="categories" class="form">
 						<div class="form-group">
 							<label aria-label="cat_title" for="cat_title">Add Category</label>
 							<input type="text" name="cat_title" aria-labelledby="cat_title" title="cat_title" class="form-control">

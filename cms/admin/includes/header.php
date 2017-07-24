@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 <?php include "../database/db.php" ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
