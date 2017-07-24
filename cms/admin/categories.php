@@ -42,6 +42,16 @@
 							}
 						}
 					?>
+					<?php
+						// DELETE QUERY
+						global $dbConnection;
+						if (isset($_GET['delete'])) {
+							$the_cat_id = $_GET['delete'];
+							$query = "DELETE FROM cms.categories WHERE cat_id = {$the_cat_id}";
+							$delete_query = mysqli_query($dbConnection. $query);
+							header("Location: categories.php");
+						}
+					?>
 					<form action="categories.php" method="post" aria-labelledby="categories" class="form">
 						<div class="form-group">
 							<label aria-label="cat_title" for="cat_title">Add Category</label>
@@ -54,30 +64,31 @@
 				</div>
 				<div class="col-xs-6">
 					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Category</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
 						<?php
 							global $dbConnection;
 
 							$query = "SELECT * FROM cms.categories";
 							$select_categories = mysqli_query($dbConnection, $query);
 
-							if(! $select_categories) {
+							if (!$select_categories) {
 								echo mysqli_error($select_categories);
 							}
-						?>
-						<thead>
-						<tr>
-							<th>ID</th>
-							<th>Category</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
+
 							while($row = mysqli_fetch_assoc($select_categories)) {
 								$cat_id = $row['cat_id'];
 								$cat_title = $row['cat_title'];
 								echo "<tr>";
 								echo "<td>{$cat_id}</td>";
 								echo "<td>{$cat_title}</td>";
+								echo "<td><a href='categories.php?delete={$cat_id}'> <i class='fa fa-fw fa-remove'></i> </a></td>";
 								echo "</tr>";
 							}
 						?>
