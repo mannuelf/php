@@ -51,6 +51,32 @@
 							<input type="submit" name="submit" aria-labelledby="submit" value="Add Category" class="btn btn-primary">
 						</div>
 					</form>
+
+					<hr>
+
+					<form action="categories.php" method="post" aria-labelledby="edit categories" class="form">
+						<div class="form-group">
+							<label aria-labelledby="edit category" for="cat_title">Update Category</label>
+							<?php
+							global $dbConnection;
+							if(isset($_GET['edit'])) {
+								$cat_id = $_GET['edit'];
+								$query = "SELECT * FROM cms.categories WHERE cat_id = $cat_id ";
+								$select_categories_id = mysqli_query($dbConnection, $query);
+
+								while($row = mysqli_fetch_assoc($select_categories_id)) {
+									$cat_id = $row['cat_title'];
+									$cat_title = $row['cat_title'];
+									?>
+
+									<input value="<?php if(isset($cat_title)) { echo $cat_title; } ?>" type="text" name="cat_title" aria-labelledby="update category" title="update cat_title" class="form-control">
+
+								<?php }} ?>
+						</div>
+						<div class="form-group">
+							<input type="submit" name="submit" aria-labelledby="submit" value="Update Category" class="btn btn-primary">
+						</div>
+					</form>
 				</div>
 				<div class="col-xs-6">
 					<table class="table table-hover table-bordered">
@@ -79,6 +105,7 @@
 								echo "<td>{$cat_id}</td>";
 								echo "<td>{$cat_title}</td>";
 								echo "<td><a href='categories.php?delete={$cat_id}'> <i class='fa fa-fw fa-remove'></i> </a></td>";
+								echo "<td><a href='categories.php?edit={$cat_id}'> <i class='fa fa-fw fa-edit'></i> </a></td>";
 								echo "</tr>";
 							}
 						?>
