@@ -8,10 +8,10 @@
 			$select_categories_id = mysqli_query($dbConnection, $query);
 
 			while($row = mysqli_fetch_assoc($select_categories_id)) {
-				$cat_id = $row['cat_title'];
+				$cat_id = $row['cat_id'];
 				$cat_title = $row['cat_title'];
 				?>
-
+				<input type="hidden" value="<?php echo $cat_id; ?>" name="cat_id">
 				<input value="<?php if(isset($cat_title)) { echo $cat_title; } ?>" type="text" name="cat_title" aria-labelledby="update category" title="update cat_title" class="form-control">
 			<?php }
 		} ?>
@@ -19,8 +19,9 @@
 		<?php
 		// update query
 		if (isset($_POST['update_category'])) {
-			$the_cat_title = $_POST['cat_title'];
-			$query = "UPDATE cms.categories SET cms.categories.cat_title = '{$the_cat_title}' WHERE cms.categories.cat_id = {$cat_id}";
+			$post_id = $_POST['cat_id'];
+			$cat_title = $_POST['cat_title'];
+			$query = "UPDATE cms.categories SET cms.categories.cat_title = '{$cat_title}' WHERE cms.categories.cat_id = {$post_id}";
 			$update_query = mysqli_query($dbConnection, $query);
 			if(!$update_query) {
 				die("QUERY FAILED". mysqli_error($dbConnection));

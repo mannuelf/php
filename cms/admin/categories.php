@@ -1,7 +1,8 @@
-<?php include "includes/header.php" ?>
+<?php include "includes/admin_header.php" ?>
+
 <div id="wrapper" class="categories">
 	<!-- Navigation -->
-	<?php include "includes/navigation.php" ?>
+	<?php include "includes/admin_navigation.php" ?>
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<!-- Page Heading -->
@@ -23,25 +24,9 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-6">
-					<?php
-						global $dbConnection;
-						if(isset($_POST['submit'])) {
-							$cat_title = $_POST['cat_title'];
-							if ($cat_title == "" || empty($cat_title)) {
-								echo "This field cannot be empty";
-							} else {
-								// construct query
-								$query = "INSERT INTO cms.categories(cat_title) ";
-								$query .= "VALUE('{$cat_title}') ";
-								// submit to db
-								$create_category_query = mysqli_query($dbConnection, $query);
-								echo "SUCCESS you have added a new category";
-								if (!$create_category_query) {
-									die('Query Failed' . mysqli_error($dbConnection));
-								}
-							}
-						}
-					?>
+
+					<?php insert_categories(); ?>
+
 					<form action="categories.php" method="post" aria-labelledby="categories" class="form">
 						<div class="form-group">
 							<label aria-label="cat_title" for="cat_title">Add Category</label>
@@ -57,7 +42,7 @@
 					<?php
 						if(isset($_GET['edit'])) {
 							$cat_id = $_GET['edit'];
-							include "includes/update_categories.php";
+							include "update_categories.php";
 						}
 					?>
 				</div>
@@ -111,4 +96,4 @@
 		<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->
-	<?php include "includes/footer.php" ?>
+	<?php include "includes/admin_footer.php" ?>
