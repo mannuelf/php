@@ -24,10 +24,10 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-6">
-					<!-- ADDD Category form -->
+					<!-- ADD Category form -->
 					<?php
 						insert_categories();
-						include "categories_add.php";
+						include "categories_add-categories.php";
 					?>
 					<hr>
 
@@ -35,7 +35,7 @@
 					<?php
 						if(isset($_GET['edit'])) {
 							$cat_id = $_GET['edit'];
-							include "categories_update.php";
+							include "categories_update-categories.php";
 						}
 					?>
 				</div>
