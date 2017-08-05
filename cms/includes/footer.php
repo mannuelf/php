@@ -4,7 +4,12 @@
 <footer>
 	<div class="row">
 		<div class="col-lg-12">
-			<p>Copyright &copy; Blog <?php date("Y")?></p>
+			<p>Copyright &copy; Blog
+				<?php
+					date_default_timezone_set('UTC');
+					echo date( "Y");
+				?>
+			</p>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
