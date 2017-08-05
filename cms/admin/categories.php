@@ -34,7 +34,7 @@
 					<!-- update category form -->
 					<?php
 						if(isset($_GET['edit'])) {
-							$post_id = $_GET['edit'];
+							$cat_id = $_GET['edit'];
 							include "categories_update.php";
 						}
 					?>
