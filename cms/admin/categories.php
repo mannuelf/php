@@ -24,25 +24,18 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-6">
-
-					<?php insert_categories(); ?>
-
-					<form action="categories.php" method="post" aria-labelledby="categories" class="form">
-						<div class="form-group">
-							<label aria-label="cat_title" for="cat_title">Add Category</label>
-							<input type="text" name="cat_title" aria-labelledby="cat_title" title="cat_title" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="submit" name="submit" aria-labelledby="submit" value="Add Category" class="btn btn-primary">
-						</div>
-					</form>
-
+					<!-- ADDD Category form -->
+					<?php
+						insert_categories();
+						include "categories_add.php";
+					?>
 					<hr>
+
 					<!-- update category form -->
 					<?php
 						if(isset($_GET['edit'])) {
-							$cat_id = $_GET['edit'];
-							include "update_categories.php";
+							$post_id = $_GET['edit'];
+							include "categories_update.php";
 						}
 					?>
 				</div>
