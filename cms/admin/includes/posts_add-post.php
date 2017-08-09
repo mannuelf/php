@@ -3,6 +3,7 @@
 		global $dbConnection;
 		
 		date_default_timezone_set('UTC');
+		$post_category_id = $_POST['post_category_id'];
 		$post_title = $_POST['post_title'];
 		$post_author = $_POST['post_author'];
 		$post_date = date('d-m-y');
@@ -25,21 +26,23 @@
 			post_content, 
 			post_tags, 
 			post_comment_count, 
-			post_status)
-			VALUES (
-			'{$post_category_id}',
+			post_status) ";
+		
+		$query .= "VALUES(
+			 {$post_category_id},
 			'{$post_title}',
-			'{$post_author}',
-			'$post_date',
+			'{$post_author}', 
+			  now(),
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',
 			'{$post_comment_count}',
-			'{$post_status}') ";
+			'{$post_status}' ) ";
+		
 		var_dump($query);
-		// $query .= " ";
-
+		
 		$create_post_query = mysqli_query($dbConnection, $query);
+
 		confirmQuery($create_post_query);
 	}
 ?>
