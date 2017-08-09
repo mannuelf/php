@@ -11,7 +11,22 @@
 		$post_comment_count = 4;
 		$post_status = $_POST['post_status'];
 
-		move_uploaded_file($post_image_temp, "../image/$post_image");
+		// move image to images folder
+		move_uploaded_file($post_image_temp, "../images/$post_image");
+
+		$query = "SELECT INTO posts(post_category_id,post_title,post_author,post_date,post_image,post_content,post_tags,post_comment_count,post_status";
+		$query .= "VALUES(
+					 {$post_category_id},
+					'{$post_title}',
+					'{$post_author}',
+					now(),
+					'{$post_image}',
+					'{$post_content}',
+					'{$post_tags}',
+					'{$post_comment_count}',
+					'{$post_status}') ";
+		
+		$create_post_query = mysqli_query($dbConnection, $query);
 	}
 ?>
 
@@ -27,10 +42,10 @@
 		<input name="post_author" type="text" class="form-control">
 	</div>
 
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label for="post_date">Post Date</label>
 		<input name="post_date" type="text" class="form-control">
-	</div>
+	</div> -->
 
 	<div class="form-group">
 		<label for="post_image">Post Image</label>
@@ -39,7 +54,8 @@
 
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
-		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"></textarea>
+		<textarea name="post_content" id="" cols="30" rows="10" 
+		type="text" class="form-control"></textarea>
 	</div>
 
 	<div class="form-group">
