@@ -18,30 +18,29 @@
 
 		$query = "INSERT INTO cms.posts(
 			post_category_id,
-			post_title,
-			post_author,
-			post_date,
-			post_image,
-			post_content,
-			post_tags,
-			post_comment_count,
-			post_status) ";
-		$query .= "VALUES(
-			{$post_category_id},
+			post_title, 
+			post_author, 
+			post_date, 
+			post_image, 
+			post_content, 
+			post_tags, 
+			post_comment_count, 
+			post_status)
+			VALUES (
+			'{$post_category_id}',
 			'{$post_title}',
 			'{$post_author}',
-			now(),
+			'$post_date',
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',
 			'{$post_comment_count}',
-			'{$post_status}'); ";
-		
+			'{$post_status}') ";
+		var_dump($query);
+		// $query .= " ";
+
 		$create_post_query = mysqli_query($dbConnection, $query);
-
 		confirmQuery($create_post_query);
-
-	
 	}
 ?>
 
@@ -57,10 +56,10 @@
 		<input name="post_author" type="text" class="form-control">
 	</div>
 
-	<!-- <div class="form-group">
+	 <div class="form-group">
 		<label for="post_date">Post Date</label>
-		<input name="post_date" type="text" class="form-control">
-	</div> -->
+		<input name="post_date" type="date" class="form-control">
+	</div> 
 
 	<div class="form-group">
 		<label for="post_image">Post Image</label>
@@ -79,7 +78,7 @@
 	</div>
 
 	<div class="form-group">
-		<label for="post_comment-count">Post Comment Count</label>
+		<label for="post_comment_count">Post Comment Count</label>
 		<input name="post_comment_count" type="text" class="form-control">
 	</div>
 
