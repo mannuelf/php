@@ -23,6 +23,7 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-lg-12">
 				<?php
 					if(isset($_GET['source'])) {
 						$source = $_GET['source'];
@@ -39,6 +40,7 @@
 							break;
 					}
 				?>
+				</div>
 			</div>
 			<!-- /.row -->
 		</div>
