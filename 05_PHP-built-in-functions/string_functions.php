@@ -14,20 +14,20 @@
 <h2>
 <?php
 
-	$string = "Hello whats up, hows it going";
-	echo strlen($string);
-	echo "<br/>";
+    $string = 'Hello whats up, hows it going';
+    echo strlen($string);
+    echo '<br/>';
 
-	echo strtoupper($string);
-	echo "<br/>";
+    echo strtoupper($string);
+    echo '<br/>';
 
-	echo strtolower($string);
-	echo "<br/>";
+    echo strtolower($string);
+    echo '<br/>';
 
-	echo str_repeat($string, 4);
-	echo "<br/>";
+    echo str_repeat($string, 4);
+    echo '<br/>';
 
-	echo str_shuffle($string);
+    echo str_shuffle($string);
 ?>
 </h2>
 </body>
