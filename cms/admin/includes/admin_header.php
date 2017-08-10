@@ -1,6 +1,6 @@
 
-<?php include "../database/db.php" ?>
-<?php include "functions.php" ?>
+<?php include '../database/db.php' ?>
+<?php include 'functions.php' ?>
 
 <?php ob_start(); ?>
 

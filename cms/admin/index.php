@@ -1,8 +1,8 @@
-<?php include "includes/admin_header.php" ?>
+<?php include 'includes/admin_header.php' ?>
 
 <div id="wrapper">
 	<!-- Navigation -->
-	<?php include "includes/admin_navigation.php" ?>
+	<?php include 'includes/admin_navigation.php' ?>
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<!-- Page Heading -->
@@ -11,7 +11,9 @@
 					<h1 class="page-header">
 						Welcome to CMS Admin
 						<small>Author</small>
-						<?php if ($dbConnection) { echo "connected"; } ?>
+						<?php if ($dbConnection) {
+    echo 'connected';
+} ?>
 					</h1>
 
 					<ol class="breadcrumb">
@@ -29,4 +31,4 @@
 		<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->
-	<?php include "includes/admin_footer.php" ?>
+	<?php include 'includes/admin_footer.php' ?>
