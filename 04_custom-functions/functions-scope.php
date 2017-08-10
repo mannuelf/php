@@ -14,21 +14,22 @@
 <h2>
 	<?php
 
-		$x = "outside"; // global
+        $x = 'outside'; // global
 
-		function convert() {
-			global $number;
-			$number = "inside"; // local
-		}
+        function convert()
+        {
+            global $number;
+            $number = 'inside'; // local
+        }
 
-		echo $x;
-		echo "<br/>";
+        echo $x;
+        echo '<br/>';
 
-		convert();
+        convert();
 
-		echo $x;
+        echo $x;
 
-	?>
+    ?>
 </h2>
 </body>
 </html>

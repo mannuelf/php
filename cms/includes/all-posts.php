@@ -1,21 +1,21 @@
 <?php
-$query = "SELECT * FROM cms.posts";
+$query = 'SELECT * FROM cms.posts';
 
 $select_all_posts = mysqli_query($dbConnection, $query);
 
 if (!$select_all_posts) {
-	echo mysqli_error($select_all_posts);
+    echo mysqli_error($select_all_posts);
 }
 
 while ($row = mysqli_fetch_assoc($select_all_posts)) {
-	$post_title = $row['post_title'];
-	$post_author = $row['post_author'];
-	$post_date = $row['post_date'];
-	$post_image = $row['post_image'];
-	$post_content = $row['post_content'];
-	$post_tags = $row['post_tags'];
-	// break out of the while loop (meh looks dodgy but it works eh)
-	?>
+    $post_title = $row['post_title'];
+    $post_author = $row['post_author'];
+    $post_date = $row['post_date'];
+    $post_image = $row['post_image'];
+    $post_content = $row['post_content'];
+    $post_tags = $row['post_tags'];
+    // break out of the while loop (meh looks dodgy but it works eh)
+    ?>
 	<h2>
 		<a href="#"><?php echo $post_title ?></a>
 	</h2>
@@ -36,7 +36,8 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
 			class="glyphicon glyphicon-chevron-right"></span></a>
 	<hr>
 
-<?php } ?>
+<?php
+} ?>
 
 
 

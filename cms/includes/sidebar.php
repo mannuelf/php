@@ -19,24 +19,24 @@
 	<!-- Blog Categories Well -->
 	<div class="well">
 		<?php
-			$query = "SELECT * FROM cms.categories";
+            $query = 'SELECT * FROM cms.categories';
 
-			$select_all_categories = mysqli_query($dbConnection, $query);
+            $select_all_categories = mysqli_query($dbConnection, $query);
 
-			if (!$select_all_categories) {
-				echo mysqli_error($select_all_categories);
-			}
-		?>
+            if (!$select_all_categories) {
+                echo mysqli_error($select_all_categories);
+            }
+        ?>
 		<h4>Blog Categories</h4>
 		<div class="row">
 			<div class="col-lg-6">
 				<ul class="list-unstyled">
 					<?php
-						while ($row = mysqli_fetch_assoc($select_all_categories)) {
-							$cat_title = $row['cat_title'];
-							echo "<li><a href='#'>{$cat_title}</a></li>";
-						}
-					?>
+                        while ($row = mysqli_fetch_assoc($select_all_categories)) {
+                            $cat_title = $row['cat_title'];
+                            echo "<li><a href='#'>{$cat_title}</a></li>";
+                        }
+                    ?>
 				</ul>
 			</div>
 			<!-- /.col-lg-6 -->
@@ -58,6 +58,6 @@
 	</div>
 
 	<!-- Side Widget Well -->
-  	<?php include "widget.php"; ?>
+  	<?php include 'widget.php'; ?>
 
 </div>
