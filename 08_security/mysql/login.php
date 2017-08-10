@@ -1,5 +1,5 @@
 <?php
-	include "./includes/header.php";
+    include './includes/header.php';
 ?>
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
 	<header class="mdl-layout__header mdl-layout__header--transparent">
@@ -9,12 +9,12 @@
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation -->
-            <?php require "./includes/navigation.php"; ?>
+            <?php require './includes/navigation.php'; ?>
 		</div>
 	</header>
 	<div class="mdl-layout__drawer">
 		<span class="mdl-layout-title">Databases</span>
-        <?php require "./includes/navigation.php"; ?>
+        <?php require './includes/navigation.php'; ?>
 	</div>
 	<main class="mdl-layout__content">
 		<div class="mdl-grid"></div>
@@ -26,28 +26,28 @@
                      * please check the  README for more details on creating a
                      * local test database for this demo
                      * */
-                    include "db.php";
-                    include "functions.php";
+                    include 'db.php';
+                    include 'functions.php';
 
-                    if(isset($_POST['submit'])) {
+                    if (isset($_POST['submit'])) {
                         $username = $_POST['username'];
                         $password = $_POST['password'];
                         $connection = mysqli_connect('localhost', 'root', 'root', 'loginapp');
 
-                        if($connection) {
-                            echo "<h6>Access Granted<h6/>";
+                        if ($connection) {
+                            echo '<h6>Access Granted<h6/>';
                         } else {
-                            die("Database connection failed");
+                            die('Database connection failed');
                         }
 
-                        $query = "INSERT INTO users(username, password)";
+                        $query = 'INSERT INTO users(username, password)';
                         $query .= "VALUES ('$username', '$password')";
                         $result = mysqli_query($connection, $query);
-                        if(!$result) {
-                            die("Query FAILED" . mysqli_error($connection));
+                        if (!$result) {
+                            die('Query FAILED'.mysqli_error($connection));
                         }
                     }
-				?>
+                ?>
 				<form action="login.php" method="post">
 					<div class="mdl-textfield mdl-js-textfield">
 						<input class="mdl-textfield__input" type="text" name="username">
@@ -66,4 +66,4 @@
 	</main>
 </div>
 
-<?php include "./includes/footer.php"; ?>
+<?php include './includes/footer.php'; ?>
