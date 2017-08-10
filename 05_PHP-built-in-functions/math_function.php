@@ -12,23 +12,23 @@
 <body>
 
 <?php
-	echo pow(2,8);
-	echo "<br/>";
+    echo pow(2, 8);
+    echo '<br/>';
 
-	echo rand(1, 1000);
-	echo "<br/>";
+    echo rand(1, 1000);
+    echo '<br/>';
 
-	echo sqrt(100);
-	echo "<br/>";
+    echo sqrt(100);
+    echo '<br/>';
 
-	echo ceil(5.6);
-	echo "<br/>";
+    echo ceil(5.6);
+    echo '<br/>';
 
-	echo floor(3.6);
-	echo "<br/>";
+    echo floor(3.6);
+    echo '<br/>';
 
-	echo round(3.6);
-	echo "<br/>";
+    echo round(3.6);
+    echo '<br/>';
 ?>
 
 </body>
