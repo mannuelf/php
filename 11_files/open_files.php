@@ -1,7 +1,7 @@
 
 <?php
 
-$file = "logs.txt";
+$file = 'logs.txt';
 
 $handle = fopen($file, 'w');
 

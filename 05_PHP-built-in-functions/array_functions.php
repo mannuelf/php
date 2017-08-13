@@ -14,15 +14,15 @@
 <h2>
 <?php
 
-	$list = [9867625, 989,232,673,2347,23456,246373,77332,445];
-	echo max($list);
-	echo "<hr/>";
+    $list = [9867625, 989, 232, 673, 2347, 23456, 246373, 77332, 445];
+    echo max($list);
+    echo '<hr/>';
 
-	echo min($list);
-	echo "<hr/>";
+    echo min($list);
+    echo '<hr/>';
 
-	sort($list);
-	print_r($list);
+    sort($list);
+    print_r($list);
 ?>
 </h2>
 </body>

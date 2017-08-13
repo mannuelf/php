@@ -3,23 +3,23 @@ global $dbConnection;
 
 // EDIT A POST OF GIVEN POST ID
 if (isset($_GET['p_id'])) {
-	$get_post_id = $_GET['p_id'];
+    $get_post_id = $_GET['p_id'];
 }
 
-$query = "SELECT * FROM cms.posts ";
+$query = 'SELECT * FROM cms.posts ';
 $select_posts_by_id = mysqli_query($dbConnection, $query);
 
 while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
-	$post_id = $row['id'];
-	$cat_id = $row['post_category_id'];
-	$post_title = $row['post_title'];
-	$post_author = $row['post_author'];
-	$post_date = $row['post_date'];
-	$post_image = $row['post_image'];
-	$post_content = $row['post_content'];
-	$post_tags = $row['post_tags'];
-	$post_comment_count = $row['post_comment_count'];
-	$post_status = $row['post_status'];
+    $post_id = $row['id'];
+    $cat_id = $row['post_category_id'];
+    $post_title = $row['post_title'];
+    $post_author = $row['post_author'];
+    $post_date = $row['post_date'];
+    $post_image = $row['post_image'];
+    $post_content = $row['post_content'];
+    $post_tags = $row['post_tags'];
+    $post_comment_count = $row['post_comment_count'];
+    $post_status = $row['post_status'];
 }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -33,20 +33,20 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 		<label for="post_categories">Categories</label>
 		<select name="" id=""  class="form-control">
 			<?php
-				$query = "SELECT * FROM cms.categories";
-				$select_categories = mysqli_query($dbConnection, $query);
+                $query = 'SELECT * FROM cms.categories';
+                $select_categories = mysqli_query($dbConnection, $query);
 
-				confirmQuery($select_categories);
+                confirmQuery($select_categories);
 
-				while($row = mysqli_fetch_row($select_categories)) {
-					$cat_id = $row['id'];
-					$cat_title = $row['cat_title'];
-					var_dump($cat_id);
-					var_dump($cat_title);
+                while ($row = mysqli_fetch_row($select_categories)) {
+                    $cat_id = $row['id'];
+                    $cat_title = $row['cat_title'];
+                    var_dump($cat_id);
+                    var_dump($cat_title);
 
-					echo "<option value='{$cat_id}'>{$cat_id}</option>";
-				}
-			?>
+                    echo "<option value='{$cat_id}'>{$cat_id}</option>";
+                }
+            ?>
 
 		</select>
 	</div>
