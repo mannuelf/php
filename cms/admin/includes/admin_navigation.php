@@ -60,6 +60,11 @@
 							Add a Post
 						</a>
 					</li>
+					<li>
+						<a href="./posts.php?source=edit_post"><i class="fa fa-fw fa-edit"></i>
+							Edit a Post
+						</a>
+					</li>
 				</ul>
 			</li>
 

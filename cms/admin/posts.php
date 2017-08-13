@@ -31,10 +31,12 @@
 						$source = "";
 					}
 					switch($source) {
-						case "add_post";
+						case "add_post":
 							include "./includes/posts_add-post.php";
 							break;
-
+						case "edit_post":
+							include "./includes/posts_edit-posts.php";
+							break;
 						default;
 							include "./includes/posts_view-all-posts.php";
 							break;
