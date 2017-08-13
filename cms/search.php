@@ -1,6 +1,6 @@
-<?php include "database/db.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php include 'database/db.php' ?>
+<?php include 'includes/header.php' ?>
+<?php include 'includes/navigation.php' ?>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -11,27 +11,26 @@
 				<small class="">Every day there is something new to learn.</small>
 			</h1>
 			<?php
-			if (isset($_POST['submit'])) {
-				$search = $_POST['search'];
-				$query = "SELECT * FROM cms.posts WHERE post_tags LIKE '%$search%'";
-				$searchQuery = mysqli_query($dbConnection, $query);
-				if (!$searchQuery) {
-					die("QUERY FAILED" . mysqli_error($dbConnection));
-				}
-				$count = mysqli_num_rows($searchQuery);
-				if ($count == 0) {
-					echo "<h2>No result.</h2>";
-				}
-				else {
-					while ($row = mysqli_fetch_assoc($searchQuery)) {
-						$post_title = $row['post_title'];
-						$post_author = $row['post_author'];
-						$post_date = $row['post_date'];
-						$post_image = $row['post_image'];
-						$post_content = $row['post_content'];
-						$post_tags = $row['post_tags'];
-						// break out of the while loop (meh looks dodgy but it works eh)
-						?>
+            if (isset($_POST['submit'])) {
+                $search = $_POST['search'];
+                $query = "SELECT * FROM cms.posts WHERE post_tags LIKE '%$search%'";
+                $searchQuery = mysqli_query($dbConnection, $query);
+                if (!$searchQuery) {
+                    die('QUERY FAILED'.mysqli_error($dbConnection));
+                }
+                $count = mysqli_num_rows($searchQuery);
+                if ($count == 0) {
+                    echo '<h2>No result.</h2>';
+                } else {
+                    while ($row = mysqli_fetch_assoc($searchQuery)) {
+                        $post_title = $row['post_title'];
+                        $post_author = $row['post_author'];
+                        $post_date = $row['post_date'];
+                        $post_image = $row['post_image'];
+                        $post_content = $row['post_content'];
+                        $post_tags = $row['post_tags'];
+                        // break out of the while loop (meh looks dodgy but it works eh)
+                        ?>
 						<h2>
 							<a href="#"><?php echo $post_title ?></a>
 						</h2>
@@ -53,9 +52,10 @@
 						<a class="btn btn-primary" href="#">Read More <span
 								class="glyphicon glyphicon-chevron-right"></span></a>
 						<hr>
-					<?php }
-				}
-			} ?>
+					<?php
+                    }
+                }
+            } ?>
 			<!-- Pager -->
 			<ul class="pager">
 				<li class="previous">
@@ -66,7 +66,7 @@
 				</li>
 			</ul>
 		</div>
-		<?php include "includes/sidebar.php" ?>
+		<?php include 'includes/sidebar.php' ?>
 	</div>
 	<!-- /.row -->
-	<?php include "includes/footer.php" ?>
+	<?php include 'includes/footer.php' ?>
