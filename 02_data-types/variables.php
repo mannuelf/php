@@ -12,15 +12,15 @@
 <body>
 
 <?php
-	$name = "Mannuel Ferreira";
-	$number = 34;
+    $name = 'Mannuel Ferreira';
+    $number = 34;
 
-	echo $name . ' is ' . $number . ' years old  ';
+    echo $name.' is '.$number.' years old  ';
 
-	$name = "<h1>Hello </h1>";
+    $name = '<h1>Hello </h1>';
 
-	echo $name;
-	?>
+    echo $name;
+    ?>
 
 </body>
 </html>
