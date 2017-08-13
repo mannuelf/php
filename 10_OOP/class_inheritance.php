@@ -1,27 +1,27 @@
 <?php
 
-class Car {
+class Car
+{
+    public $wheels = 4;
+    public $hood = 1;
+    public $engine = 1;
+    public $doors = 4;
 
-	var $wheels = 4;
-	var $hood = 1;
-	var $engine = 1;
-	var $doors = 4;
+    public function MoveWheels()
+    {
+        $this->wheels = 10;
+    }
 
-	function MoveWheels()
-	{
-		$this->wheels = 10;
-	}
-
-	// have methods change properties
-	function createDoors()
-	{
-		$this->doors = 6;
-	}
-
+    // have methods change properties
+    public function createDoors()
+    {
+        $this->doors = 6;
+    }
 }
 
-class Plane extends Car {
-	var $wheels = 20;
+class Plane extends Car
+{
+    public $wheels = 20;
 }
 
 $bmw = new Car();
