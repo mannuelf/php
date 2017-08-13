@@ -1,6 +1,6 @@
 <?php
-	echo $_POST['name'];
-	print_r($_POST['name']);
+    echo $_POST['name'];
+    print_r($_POST['name']);
 ?>
 
 <!doctype html>
