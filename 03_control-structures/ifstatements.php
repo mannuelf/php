@@ -12,20 +12,19 @@
 <body>
 
 <?php
-	if (3 < 10) {
-		echo "Three is less than ten";
-	} else {
-		echo "It is not greater than ten";
-	}
+    if (3 < 10) {
+        echo 'Three is less than ten';
+    } else {
+        echo 'It is not greater than ten';
+    }
 
-	echo "<br/>";
+    echo '<br/>';
 
-	if (3 > 10) {
-		echo "Three is less than ten";
-	} elseif(4 > 2) {
-		echo "Four is greater than two";
-	}
-
+    if (3 > 10) {
+        echo 'Three is less than ten';
+    } elseif (4 > 2) {
+        echo 'Four is greater than two';
+    }
 
 ?>
 
