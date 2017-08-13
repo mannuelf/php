@@ -13,10 +13,10 @@
 
 <?php
 
-	$numberList = [23, 24, 25, '30', 26, 'hello', 'world', '<h2>End of array</h2>'];
+    $numberList = [23, 24, 25, '30', 26, 'hello', 'world', '<h2>End of array</h2>'];
 
-	print_r($numberList);
-	$numberList[6];
+    print_r($numberList);
+    $numberList[6];
 
 ?>
 </body>

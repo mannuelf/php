@@ -13,9 +13,9 @@
 
   <?php
 
-  	// This is a comment
+    // This is a comment
 
-  	$title = "Manny's Website"
+    $title = "Manny's Website"
   ?>
 	<!-- THis is a comment-->
   <h1> <?php echo $title; ?> </h1>

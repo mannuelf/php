@@ -1,10 +1,10 @@
-<?php include "functions.php" ?>
-<?php include "includes/header.php" ?>
+<?php include 'functions.php' ?>
+<?php include 'includes/header.php' ?>
 <section class="content">
 
 	<aside class="col-xs-4">
 
-		<?php Navigation();?>
+		<?php Navigation(); ?>
 
 
 	</aside><!--SIDEBAR-->
@@ -14,33 +14,35 @@
 
 	<?php
 
-	/*  Step 1: Use the Make a class called Dog
+    /*  Step 1: Use the Make a class called Dog
 
-		Step 2: Set some properties for Dog, Example, eye colors, nose, or fur color
+        Step 2: Set some properties for Dog, Example, eye colors, nose, or fur color
 
-		Step 4: Make a method named ShowAll that echos all the properties
+        Step 4: Make a method named ShowAll that echos all the properties
 
-		Step 5: Instantiate the class / create object and call it pitbull
+        Step 5: Instantiate the class / create object and call it pitbull
 
-		Step 6: Call the method ShowAll
+        Step 6: Call the method ShowAll
 
-	*/
+    */
 
-	class Dog {
-		var $eyes = 2;
-		var $colour = "brown";
-		var $nose = 1;
+    class Dog
+    {
+        public $eyes = 2;
+        public $colour = 'brown';
+        public $nose = 1;
 
-		function ShowAll() {
-			echo $this->eyes . "<br>";
-			echo $this->colour . "<br>";
-			echo $this->nose;
-		}
-	}
+        public function ShowAll()
+        {
+            echo $this->eyes.'<br>';
+            echo $this->colour.'<br>';
+            echo $this->nose;
+        }
+    }
 
-	$pitbull = new Dog();
-	echo $pitbull->ShowAll();
-	?>
+    $pitbull = new Dog();
+    echo $pitbull->ShowAll();
+    ?>
 
 
 
@@ -48,4 +50,4 @@
 
 </article><!--MAIN CONTENT-->
 
-<?php include "includes/footer.php" ?>
+<?php include 'includes/footer.php' ?>
