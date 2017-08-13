@@ -12,11 +12,11 @@
 <body>
 
 <?php
-	$counter = 0;
-	while(4 <= 10) {
-		echo $counter;
-		$counter++;
-	}
+    $counter = 0;
+    while (4 <= 10) {
+        echo $counter;
+        $counter++;
+    }
 ?>
 
 </body>
