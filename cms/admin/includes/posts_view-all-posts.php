@@ -21,9 +21,11 @@
 	</thead>
 	<tbody>
 	<?php
+		// DELETE A POST
 		if(isset($_GET['delete'])){
+			global $dbConnection;
 			$the_post_id = $_GET['delete'];
-			$query = "DELETE FROM cms.posts WHERE post_id = {$the_post_id} ";
+			$query = "DELETE FROM cms.posts WHERE id = {$the_post_id} ";
 			$delete_query = mysqli_query($dbConnection, $query);
 		}
 	?>
@@ -45,13 +47,13 @@
 			echo "<td>{$post_title}</td>";
 			echo "<td>{$post_author}</td>";
 			echo "<td>{$post_date}</td>";
-			echo "<td><img src='../images/{$post_image}' width='80px'></td>";
+			echo "<td><img src='../images/{$post_image}' width='100px'></td>";
 			echo "<td>{$post_content}</td>";
 			echo "<td>{$post_comment_count}</td>";
 			echo "<td>{$post_comment_count}</td>";
 			echo "<td>{$post_status}</td>";
 			echo "<td>{$post_date}</td>";
-			echo "<td><a href='./posts_view-all-posts.php?delete={$post_id}'>delete</a></td>";
+			echo "<td><a href='./posts.php?delete={$post_id}'>delete</a></td>";
 			echo "</tr>";
 		}
 	?>
