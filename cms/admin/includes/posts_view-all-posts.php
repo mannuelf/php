@@ -1,6 +1,6 @@
 <?php
-	$query = "SELECT * FROM cms.posts";
-	$select_posts = mysqli_query($dbConnection, $query);
+    $query = 'SELECT * FROM cms.posts';
+    $select_posts = mysqli_query($dbConnection, $query);
 ?>
 <table class="table table-hover table-bordered">
 	<thead>
@@ -21,39 +21,39 @@
 	</thead>
 	<tbody>
 	<?php
-		if(isset($_GET['delete'])){
-			$the_post_id = $_GET['delete'];
-			$query = "DELETE FROM cms.posts WHERE post_id = {$the_post_id} ";
-			$delete_query = mysqli_query($dbConnection, $query);
-		}
-	?>
+        if (isset($_GET['delete'])) {
+            $the_post_id = $_GET['delete'];
+            $query = "DELETE FROM cms.posts WHERE post_id = {$the_post_id} ";
+            $delete_query = mysqli_query($dbConnection, $query);
+        }
+    ?>
 	<?php
-		while($row = mysqli_fetch_assoc($select_posts)) {
-			$post_id = $row['id'];
-			$cat_id = $row['post_category_id'];
-			$post_title = $row['post_title'];
-			$post_author = $row['post_author'];
-			$post_date = $row['post_date'];
-			$post_image = $row['post_image'];
-			$post_content = $row['post_content'];
-			$post_tags = $row['post_tags'];
-			$post_comment_count = $row['post_comment_count'];
-			$post_status = $row['post_status'];
-			echo "<tr>";
-			echo "<td>{$post_id}</td>";
-			echo "<td>{$cat_id}</td>";
-			echo "<td>{$post_title}</td>";
-			echo "<td>{$post_author}</td>";
-			echo "<td>{$post_date}</td>";
-			echo "<td><img src='../images/{$post_image}' width='80px'></td>";
-			echo "<td>{$post_content}</td>";
-			echo "<td>{$post_comment_count}</td>";
-			echo "<td>{$post_comment_count}</td>";
-			echo "<td>{$post_status}</td>";
-			echo "<td>{$post_date}</td>";
-			echo "<td><a href='./posts_view-all-posts.php?delete={$post_id}'>delete</a></td>";
-			echo "</tr>";
-		}
-	?>
+        while ($row = mysqli_fetch_assoc($select_posts)) {
+            $post_id = $row['id'];
+            $cat_id = $row['post_category_id'];
+            $post_title = $row['post_title'];
+            $post_author = $row['post_author'];
+            $post_date = $row['post_date'];
+            $post_image = $row['post_image'];
+            $post_content = $row['post_content'];
+            $post_tags = $row['post_tags'];
+            $post_comment_count = $row['post_comment_count'];
+            $post_status = $row['post_status'];
+            echo '<tr>';
+            echo "<td>{$post_id}</td>";
+            echo "<td>{$cat_id}</td>";
+            echo "<td>{$post_title}</td>";
+            echo "<td>{$post_author}</td>";
+            echo "<td>{$post_date}</td>";
+            echo "<td><img src='../images/{$post_image}' width='80px'></td>";
+            echo "<td>{$post_content}</td>";
+            echo "<td>{$post_comment_count}</td>";
+            echo "<td>{$post_comment_count}</td>";
+            echo "<td>{$post_status}</td>";
+            echo "<td>{$post_date}</td>";
+            echo "<td><a href='./posts_view-all-posts.php?delete={$post_id}'>delete</a></td>";
+            echo '</tr>';
+        }
+    ?>
 	</tbody>
 </table>
