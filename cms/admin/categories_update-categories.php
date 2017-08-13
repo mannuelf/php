@@ -26,11 +26,10 @@
 		if (isset($_POST['update_category'])) {
 			$cat_id = $_POST['cat_id'];
 			$cat_title = $_POST['cat_title'];
-			$query = "UPDATE cms.categories SET cms.categories.cat_title = '{$cat_title}' WHERE cms.categories.cat_id = {$cat_id}";
+			$query = "UPDATE cms.categories SET cms.categories.cat_title = {$cat_title} WHERE cms.categories.cat_id = {$cat_id}";
 			$update_query = mysqli_query($dbConnection, $query);
-			if(!$update_query) {
-				die("QUERY FAILED". mysqli_error($dbConnection));
-			}
+
+			confirmQuery($update_query);
 		}
 		?>
 	</div>
