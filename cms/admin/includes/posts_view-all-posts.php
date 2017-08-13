@@ -24,7 +24,7 @@
 		if(isset($_GET['delete'])){
 			$the_post_id = $_GET['delete'];
 			$query = "DELETE FROM cms.posts WHERE post_id = {$the_post_id} ";
-			$delete_query = mysql_query($dbConnection, $query);
+			$delete_query = mysqli_query($dbConnection, $query);
 		}
 	?>
 	<?php
