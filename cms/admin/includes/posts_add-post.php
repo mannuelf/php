@@ -14,7 +14,7 @@
 		$post_status = $_POST['post_status'];
 
 		// move image to images folder
-		move_uploaded_file($post_image_temp, "../images/{$post_image}");
+		move_uploaded_file($post_image_temp, "../images/$post_image");
 
 		$query = "INSERT INTO cms.posts(
 			post_title,
