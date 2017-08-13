@@ -30,11 +30,34 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 	</div>
 
 	<div class="form-group">
+		<label for="post_categories">Categories</label>
+		<select name="" id=""  class="form-control">
+			<?php
+				$query = "SELECT * FROM cms.categories";
+				$select_categories = mysqli_query($dbConnection, $query);
+
+				confirmQuery($select_categories);
+
+				while($row = mysqli_fetch_row($select_categories)) {
+					$cat_id = $row['id'];
+					$cat_title = $row['cat_title'];
+					var_dump($cat_id);
+					var_dump($cat_title);
+
+					echo "<option value='{$cat_id}'>{$cat_id}</option>";
+				}
+			?>
+
+		</select>
+	</div>
+
+	<div class="form-group">
 		<label for="post_author">Post Author</label>
 		<input value="<?php echo $post_author; ?>" name="post_author" type="text" class="form-control">
 	</div>
 
 	<div class="form-group">
+		<img src="../images/<?php echo $post_image; ?>" width="200" alt=""> <br>
 		<label for="post_image">Post Image</label>
 		<input name="post_image" type="file" class="form-control">
 	</div>
@@ -56,9 +79,7 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
-		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control">
-			<?php echo $post_content; ?>
-		</textarea>
+		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"><?php echo $post_content; ?></textarea>
 	</div>
 
 	<div class="form-group">
