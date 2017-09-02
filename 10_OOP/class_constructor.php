@@ -1,17 +1,16 @@
 <?php
 
-class Car {
+class Car
+{
+    public $wheels = 4;
+    public $hood = 1;
+    public $engine = 1;
+    public $doors = 4;
 
-	var $wheels = 4;
-	var $hood = 1;
-	var $engine = 1;
-	var $doors = 4;
-
-	function __construct()
-	{
-		echo $this->wheels = 10;
-	}
-
+    public function __construct()
+    {
+        echo $this->wheels = 10;
+    }
 }
 
 $mercedes = new Car();
