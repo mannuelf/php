@@ -1,8 +1,8 @@
 <?php
-	$name = "Manny";
-	$value = 100;
-	$expiration = time() + (60*60*24*7); // one week.
-	setcookie($name,$value,$expiration);
+    $name = 'Manny';
+    $value = 100;
+    $expiration = time() + (60 * 60 * 24 * 7); // one week.
+    setcookie($name, $value, $expiration);
 
 ?>
 
@@ -17,12 +17,12 @@
 <body>
 
 <?php
-	if(isset($_COOKIE["Manny"])) {
-		$someOne = $_COOKIE["Manny"];
-		echo $someOne;
-	} else {
-		$someOne = "";
-	}
+    if (isset($_COOKIE['Manny'])) {
+        $someOne = $_COOKIE['Manny'];
+        echo $someOne;
+    } else {
+        $someOne = '';
+    }
 ?>
 </body>
 </html>
