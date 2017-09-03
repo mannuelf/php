@@ -63,6 +63,7 @@ if(isset($_POST['update_post'])) {
 		<label for="post_categories">Categories</label>
 		<select name="post_category" class="form-control">
 			<?php
+				global $dbConnection;
 				$query = "SELECT * FROM cms.categories ";
 				$select_categories_id = mysqli_query($dbConnection, $query);
 
