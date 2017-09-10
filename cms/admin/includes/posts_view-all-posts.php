@@ -44,6 +44,7 @@
 			$post_tags = $row['post_tags'];
 			$post_comment_count = $row['post_comment_count'];
 			$post_status = $row['post_status'];
+
 			echo "<tr>";
 			echo "<td>{$post_id}</td>";
 			echo "<td>{$post_author}</td>";

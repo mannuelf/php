@@ -10,6 +10,8 @@ $query = "SELECT * FROM cms.posts";
 
 $select_posts_by_id = mysqli_query($dbConnection, $query);
 
+confirmQuery($select_posts_by_id);
+
 while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 	$post_id = $row['id'];
 	$cat_id = $row['post_category_id'];
@@ -28,6 +30,7 @@ if(isset($_POST['update_post'])) {
 	$post_title = $_POST['post_title'];
 	$post_author = $_POST['post_author'];
 	$post_date = $_POST['post_date'];
+	$post_content = $row['post_content'];
 	$post_image = $_FILES['image']['name'];
 	$post_image_temp = $_FILES['image']['tmp_name'];
 	$post_tags = $_POST['post_tags'];
@@ -41,6 +44,7 @@ if(isset($_POST['update_post'])) {
 	$query .= "post_category_id = '{$cat_id}', ";
 	$query .= "post_author = '{$post_author}', ";
 	$query .= "post_date = now(), ";
+	$query .= "post_content = '{$post_content}', ";
 	$query .= "post_image = '{$post_image}', ";
 	$query .= "post_tags = '{$post_tags}', ";
 	$query .= "post_comment_count= '{$post_comment_count}', ";
@@ -66,6 +70,8 @@ if(isset($_POST['update_post'])) {
 				global $dbConnection;
 				$query = "SELECT * FROM cms.categories ";
 				$select_categories_id = mysqli_query($dbConnection, $query);
+
+				confirmQuery($select_categories_id);
 
 				while($row = mysqli_fetch_assoc($select_categories_id)) {
 					$cat_id = $row['post_category_id'];
