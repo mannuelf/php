@@ -1,8 +1,8 @@
-<?php include "includes/admin_header.php" ?>
+<?php include 'includes/admin_header.php' ?>
 
 <div id="wrapper" class="categories">
 	<!-- Navigation -->
-	<?php include "includes/admin_navigation.php" ?>
+	<?php include 'includes/admin_navigation.php' ?>
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<!-- Page Heading -->
@@ -26,18 +26,18 @@
 				<div class="col-xs-6">
 					<!-- ADD Category form -->
 					<?php
-						insert_categories();
-						include "categories_add-categories.php";
-					?>
+                        insert_categories();
+                        include 'categories_add-categories.php';
+                    ?>
 					<hr>
 
 					<!-- update category form -->
 					<?php
-						if(isset($_GET['edit'])) {
-							$cat_id = $_GET['edit'];
-							include "categories_update-categories.php";
-						}
-					?>
+                        if (isset($_GET['edit'])) {
+                            $cat_id = $_GET['edit'];
+                            include 'categories_update-categories.php';
+                        }
+                    ?>
 				</div>
 				<div class="col-xs-6">
 					<table class="table table-hover table-bordered">
@@ -63,4 +63,4 @@
 		<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->
-	<?php include "includes/admin_footer.php" ?>
+	<?php include 'includes/admin_footer.php' ?>
