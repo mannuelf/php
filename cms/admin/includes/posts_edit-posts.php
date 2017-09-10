@@ -74,9 +74,9 @@ if(isset($_POST['update_post'])) {
 				confirmQuery($select_categories_id);
 
 				while($row = mysqli_fetch_assoc($select_categories_id)) {
-					$cat_id = $row['post_category_id'];
+					$cat_id = $row['cat_id'];
 					$cat_title = $row['cat_title'];
-					echo "<option value='{$cat_id}'>{$cat_id}</option>";
+					echo "<option value='{$cat_id}'>{$cat_title}</option>";
 				}
 			?>
 		</select>
