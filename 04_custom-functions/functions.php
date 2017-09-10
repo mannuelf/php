@@ -13,24 +13,26 @@
 
 <?php
 
-	function init()
-	{
-		saySomething();
-		echo "<br/>";
-		calculate();
-	}
+    function init()
+    {
+        saySomething();
+        echo '<br/>';
+        calculate();
+    }
 
-	function calculate() {
-		echo 400 + 899;
-	}
+    function calculate()
+    {
+        echo 400 + 899;
+    }
 
-	function saySomething() {
-		echo "Hello there";
-	}
+    function saySomething()
+    {
+        echo 'Hello there';
+    }
 
-	init();
+    init();
 
-	?>
+    ?>
 
 </body>
 </html>
