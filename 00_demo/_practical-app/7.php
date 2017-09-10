@@ -1,28 +1,28 @@
-<?php include "functions.php" ?>
-<?php include "includes/header.php" ?>
+<?php include 'functions.php' ?>
+<?php include 'includes/header.php' ?>
     
 
 	<section class="content">
 
 		<aside class="col-xs-4">
 
-		<?php Navigation();?>
+		<?php Navigation(); ?>
 			
 			
 		</aside><!--SIDEBAR-->
 
 
 	<article class="main-content col-xs-8">
-	<?php  
+	<?php 
 
-	/*  Step 1 - Create a database in [PHPmyadmin] <- DID NOT DO THIS instead i made a local one in the command line
-	    created database called "practice7" and created table called exercise7
-		Step 2 - Create a table like the one from the lecture
+    /*  Step 1 - Create a database in [PHPmyadmin] <- DID NOT DO THIS instead i made a local one in the command line
+        created database called "practice7" and created table called exercise7
+        Step 2 - Create a table like the one from the lecture
 
-	    SQL QUERY =>
-	    CREATE TABLE users ( id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(20) NOT NULL, secondname VARCHAR(20) NOT NULL, age INT, password VARCHAR(40), reg_date TIMESTAMP);
+        SQL QUERY =>
+        CREATE TABLE users ( id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, firstname VARCHAR(20) NOT NULL, secondname VARCHAR(20) NOT NULL, age INT, password VARCHAR(40), reg_date TIMESTAMP);
 
-	    mysql> describe users;
+        mysql> describe users;
         +------------+------------------+------+-----+-------------------+-----------------------------+
         | Field      | Type             | Null | Key | Default           | Extra                       |
         +------------+------------------+------+-----+-------------------+-----------------------------+
@@ -35,7 +35,7 @@
         +------------+------------------+------+-----+-------------------+-----------------------------+
         6 rows in set (0.00 sec)
 
-	    Step 3 - Insert some Data
+        Step 3 - Insert some Data
 
         mysql> INSERT INTO users(firstname, secondname, password, age) VALUES ('MANNUEL','FERREIRA','hsiluhdf','98');
         Query OK, 1 row affected (0.03 sec)
@@ -48,10 +48,10 @@
         +----+-----------+------------+------+----------+---------------------+
         1 row in set (0.00 sec)
 
-		Step 4 - Connect to Database and read data
-	*/
+        Step 4 - Connect to Database and read data
+    */
 
-	    // 01 - make a connection
+        // 01 - make a connection
         $connection = mysqli_connect(
                 'localhost',
                 'root',
@@ -59,27 +59,28 @@
                 'practice7'
         );
         // 02 - check if connection failed return the error notice
-        if(!$connection) {
+        if (!$connection) {
             echo "<h2>CONNECTION FAILED!!!!!!!!!</h2> . mysqli_error($connection);";
         } else {
             echo "<small style='color: darkred;'>We are connected :-) </small>";
         }
 
-        function showRecords() {
+        function showRecords()
+        {
             global $connection;
 
-            $query = "SELECT * FROM users";
+            $query = 'SELECT * FROM users';
             $result = mysqli_query($connection, $query);
 
-            if(!$result) {
-                die('Query FAILED' . mysqli_error($connection));
+            if (!$result) {
+                die('Query FAILED'.mysqli_error($connection));
             }
-            while($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 print_r($row);
             }
         }
 
-	?>
+    ?>
 
     <form action="7.php" method="post">
         <div class="mdl-textfield mdl-js-textfield">
@@ -110,4 +111,4 @@
 
     </article><!--MAIN CONTENT-->
 
-<?php include "includes/footer.php" ?>
+<?php include 'includes/footer.php' ?>
