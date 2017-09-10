@@ -1,6 +1,8 @@
 <?php
 	$query = "SELECT * FROM cms.posts";
 	$select_posts = mysqli_query($dbConnection, $query);
+
+	confirmQuery($select_posts);
 ?>
 <table class="table table-hover table-bordered">
 	<thead>
