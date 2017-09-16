@@ -7,7 +7,7 @@
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
 			<h1 class="page-header">
-				For the love of programming.
+				For the love of programming. <br>
 				<small>Every day there is something new to learn.</small>
 			</h1>
 			<?php include "includes/all-posts.php" ?>

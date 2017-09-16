@@ -42,7 +42,8 @@
 								<span class="glyphicon glyphicon-time"></span>
 								Posted on <?php echo $post_date ?>
 								<span class="glyphicon glyphicon-tags"></span>
-								Tags: <?php echo $post_tags ?></small>
+								Tags: <?php echo $post_tags ?>
+							</small>
 						</p>
 						<hr>
 						<img src="images/<?php echo $post_image ?>"

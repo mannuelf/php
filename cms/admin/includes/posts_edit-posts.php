@@ -46,9 +46,9 @@ if(isset($_POST['edit_post'])) {
 		$query .= "post_comment_count= '{$post_comment_count}', ";
 		$query .= "post_status = '{$post_status}' ";
 	$query .= "WHERE cms.posts.post_category_id = '{$the_post_id}' ";
-	var_dump($query);
+
 	$edit_post = mysqli_query($dbConnection, $query);
-	var_dump($edit_post);
+
 	confirmQuery($edit_post);
 }
 
@@ -102,6 +102,6 @@ if(isset($_POST['edit_post'])) {
 		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"><?php echo $post_content; ?></textarea>
 	</div>
 	<div class="form-group">
-		<input type="submit" name="edit_post" aria-labelledby="edit_post" value="Edit Post" class="btn btn-primary">
+		<input type="submit" name="edit_post" aria-labelledby="edit_post" value="SAVE" class="btn btn-primary">
 	</div>
 </form>

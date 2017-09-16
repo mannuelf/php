@@ -10,8 +10,8 @@
 		$post_image_temp = $_FILES['post_image']['tmp_name'];
 		$post_content = $_POST['post_content'];
 		$post_tags = $_POST['post_tags'];
-		$post_comment_count = 4;
 		$post_status = $_POST['post_status'];
+		$post_comment_count = 4;
 
 		// move image to images folder
 		move_uploaded_file($post_image_temp, "../images/$post_image");
@@ -29,7 +29,7 @@
 		$query .= "VALUES(
 			'{$post_title}',
 			'{$post_author}',
-			  now(),
+			'{$post_date}',
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',

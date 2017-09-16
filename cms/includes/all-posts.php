@@ -7,7 +7,12 @@ if (!$select_all_posts) {
 	echo mysqli_error($select_all_posts);
 }
 
+if(isset($_GET['p_id'])) {
+	$post_id = $_GET['p_id'];
+}
+
 while ($row = mysqli_fetch_assoc($select_all_posts)) {
+	$post_id = $row['id'];
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];
 	$post_date = $row['post_date'];
@@ -17,7 +22,11 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
 	// break out of the while loop (meh looks dodgy but it works eh)
 	?>
 	<h2>
-		<a href="#"><?php echo $post_title ?></a>
+		<!--
+			Pass the url a parameter with the key of the array of the GET super global for the id's
+			when users click on the title we sending the parameter in th url of the post(article) id
+			-->
+		<a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
 	</h2>
 	<p class="lead">
 		<small>
@@ -37,7 +46,3 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
 	<hr>
 
 <?php } ?>
-
-
-
-
