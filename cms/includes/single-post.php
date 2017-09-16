@@ -3,7 +3,7 @@ $query = "SELECT * FROM cms.posts";
 
 $select_all_posts = mysqli_query($dbConnection, $query);
 
-if (!$select_all_posts) {
+if ( ! $select_all_posts) {
 	echo mysqli_error($select_all_posts);
 }
 
@@ -45,6 +45,20 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
 	<hr>
 
 <?php } ?>
+<!-- Blog Comments -->
+
+<!-- Comments Form -->
+<div class="well">
+	<h4>Leave a Comment:</h4>
+	<form role="form">
+		<div class="form-group">
+			<textarea class="form-control" rows="3"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+<hr>
 
 <!-- Comment -->
 <div class="media">

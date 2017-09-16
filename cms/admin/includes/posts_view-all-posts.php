@@ -10,14 +10,13 @@
 		<th>Id</th>
 		<th>Author</th>
 		<th>Title</th>
-		<th>Cat Id</th>
+		<th>Category</th>
 		<th>Status</th>
 		<th>Image</th>
 		<th>Date</th>
 		<th>Content</th>
 		<th>Tags</th>
 		<th>Comments</th>
-		<th>Date</th>
 		<th>Edit</th>
 		<th>Delete</th>
 	</tr>
@@ -46,28 +45,28 @@
 			$post_status = $row['post_status'];
 
 			echo "<tr>";
-			echo "<td>{$post_id}</td>";
-			echo "<td>{$post_author}</td>";
-			echo "<td>{$post_title}</td>";
+				echo "<td>{$post_id}</td>";
+				echo "<td>{$post_author}</td>";
+				echo "<td>{$post_title}</td>";
 
-			// fetch the category title from the DB to
-			$query =  "SELECT * FROM cms.categories WHERE $post_id = {$post_category_id}";
-			$select_categories_id = mysqli_query($dbConnection, $query);
-			while($row = mysqli_fetch_assoc($select_categories_id)) {
-				$cat_id = $row['cat_id'];
-				$cat_title = $row['cat_title'];
-				echo "<td>{$cat_title}</td>";
-			}
-			echo "<td>{$post_category_id}</td>";
-			echo "<td>{$post_status}</td>";
-			echo "<td><img src='../images/{$post_image}' width='100px'></td>";
-			echo "<td>{$post_date}</td>";
-			echo "<td>{$post_content}</td>";
-			echo "<td>{$post_tags}</td>";
-			echo "<td>{$post_comment_count}</td>";
-			echo "<td>{$post_date}</td>";
-			echo "<td><a href='./posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
-			echo "<td><a href='./posts.php?delete={$post_id}'>delete</a></td>";
+				// fetch the category title from the DB
+				$query =  "SELECT * FROM cms.categories WHERE cms.categories.cat_id = {$post_category_id}";
+				$select_categories_id = mysqli_query($dbConnection, $query);
+				var_dump($query);
+				while($row = mysqli_fetch_assoc($select_categories_id)) {
+					$cat_id = $row['cat_id'];
+					$cat_title = $row['cat_title'];
+					echo "<td>{$cat_title}</td>";
+				}
+				echo "<td>{$post_category_id}</td>";
+				echo "<td>{$post_status}</td>";
+				echo "<td><img src='../images/{$post_image}' width='100px'></td>";
+				echo "<td>{$post_content}</td>";
+				echo "<td>{$post_tags}</td>";
+				echo "<td>{$post_comment_count}</td>";
+				echo "<td>{$post_date}</td>";
+				echo "<td><a href='./posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
+				echo "<td><a href='./posts.php?delete={$post_id}'>delete</a></td>";
 			echo "</tr>";
 		}
 	?>
