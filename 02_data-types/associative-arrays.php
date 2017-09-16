@@ -13,18 +13,18 @@
 
 <?php
 
-	$numberList = ['Ronaldo', 'Shearer', 'Beckham', 'Quinn'];
+    $numberList = ['Ronaldo', 'Shearer', 'Beckham', 'Quinn'];
 
-	print_r($numberList);
-	//echo $numberList[2] . "<br>";
+    print_r($numberList);
+    //echo $numberList[2] . "<br>";
 
-	$names = [
-		"first_name" => "Manny",
-		"last_name" => "Ferreira",
-	];
+    $names = [
+        'first_name' => 'Manny',
+        'last_name'  => 'Ferreira',
+    ];
 
-	print_r($names);
-	echo $names['first_name'] . ' ' .  $names['last_name'];
+    print_r($names);
+    echo $names['first_name'].' '.$names['last_name'];
 ?>
 </body>
 </html>

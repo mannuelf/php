@@ -1,22 +1,22 @@
 <?php
-	if(isset($_POST['add_post'])) {
-		global $dbConnection;
+    if (isset($_POST['add_post'])) {
+        global $dbConnection;
 
-		date_default_timezone_set('UTC');
-		$post_title = $_POST['post_title'];
-		$post_author = $_POST['post_author'];
-		$post_date = date('d-m-y');
-		$post_image = $_FILES['post_image']['name'];
-		$post_image_temp = $_FILES['post_image']['tmp_name'];
-		$post_content = $_POST['post_content'];
-		$post_tags = $_POST['post_tags'];
-		$post_comment_count = 4;
-		$post_status = $_POST['post_status'];
+        date_default_timezone_set('UTC');
+        $post_title = $_POST['post_title'];
+        $post_author = $_POST['post_author'];
+        $post_date = date('d-m-y');
+        $post_image = $_FILES['post_image']['name'];
+        $post_image_temp = $_FILES['post_image']['tmp_name'];
+        $post_content = $_POST['post_content'];
+        $post_tags = $_POST['post_tags'];
+        $post_comment_count = 4;
+        $post_status = $_POST['post_status'];
 
-		// move image to images folder
-		move_uploaded_file($post_image_temp, "../images/$post_image");
+        // move image to images folder
+        move_uploaded_file($post_image_temp, "../images/$post_image");
 
-		$query = "INSERT INTO cms.posts(
+        $query = 'INSERT INTO cms.posts(
 			post_title,
 			post_author,
 			post_date,
@@ -24,9 +24,9 @@
 			post_content,
 			post_tags,
 			post_status,
-			post_comment_count)";
+			post_comment_count)';
 
-		$query .= "VALUES(
+        $query .= "VALUES(
 			'{$post_title}',
 			'{$post_author}', 
 			'{$post_image}',
@@ -36,10 +36,10 @@
 			'{$post_comment_count}',
 			'{$post_status}' ) ";
 
-		$create_post_query = mysqli_query($dbConnection, $query);
+        $create_post_query = mysqli_query($dbConnection, $query);
 
-		confirmQuery($create_post_query);
-	}
+        confirmQuery($create_post_query);
+    }
 ?>
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -53,16 +53,16 @@
 		<label for="post_category_id">Post Category ID</label>
 		<select name="post_category" class="form-control">
 			<?php
-				global $dbConnection;
-				$query = "SELECT * FROM cms.categories";
-				$select_categories_id = mysqli_query($dbConnection, $query);
+                global $dbConnection;
+                $query = 'SELECT * FROM cms.categories';
+                $select_categories_id = mysqli_query($dbConnection, $query);
 
-				while($row = mysqli_fetch_assoc($select_categories_id)) {
-					$cat_id = $row['post_category_id'];
-					$cat_title = $row['cat_title'];
-					echo "<option value='{$cat_id}'>{$cat_title}</option>";
-				}
-			?>
+                while ($row = mysqli_fetch_assoc($select_categories_id)) {
+                    $cat_id = $row['post_category_id'];
+                    $cat_title = $row['cat_title'];
+                    echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                }
+            ?>
 		</select>
 	</div>
 	<div class="form-group">

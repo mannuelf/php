@@ -1,12 +1,11 @@
 <?php
 
-class Car {
-
-	function MoveWheels()
-	{
-		echo "Moving wheels";
-	}
-
+class Car
+{
+    public function MoveWheels()
+    {
+        echo 'Moving wheels';
+    }
 }
 
 $bmw = new Car();
