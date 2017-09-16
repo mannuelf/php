@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];
 	$post_date = $row['post_date'];
-		$post_image = $row['post_image'];
+	$post_image = $row['post_image'];
 	$post_content = $row['post_content'];
 	$post_tags = $row['post_tags'];
 	$post_comment_count = $row['post_comment_count'];
@@ -26,7 +26,6 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 }
 
 if(isset($_POST['edit_post'])) {
-	print_r($_FILES);
 	$post_title = $_POST['post_title'];
 	$post_category_id = $_POST['post_category_id'];
 	$post_author = $_POST['post_author'];
@@ -41,17 +40,18 @@ if(isset($_POST['edit_post'])) {
 	move_uploaded_file($post_image_temp, "../images/$post_image");
 
 	$query = "UPDATE cms.posts SET ";
-		$query .= "post_title = '{$post_title}', ";
-		$query .= "post_category_id = '{$post_category_id}', ";
-		$query .= "post_author = '{$post_author}', ";
-		$query .= "post_date = now(), ";
-		$query .= "post_content = '{$post_content}', ";
-		$query .= "post_image = '{$post_image}', ";
-		$query .= "post_tags = '{$post_tags}', ";
-		$query .= "post_comment_count= '{$post_comment_count}', ";
-		$query .= "post_status = '{$post_status}' ";
+	$query .= "post_title = '{$post_title}', ";
+	$query .= "post_category_id = '{$post_category_id}', ";
+	$query .= "post_author = '{$post_author}', ";
+	$query .= "post_date = now(), ";
+	$query .= "post_content = '{$post_content}', ";
+	$query .= "post_image = '{$post_image}', ";
+	$query .= "post_tags = '{$post_tags}', ";
+	$query .= "post_comment_count= '{$post_comment_count}', ";
+	$query .= "post_status = '{$post_status}' ";
 	$query .= "WHERE cms.posts.post_category_id = {$the_post_id} ";
 
+	var_dump($post_category_id);
 	$edit_post = mysqli_query($dbConnection, $query);
 
 	confirmQuery($edit_post);
