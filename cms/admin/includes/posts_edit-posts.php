@@ -27,12 +27,10 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
 if(isset($_POST['edit_post'])) {
 	$post_title = $_POST['post_title'];
-	$post_category_id = $_POST['post_category_id'];
 	$post_author = $_POST['post_author'];
-	$post_date = $_POST['post_date'];
 	$post_image = $_FILES['post_image']['name'];
 	$post_image_temp = $_FILES['post_image']['tmp_name'];
-	$post_content = $row['post_content'];
+	$post_content = $_POST['post_content'];
 	$post_tags = $_POST['post_tags'];
 	$post_comment_count = $_POST['post_comment_count'];
 	$post_status = $_POST['post_status'];
@@ -40,22 +38,18 @@ if(isset($_POST['edit_post'])) {
 	move_uploaded_file($post_image_temp, "../images/$post_image");
 
 	$query = "UPDATE cms.posts SET ";
-	$query .= "post_title = '{$post_title}', ";
-	$query .= "post_category_id = '{$post_category_id}', ";
-	$query .= "post_author = '{$post_author}', ";
-	$query .= "post_date = now(), ";
-	$query .= "post_content = '{$post_content}', ";
-	$query .= "post_image = '{$post_image}', ";
-	$query .= "post_tags = '{$post_tags}', ";
-	$query .= "post_comment_count= '{$post_comment_count}', ";
-	$query .= "post_status = '{$post_status}' ";
-	$query .= "WHERE cms.posts.post_category_id = {$the_post_id} ";
-
-	var_dump($post_category_id);
+		$query .= "post_title = '{$post_title}', ";
+		$query .= "post_author = '{$post_author}', ";
+		$query .= "post_content = '{$post_content}', ";
+		$query .= "post_image = '{$post_image}', ";
+		$query .= "post_tags = '{$post_tags}', ";
+		$query .= "post_comment_count= '{$post_comment_count}', ";
+		$query .= "post_status = '{$post_status}' ";
+	$query .= "WHERE cms.posts.post_category_id = '{$the_post_id}' ";
+	var_dump($query);
 	$edit_post = mysqli_query($dbConnection, $query);
-
+	var_dump($edit_post);
 	confirmQuery($edit_post);
-
 }
 
 ?>
@@ -108,6 +102,6 @@ if(isset($_POST['edit_post'])) {
 		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"><?php echo $post_content; ?></textarea>
 	</div>
 	<div class="form-group">
-		<input type="submit" name="edit_post" aria-labelledby="edit_post" value="Update Post" class="btn btn-primary">
+		<input type="submit" name="edit_post" aria-labelledby="edit_post" value="Edit Post" class="btn btn-primary">
 	</div>
 </form>
