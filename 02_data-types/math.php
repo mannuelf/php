@@ -12,23 +12,23 @@
 <body>
 
 <?php
-	echo 56 + 45;
-	echo "<br/>";
-	echo 56 - 45;
-	echo "<br/>";
-	echo 56 * 45;
-	echo "<br/>";
-	echo 56 / 45;
+    echo 56 + 45;
+    echo '<br/>';
+    echo 56 - 45;
+    echo '<br/>';
+    echo 56 * 45;
+    echo '<br/>';
+    echo 56 / 45;
 
-	echo "<br/>";
+    echo '<br/>';
 
-	echo (56 + 56) - 45 * (56 / 45);
+    echo(56 + 56) - 45 * (56 / 45);
 
-	echo "<br/>";
-	$number1 = 100;
-	$number2 = 200;
+    echo '<br/>';
+    $number1 = 100;
+    $number2 = 200;
 
-	echo $number1 + $number2;
+    echo $number1 + $number2;
 ?>
 
 </body>

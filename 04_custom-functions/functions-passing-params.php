@@ -13,22 +13,24 @@
 
 <?php
 
-	function greeting($message) {
-		echo $message;
-	}
+    function greeting($message)
+    {
+        echo $message;
+    }
 
-	greeting("Hello world whats up");
+    greeting('Hello world whats up');
 
-	echo "<br/>";
+    echo '<br/>';
 
-	function calculate($number1, $number2 ) {
-		$sum =  $number1 + $number2;
-		echo $sum;
-	}
+    function calculate($number1, $number2)
+    {
+        $sum = $number1 + $number2;
+        echo $sum;
+    }
 
-	calculate(30, 20);
+    calculate(30, 20);
 
-	?>
+    ?>
 
 </body>
 </html>
