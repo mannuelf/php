@@ -51,13 +51,13 @@
 			echo "<td>{$post_title}</td>";
 
 			// fetch the category title from the DB to
-//			$query =  "SELECT * FROM cms.categories WHERE $post_id = {$post_category_id}";
-//			$select_categories_id = mysqli_query($dbConnection, $query);
-//			while($row = mysqli_fetch_assoc($select_categories_id)) {
-//				$cat_id = $row['cat_id'];
-//				$cat_title = $row['cat_title'];
-//				echo "<td>{$cat_title}</td>";
-//			}
+			$query =  "SELECT * FROM cms.categories WHERE $post_id = {$post_category_id}";
+			$select_categories_id = mysqli_query($dbConnection, $query);
+			while($row = mysqli_fetch_assoc($select_categories_id)) {
+				$cat_id = $row['cat_id'];
+				$cat_title = $row['cat_title'];
+				echo "<td>{$cat_title}</td>";
+			}
 			echo "<td>{$post_category_id}</td>";
 			echo "<td>{$post_status}</td>";
 			echo "<td><img src='../images/{$post_image}' width='100px'></td>";
