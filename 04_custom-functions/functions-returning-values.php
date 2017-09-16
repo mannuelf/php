@@ -13,22 +13,24 @@
 
 <?php
 
-	function addNumbers($number1, $number2 ) {
-		$sum =  $number1 + $number2;
-		return $sum;
-	}
+    function addNumbers($number1, $number2)
+    {
+        $sum = $number1 + $number2;
 
-	$result = addNumbers(30, 20);
+        return $sum;
+    }
 
-	echo $result;
+    $result = addNumbers(30, 20);
 
-	echo "<br/>";
+    echo $result;
 
-	$result = addNumbers(100, $result);
+    echo '<br/>';
 
-	echo $result;
+    $result = addNumbers(100, $result);
 
-	?>
+    echo $result;
+
+    ?>
 
 </body>
 </html>
