@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	$_SESSION['greeting'] = "Hello Manny";
+    session_start();
+    $_SESSION['greeting'] = 'Hello Manny';
 ?>
 
 <!doctype html>
