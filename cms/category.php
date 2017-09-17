@@ -10,6 +10,7 @@
 				For the love of programming. <br>
 				<small>Every day there is something new to learn.</small>
 			</h1>
+			
 			<?php include "includes/all-posts.php" ?>
 			<!-- Pager -->
 			<ul class="pager">
