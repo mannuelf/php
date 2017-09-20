@@ -1,6 +1,6 @@
-<?php include "database/db.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php include 'database/db.php' ?>
+<?php include 'includes/header.php' ?>
+<?php include 'includes/navigation.php' ?>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -11,7 +11,7 @@
 				<small>Every day there is something new to learn.</small>
 			</h1>
 			
-			<?php include "includes/all-posts.php" ?>
+			<?php include 'includes/all-posts.php' ?>
 			<!-- Pager -->
 			<ul class="pager">
 				<li class="previous">
@@ -22,7 +22,7 @@
 				</li>
 			</ul>
 		</div>
-		<?php include "includes/sidebar.php" ?>
+		<?php include 'includes/sidebar.php' ?>
 	</div>
 	<!-- /.row -->
-	<?php include "includes/footer.php" ?>
+	<?php include 'includes/footer.php' ?>
