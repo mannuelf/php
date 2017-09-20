@@ -52,7 +52,6 @@
 				// fetch the category title from the DB
 				$query =  "SELECT * FROM cms.categories WHERE cms.categories.cat_id = {$post_category_id}";
 				$select_categories_id = mysqli_query($dbConnection, $query);
-				var_dump($query);
 				while($row = mysqli_fetch_assoc($select_categories_id)) {
 					$cat_id = $row['cat_id'];
 					$cat_title = $row['cat_title'];
