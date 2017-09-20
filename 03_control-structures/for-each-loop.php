@@ -13,11 +13,11 @@
 
 <?php
 
-	$numbers = array(232,2323,545,7852,8763,2234);
+    $numbers = [232, 2323, 545, 7852, 8763, 2234];
 
-	foreach ($numbers as $number) {
-		echo $number . "<br/>";
-	}
+    foreach ($numbers as $number) {
+        echo $number.'<br/>';
+    }
 ?>
 
 </body>
