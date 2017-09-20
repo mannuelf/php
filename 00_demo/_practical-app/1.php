@@ -1,5 +1,5 @@
-<?php include "functions.php" ?>
-<?php include "includes/header.php" ?>
+<?php include 'functions.php' ?>
+<?php include 'includes/header.php' ?>
 
 	<section class="content">
 
@@ -15,20 +15,20 @@
 
 
 		<?php
-		/*
-		* Step 1:  Use the Echo Function to say hello with html h1 tags embedded inside php.
-		*/
-		/* echo out the hello text in the browser */
-		echo "<h1>Hello</h1>";
-		/*
-		 * Step 2: Write a comment above the echo function and explain
-		 * what that function is doing.
-		 */
-		echo "<hr/>";
+        /*
+        * Step 1:  Use the Echo Function to say hello with html h1 tags embedded inside php.
+        */
+        /* echo out the hello text in the browser */
+        echo '<h1>Hello</h1>';
+        /*
+         * Step 2: Write a comment above the echo function and explain
+         * what that function is doing.
+         */
+        echo '<hr/>';
 
-		?>
+        ?>
 
 
 	</article><!--MAIN CONTENT-->
 
-<?php include "includes/footer.php" ?>
+<?php include 'includes/footer.php' ?>

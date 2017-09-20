@@ -1,5 +1,5 @@
-<?php include "functions.php" ?>
-<?php include "includes/header.php" ?>
+<?php include 'functions.php' ?>
+<?php include 'includes/header.php' ?>
 
 	<section class="content">
 
@@ -16,7 +16,7 @@
 
 		<?php
 
-		/*  Step 1 -Make a variable with some text as value
+        /*  Step 1 -Make a variable with some text as value
 
             Step 2 - Use crypt() function to encrypt it
 
@@ -25,16 +25,16 @@
             Step 4 - echo the variable
 
         */
-		$myVariable = "osidhfiuewhbkjvnkdnj";
-		$hashFormat = "$2y$10$";
-		$salt = "987yhjkmcfd53twydgfvgt";
-		$hashFormatSalt = $hashFormat . $salt;
+        $myVariable = 'osidhfiuewhbkjvnkdnj';
+        $hashFormat = '$2y$10$';
+        $salt = '987yhjkmcfd53twydgfvgt';
+        $hashFormatSalt = $hashFormat.$salt;
 
-		$password = crypt($myVariable, $hashFormatSalt);
-		echo $password;
+        $password = crypt($myVariable, $hashFormatSalt);
+        echo $password;
 
-		?>
+        ?>
 
 
 	</article><!--MAIN CONTENT-->
-<?php include "includes/footer.php" ?>
+<?php include 'includes/footer.php' ?>
