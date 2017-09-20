@@ -35,6 +35,7 @@
 						while ($row = mysqli_fetch_assoc($select_all_categories)) {
 							$cat_title = $row['cat_title'];
 							$cat_id = $row['cat_id'];
+							//send a parameter of the category id
 							echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
 						}
 					?>
