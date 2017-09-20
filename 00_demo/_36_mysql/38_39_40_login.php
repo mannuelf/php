@@ -1,49 +1,28 @@
 <?php 
 
-if(isset($_POST['submit'])) {
-   
-$username = $_POST['username'];
-$password = $_POST['password'];
-    
-    
-$connection = mysqli_connect('localhost', 'root', '', 'loginapp');    
-    
-    if($connection) {
-    
-    echo "We are connected";
-    
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
+
+    if ($connection) {
+        echo 'We are connected';
     } else {
-    
-    die("Database connection failed");
-    
+        die('Database connection failed');
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 //    if($username && $password) {
 //    echo $username;
-//    echo $password; 
-//    
+//    echo $password;
+//
 //    } else {
-//    
+//
 //        echo "this field cannot be blank";
-//    
+//
 //    }
-// 
-
-    
-
-    
-    
+//
 }
-
 
 ?>
 

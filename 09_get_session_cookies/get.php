@@ -1,5 +1,5 @@
 <?php
-	print_r($_GET);
+    print_r($_GET);
 ?>
 
 <!doctype html>
@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-	$id = 1011;
+    $id = 1011;
 ?>
 
 <a href="./get.php?id=<?php echo $id; ?>">CLICK</a>

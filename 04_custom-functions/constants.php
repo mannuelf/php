@@ -14,16 +14,16 @@
 <h2>
 	<?php
 
-		$number = 100;
-		$number = 1000;
+        $number = 100;
+        $number = 1000;
 
-		$number = "Manny";
-		echo $number . "<br/>";
+        $number = 'Manny';
+        echo $number.'<br/>';
 
-		define("NAME", 1000);
-		echo NAME;
+        define('NAME', 1000);
+        echo NAME;
 
-	?>
+    ?>
 </h2>
 </body>
 </html>
