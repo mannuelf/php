@@ -15,20 +15,20 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<?php
-					global $dbConnection;
+                    global $dbConnection;
 
-					$query = "SELECT * FROM cms.categories";
-					$select_all_categories = mysqli_query($dbConnection, $query);
+                    $query = 'SELECT * FROM cms.categories';
+                    $select_all_categories = mysqli_query($dbConnection, $query);
 
-					if(! $select_all_categories) {
-						echo mysqli_error($select_all_categories);
-					}
+                    if (!$select_all_categories) {
+                        echo mysqli_error($select_all_categories);
+                    }
 
-					while($row = mysqli_fetch_assoc($select_all_categories)) {
-						$cat_title = $row['cat_title'];
-						echo "<li><a href='#'>{$cat_title}</a></li>";
-					}
-				?>
+                    while ($row = mysqli_fetch_assoc($select_all_categories)) {
+                        $cat_title = $row['cat_title'];
+                        echo "<li><a href='#'>{$cat_title}</a></li>";
+                    }
+                ?>
 				<li><a href='./admin/'>Admin</a></li>
 			</ul>
 		</div>
