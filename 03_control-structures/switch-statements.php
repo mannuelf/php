@@ -13,24 +13,24 @@
 
 <?php
 
-	$number = 30;
+    $number = 30;
 
-	switch ($number) {
-		case 24:
-		echo "is it 24";
-		break;
+    switch ($number) {
+        case 24:
+        echo 'is it 24';
+        break;
 
-		case 30:
-		echo "is it 30";
-		break;
+        case 30:
+        echo 'is it 30';
+        break;
 
-		case 89:
-		echo "is it 89";
-		break;
-		default :
-		echo "We could not find anything";
-		break;
-	}
+        case 89:
+        echo 'is it 89';
+        break;
+        default:
+        echo 'We could not find anything';
+        break;
+    }
 ?>
 
 
