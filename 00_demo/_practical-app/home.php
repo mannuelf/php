@@ -10,12 +10,11 @@
 
 		<?php 
 
-		include "functions.php";
+        include 'functions.php';
 
-		Navigation();
+        Navigation();
 
-
-		 ?>
+         ?>
 		
 	</div>
 
