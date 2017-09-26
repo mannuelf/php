@@ -1,26 +1,25 @@
 <?php
-$query = "SELECT * FROM cms.posts";
+$query = 'SELECT * FROM cms.posts';
 
 $select_all_posts = mysqli_query($dbConnection, $query);
 
-if ( ! $select_all_posts) {
-	echo mysqli_error($select_all_posts);
+if (!$select_all_posts) {
+    echo mysqli_error($select_all_posts);
 }
 
-if(isset($_GET['p_id'])) {
-	$post_id = $_GET['p_id'];
+if (isset($_GET['p_id'])) {
+    $post_id = $_GET['p_id'];
 }
 
 while ($row = mysqli_fetch_assoc($select_all_posts)) {
-	$post_id = $row['id'];
-	$post_title = $row['post_title'];
-	$post_author = $row['post_author'];
-	$post_date = $row['post_date'];
-	$post_image = $row['post_image'];
-	$post_content = $row['post_content'];
-	$post_tags = $row['post_tags'];
-	// break out of the while loop (meh looks dodgy but it works eh)
-	?>
+    $post_id = $row['id'];
+    $post_title = $row['post_title'];
+    $post_author = $row['post_author'];
+    $post_date = $row['post_date'];
+    $post_image = $row['post_image'];
+    $post_content = $row['post_content'];
+    $post_tags = $row['post_tags'];
+    // break out of the while loop (meh looks dodgy but it works eh) ?>
 	<h2>
 		<!--
 			Pass the url a parameter with the key of the array of the GET super global for the id's
@@ -44,7 +43,8 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
 	<a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 	<hr>
 
-<?php } ?>
+<?php
+} ?>
 <!-- Blog Comments -->
 
 <!-- Comments Form -->

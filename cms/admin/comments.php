@@ -1,8 +1,8 @@
-<?php include "includes/admin_header.php" ?>
+<?php include 'includes/admin_header.php' ?>
 
 <div id="wrapper" class="categories">
 	<!-- Navigation -->
-	<?php include "includes/admin_navigation.php" ?>
+	<?php include 'includes/admin_navigation.php' ?>
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<!-- Page Heading -->
@@ -25,23 +25,23 @@
 			<div class="row">
 				<div class="col-lg-12">
 				<?php
-					if(isset($_GET['source'])) {
-						$source = $_GET['source'];
-					} else {
-						$source = "";
-					}
-					switch($source) {
-						case "add_post":
-							include "./includes/posts_add-post.php";
-							break;
-						case "edit_post":
-							include "./includes/posts_edit-posts.php";
-							break;
-						default;
-							include "./includes/posts_view-all-comments.php";
-							break;
-					}
-				?>
+                    if (isset($_GET['source'])) {
+                        $source = $_GET['source'];
+                    } else {
+                        $source = '';
+                    }
+                    switch ($source) {
+                        case 'add_post':
+                            include './includes/posts_add-post.php';
+                            break;
+                        case 'edit_post':
+                            include './includes/posts_edit-posts.php';
+                            break;
+                        default:
+                            include './includes/posts_view-all-comments.php';
+                            break;
+                    }
+                ?>
 				</div>
 			</div>
 			<!-- /.row -->
@@ -49,4 +49,4 @@
 		<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->
-	<?php include "includes/admin_footer.php" ?>
+	<?php include 'includes/admin_footer.php' ?>
