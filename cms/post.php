@@ -7,16 +7,17 @@
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
 			<?php
-			$query = "SELECT * FROM cms.posts";
+
+			if(isset($_GET['p_id'])) {
+				$the_post_id = $_GET['p_id'];
+			}
+
+			$query = "SELECT * FROM cms.posts WHERE cms.posts.id = $the_post_id ";
 
 			$select_all_posts = mysqli_query($dbConnection, $query);
 
 			if ( ! $select_all_posts) {
 				echo mysqli_error($select_all_posts);
-			}
-
-			if(isset($_GET['p_id'])) {
-				$post_id = $_GET['p_id'];
 			}
 
 			while ($row = mysqli_fetch_assoc($select_all_posts)) {
@@ -55,14 +56,30 @@
 			<?php } ?>
 			<!-- Blog Comments -->
 
+			<?php
+				if(isset($_POST["comment_author"])) {
+					echo $_POST['comment_author'];
+				}
+			?>
 			<!-- Comments Form -->
 			<div class="well">
 				<h4>Leave a Comment:</h4>
-				<form role="form">
+				<form action="" method="post" role="form">
+
 					<div class="form-group">
-						<textarea class="form-control" rows="3"></textarea>
+						<label for="Author">Author</label>
+						<input type="text" name="comment_author" placeholder="Author" class="form-control">
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+
+					<div class="form-group">
+						<label for="Email">Email</label>
+						<input type="email" name="comment_email" placeholder="Email" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+					</div>
+					<button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 
