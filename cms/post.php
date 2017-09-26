@@ -57,8 +57,23 @@
 			<!-- Blog Comments -->
 
 			<?php
-				if(isset($_POST["comment_author"])) {
-					echo $_POST['comment_author'];
+				if(isset($_POST["create_comment"])) {
+					$the_post_id = $_GET['p_id'];
+					$comment_author = $_POST['comment_author'];
+					$comment_email = $_POST['comment_email'];
+					$comment_content = $_POST['comment_content'];
+
+					$query = "INSERT INTO comments (comment_post_id, comment_author,
+													comment_email, comment_content, 
+													comment_status, comment_date)
+							";
+					$query .= "VALUES (
+									$the_post_id, 
+									'{$comment_author}', 
+									'{$comment_email}', 
+									'{$comment_content', 
+									'{$comment_author}', 
+								)";
 				}
 			?>
 			<!-- Comments Form -->
@@ -77,7 +92,7 @@
 					</div>
 
 					<div class="form-group">
-						<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+						<textarea name="comment_content" class="form-control" rows="3" placeholder="Comment"></textarea>
 					</div>
 					<button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
 				</form>
