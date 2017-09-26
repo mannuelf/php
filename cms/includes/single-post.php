@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_assoc($select_all_posts)) {
     $post_image = $row['post_image'];
     $post_content = $row['post_content'];
     $post_tags = $row['post_tags'];
-    // break out of the while loop (meh looks dodgy but it works eh) ?>
+    // break out of the while loop (meh looks dodgy but it works eh)?>
 	<h2>
 		<!--
 			Pass the url a parameter with the key of the array of the GET super global for the id's
