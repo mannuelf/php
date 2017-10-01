@@ -13,7 +13,7 @@
 		<th>Comment</th>
 		<th>Email</th>
 		<th>Status</th>
-		<th><abbr title="In Response to">IRT</abbr></th>
+		<th><abbr title="Post Title That is related to this comment">Post Title</abbr></th>
 		<th>Date</th>
 		<th>Approve</th>
 		<th>UnApprove</th>
@@ -48,16 +48,13 @@
 				echo "<td>{$comment_content}</td>";
 				echo "<td>{$comment_email}</td>";
 				echo "<td>{$comment_status}</td>";
-
-				// fetch the category title from the DB
-				//		$query =  "SELECT * FROM cms.categories WHERE cms.categories.cat_id = {$post_category_id}";
-				//		$select_categories_id = mysqli_query($dbConnection, $query);
-				//		while($row = mysqli_fetch_assoc($select_categories_id)) {
-				//			$cat_id = $row['cat_id'];
-				//			$cat_title = $row['cat_title'];
-				//			echo "<td>{$cat_title}</td>";
-				//		}
-				echo "<td>IRTO</td>";
+				$query = "SELECT * FROM cms.posts WHERE cms.posts.id = $comment_post_id";
+				$select_posts_id_query = mysqli_query($dbConnection, $query);
+				while ($row = mysqli_fetch_assoc($select_posts_id_query)) {
+					$post_id = $row['id'];
+					$post_title = $row['post_title'];
+					echo "<td>$post_title</td>";
+				}
 				echo "<td>{$comment_date}</td>";
 				echo "<td><a href='./posts.php?source=edit_post&p_id=	'>Approve</a></td>";
 				echo "<td><a href='./posts.php?delete=	'>UnApprove</a></td>";
