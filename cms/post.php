@@ -1,6 +1,7 @@
 <?php include "database/db.php" ?>
 <?php include "includes/header.php" ?>
 <?php include "includes/navigation.php" ?>
+<?php include "functions.php" ?>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -65,15 +66,16 @@
 
 					$query = "INSERT INTO comments (comment_post_id, comment_author,
 													comment_email, comment_content, 
-													comment_status, comment_date)
-							";
-					$query .= "VALUES (
-									$the_post_id, 
-									'{$comment_author}', 
-									'{$comment_email}', 
-									'{$comment_content', 
-									'{$comment_author}', 
-								)";
+													comment_status, comment_date)";
+					$query .= "VALUES ($the_post_id, '{$comment_author}',
+								'{$comment_email}',
+								'{$comment_content}',
+								'unapproved',
+								now() )";
+
+					$create_comment_query = mysqli_connect($dbConnection, $query);
+					confirmQuery($create_comment_query);
+
 				}
 			?>
 			<!-- Comments Form -->
