@@ -22,16 +22,6 @@
 	</thead>
 	<tbody>
 	<?php
-		// DELETE A COMMENT
-		if(isset($_GET['delete'])){
-			global $dbConnection;
-			$the_comment_id = $_GET['delete'];
-			$query = "DELETE FROM cms.comments WHERE cms.comments.comment_id = {$the_comment_id}";
-			$delete_query = mysqli_query($dbConnection, $query);
-			header("Location: comments.php");
-		}
-	?>
-	<?php
 		while($row = mysqli_fetch_assoc($select_posts)) {
 			$comment_id = $row['comment_id'];
 			$comment_post_id = $row['comment_post_id'];
@@ -56,10 +46,34 @@
 				echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
 			}
 			echo "<td>{$comment_date}</td>";
-			echo "<td><a href='./posts.php?source=edit_post&p_id=	'>Approve</a></td>";
-			echo "<td><a href='./posts.php?delete=	'>UnApprove</a></td>";
+			echo "<td><a href='./comments.php?approve=$comment_id'>Approve</a></td>";
+			echo "<td><a href='./comments.php?unapprove=$comment_id'>Unapprove</a></td>";
 			echo "<td><a href='./comments.php?delete=$comment_id'>Delete</a></td>";
 			echo "</tr>";
+		}
+	?>
+
+	<?php
+		// DELETE A COMMENT
+		if(isset($_GET['delete'])) {
+			$the_comment_id = $_GET['delete'];
+			$query = "DELETE FROM cms.comments WHERE cms.comments.comment_id = {$the_comment_id}";
+			$delete_query = mysqli_query($dbConnection, $query);
+			header("Location: comments.php");
+		}
+		// Approve a comment
+		if(isset($_GET['approve'])) {
+			$the_comment_id = $_GET['approve'];
+			$query = "UPDATE cms.comments SET cms.comments.comment_status = 'Approved' WHERE cms.comments.comment_id = {$the_comment_id}";
+			$approve_comment_query = mysqli_query($dbConnection, $query);
+			header("Location: comments.php");
+		}
+		// Unapprove a comment
+		if(isset($_GET['unapprove'])) {
+			$the_comment_id = $_GET['unapprove'];
+			$query = "UPDATE cms.comments SET cms.comments.comment_status = 'Unapproved' WHERE cms.comments.comment_id = {$the_comment_id}";
+			$unapprove_comment_query = mysqli_query($dbConnection, $query);
+			header("Location: comments.php");
 		}
 	?>
 	</tbody>
