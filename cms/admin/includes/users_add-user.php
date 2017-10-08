@@ -11,7 +11,6 @@
 		$user_role = $row['user_role'];
 		$user_image = $row['user_image'];
 		$user_temp_image = $row['user_image'];
-		$user_salt = $row['randSalt'];
 
 		// move image to images folder
 		move_uploaded_file($user_image_temp, "../images/$user_image");
@@ -23,8 +22,7 @@
 			user_secondname,
 			user_email,
 			user_role,
-			user_image,
-			randSalt)";
+			user_image)";
 
 		$query .= "VALUES(
 			'{$user_name}',
@@ -33,8 +31,7 @@
 			'{$user_secondname}',
 			'{$user_email}',
 			'{$user_role}',
-			'{$user_image}',
-			'{$randSalt}') ";
+			'{$user_image}') ";
 
 		$create_post_query = mysqli_query($dbConnection, $query);
 
@@ -90,12 +87,6 @@
 		<label for="user_image">Image</label>
 		<input name="user_image" type="file" class="form-control">
 	</div>
-
-	<div class="form-group">
-		<label for="randSalt">Salt</label>
-		<input name="randSalt" type="text" class="form-control">
-	</div>
-
 
 	<div class="form-group">
 		<input type="submit" name="add_user" aria-labelledby="add_user" value="Add User" class="btn btn-primary">

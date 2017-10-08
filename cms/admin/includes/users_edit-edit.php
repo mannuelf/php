@@ -1,107 +1,94 @@
 <?php
-global $dbConnection;
+if(isset($_POST['edit_user'])) {
+	global $dbConnection;
 
-// EDIT A POST OF GIVEN POST ID
-if (isset($_GET['p_id'])) {
-	$the_post_id = $_GET['p_id'];
+	$user_id = $row['id'];
+	$user_name = $row['user_name'];
+	$user_password = $row['user_password'];
+	$user_firstname = $row['user_firstname'];
+	$user_secondname = $row['user_secondname'];
+	$user_email = $row['user_email'];
+	$user_role = $row['user_role'];
+	$user_image = $row['user_image'];
+	$user_temp_image = $row['user_image'];
+
+	// move image to images folder
+	move_uploaded_file($user_image_temp, "../images/$user_image");
+
+	$query = "INSERT INTO cms.users(
+			user_name,
+			user_password,
+			user_firstname,
+			user_secondname,
+			user_email,
+			user_role,
+			user_image)";
+
+	$query .= "VALUES(
+			'{$user_name}',
+			'{$user_password}',
+			'{$user_firstname}',
+			'{$user_secondname}',
+			'{$user_email}',
+			'{$user_role}',
+			'{$user_image}') ";
+
+	$create_post_query = mysqli_query($dbConnection, $query);
+
+	confirmQuery($create_post_query);
 }
-
-$query = "SELECT * FROM cms.posts WHERE cms.posts.id = $the_post_id ";
-
-$select_posts_by_id = mysqli_query($dbConnection, $query);
-
-confirmQuery($select_posts_by_id);
-
-while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
-	$post_id = $row['id'];
-	$post_cat_id = $row['post_category_id'];
-	$post_title = $row['post_title'];
-	$post_author = $row['post_author'];
-	$post_date = $row['post_date'];
-	$post_image = $row['post_image'];
-	$post_content = $row['post_content'];
-	$post_tags = $row['post_tags'];
-	$post_comment_count = $row['post_comment_count'];
-	$post_status = $row['post_status'];
-}
-
-if(isset($_POST['edit_post'])) {
-	$post_title = $_POST['post_title'];
-	$post_author = $_POST['post_author'];
-	$post_image = $_FILES['post_image']['name'];
-	$post_image_temp = $_FILES['post_image']['tmp_name'];
-	$post_content = $_POST['post_content'];
-	$post_tags = $_POST['post_tags'];
-	$post_comment_count = $_POST['post_comment_count'];
-	$post_status = $_POST['post_status'];
-
-	move_uploaded_file($post_image_temp, "../images/$post_image");
-
-	$query = "UPDATE cms.posts SET ";
-		$query .= "post_title = '{$post_title}', ";
-		$query .= "post_author = '{$post_author}', ";
-		$query .= "post_content = '{$post_content}', ";
-		$query .= "post_image = '{$post_image}', ";
-		$query .= "post_tags = '{$post_tags}', ";
-		$query .= "post_comment_count= '{$post_comment_count}', ";
-		$query .= "post_status = '{$post_status}' ";
-	$query .= "WHERE cms.posts.post_category_id = '{$the_post_id}' ";
-
-	$edit_post = mysqli_query($dbConnection, $query);
-
-	confirmQuery($edit_post);
-}
-
 ?>
+<h2>Add a user</h2>
 <form action="" method="post" enctype="multipart/form-data">
+
 	<div class="form-group">
-		<label for="post_title">Post Title</label>
-		<input value="<?php echo $post_title; ?>" name="post_title" type="text" class="form-control">
+		<label for="user_name">Username</label>
+		<input name="user_name" type="text" class="form-control">
 	</div>
+
 	<div class="form-group">
-		<label for="post_categories">Categories</label>
-		<select name="post_category" class="form-control">
+		<label for="user_password">Password</label>
+		<input name="user_password" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="user_firstname">First Name</label>
+		<input name="user_firstname" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="user_secondname">Second Name</label>
+		<input name="user_secondname" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="user_email">Email</label>
+		<input name="user_email" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="user_role">Role</label>
+		<select name="user_role" class="form-control">
 			<?php
-				global $dbConnection;
-				$query = "SELECT * FROM cms.categories ";
-				$select_categories_id = mysqli_query($dbConnection, $query);
-
-				confirmQuery($select_categories_id);
-
-				while($row = mysqli_fetch_assoc($select_categories_id)) {
-					$post_cat_id = $row['cat_id'];
-					$cat_title = $row['cat_title'];
-					echo "<option value='{$post_cat_id}'>{$cat_title}</option>";
-				}
+			global $dbConnection;
+			$query = "SELECT * FROM cms.users";
+			$select_users = mysqli_query($dbConnection, $query);
+			confirmQuery($select_users);
+			while($row = mysqli_fetch_assoc($select_users)) {
+				$user_id = $row['id'];
+				$user_role = $row['user_role'];
+				echo "<option value='{$user_id}'>{$user_role}</option>";
+			}
 			?>
 		</select>
 	</div>
+
 	<div class="form-group">
-		<label for="post_author">Post Author</label>
-		<input value="<?php echo $post_author; ?>" name="post_author" type="text" class="form-control">
+		<label for="user_image">Image</label>
+		<input name="user_image" type="file" class="form-control">
 	</div>
+
 	<div class="form-group">
-		<img src="../images/<?php echo $post_image; ?>" width="200" alt=""> <br>
-		<label for="post_image">Post Image</label>
-		<input name="post_image" type="file" class="form-control">
-	</div>
-	<div class="form-group">
-		<label for="post_tags">Post Tags</label>
-		<input value="<?php echo $post_tags; ?>" name="post_tags" type="text" class="form-control">
-	</div>
-	<div class="form-group">
-		<label for="post_comment_count">Post Comment Count</label>
-		<input value="<?php echo $post_comment_count; ?>" name="post_comment_count" type="text" class="form-control">
-	</div>
-	<div class="form-group">
-		<label for="post_status">Post Status</label>
-		<input value="<?php echo $post_status; ?>" name="post_status" type="text" class="form-control">
-	</div>
-	<div class="form-group">
-		<label for="post_content">Post Content</label>
-		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"><?php echo $post_content; ?></textarea>
-	</div>
-	<div class="form-group">
-		<input type="submit" name="edit_post" aria-labelledby="edit_post" value="SAVE" class="btn btn-primary">
+		<input type="submit" name="edit_user" aria-labelledby="edit_user" value="Edit User" class="btn btn-primary">
 	</div>
 </form>
