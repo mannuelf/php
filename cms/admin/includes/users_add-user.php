@@ -73,15 +73,15 @@
 		<label for="user_role">Role</label>
 		<select name="user_role" class="form-control">
 			<?php
-			global $dbConnection;
-			$query = "SELECT * FROM cms.users";
-			$select_users = mysqli_query($dbConnection, $query);
-			confirmQuery($select_users);
-			while($row = mysqli_fetch_assoc($select_users)) {
-				$user_id = $row['id'];
-				$user_role = $row['user_role'];
-				echo "<option value='{$user_id}'>{$user_role}</option>";
-			}
+				global $dbConnection;
+				$query = "SELECT * FROM cms.users";
+				$select_users = mysqli_query($dbConnection, $query);
+				confirmQuery($select_users);
+				while($row = mysqli_fetch_assoc($select_users)) {
+					$user_id = $row['id'];
+					$user_role = $row['user_role'];
+					echo "<option value='{$user_id}'>{$user_role}</option>";
+				}
 			?>
 		</select>
 	</div>
