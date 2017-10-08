@@ -44,33 +44,33 @@
 			echo "<td>{$user_role}</td>";
 			echo "<td>{$user_image}</td>";
 			echo "<td>{$user_salt}</td>";
-			echo "<td><a href='users.php?unapprove='>unapprove</a></td>";
-			echo "<td><a href='users.php?approve='>approve</a></td>";
-			echo "<td><a href='users.php?delete=$user_id'>delete</a></td>";
+			echo "<td><a href='users.php?make_admin={$user_id}'>Admin</a></td>";
+			echo "<td><a href='users.php?make_subscriber={$user_id}'>Subscriber</a></td>";
+			echo "<td><a href='users.php?delete={$user_id}'>delete</a></td>";
 			echo "</tr>";
 		}
 	?>
 
 	<?php
-		// DELETE A COMMENT
+		// DELETE A USER
 		if(isset($_GET['delete'])) {
 			$the_user_id = $_GET['delete'];
 			$query = "DELETE FROM cms.users WHERE cms.users.id = {$the_user_id}";
 			$delete_user_query = mysqli_query($dbConnection, $query);
 			header("Location: users.php");
 		}
-		// Approve a comment
-		if(isset($_GET['approve'])) {
-			$the_user_id = $_GET['approve'];
-			$query = "UPDATE cms.users SET cms.users.user_role = 'Approved' WHERE cms.users.id = {$the_user_id}";
-			$approve_user_query = mysqli_query($dbConnection, $query);
+		// Make user Admin
+		if(isset($_GET['make_admin'])) {
+			$the_user_id = $_GET['make_admin'];
+			$query = "UPDATE cms.users SET cms.users.user_role = 'Admin' WHERE cms.users.id = {$the_user_id}";
+			$make_admin_query = mysqli_query($dbConnection, $query);
 			header("Location: users.php");
 		}
-		// Unapprove a comment
-		if(isset($_GET['unapprove'])) {
-			$the_user_id = $_GET['unapprove'];
-			$query = "UPDATE cms.users SET cms.users.user_role = 'Unapproved' WHERE cms.users.id = {$the_user_id}";
-			$unapprove_user_query = mysqli_query($dbConnection, $query);
+		// Make user a subscriber
+		if(isset($_GET['make_subscriber'])) {
+			$the_user_id = $_GET['make_subscriber'];
+			$query = "UPDATE cms.users SET cms.users.user_role = 'Subscriber' WHERE cms.users.id = {$the_user_id}";
+			$make_subscriber_query = mysqli_query($dbConnection, $query);
 			header("Location: users.php");
 		}
 	?>
