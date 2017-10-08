@@ -41,30 +41,14 @@
 		confirmQuery($create_post_query);
 	}
 ?>
-<h1>Add a user</h1>
+<h2>Add a user</h2>
 <form action="" method="post" enctype="multipart/form-data">
 
 	<div class="form-group">
-		<label for="user_name">User Name</label>
+		<label for="user_name">Username</label>
 		<input name="user_name" type="text" class="form-control">
 	</div>
 
-<!--	<div class="form-group">-->
-<!--		<label for="post_category_id">Post Category ID</label>-->
-<!--		<select name="post_category" class="form-control">-->
-<!--			--><?php
-//				global $dbConnection;
-//				$query = "SELECT * FROM cms.categories";
-//				$select_categories_id = mysqli_query($dbConnection, $query);
-//
-//				while($row = mysqli_fetch_assoc($select_categories_id)) {
-//					$cat_id = $row['post_category_id'];
-//					$cat_title = $row['cat_title'];
-//					echo "<option value='{$cat_id}'>{$cat_title}</option>";
-//				}
-//			?>
-<!--		</select>-->
-<!--	</div>-->
 	<div class="form-group">
 		<label for="user_password">Password</label>
 		<input name="user_password" type="text" class="form-control">
@@ -87,7 +71,19 @@
 
 	<div class="form-group">
 		<label for="user_role">Role</label>
-		<input name="user_role" type="text" class="form-control">
+		<select name="user_role" class="form-control">
+			<?php
+			global $dbConnection;
+			$query = "SELECT * FROM cms.users";
+			$select_users = mysqli_query($dbConnection, $query);
+			confirmQuery($select_users);
+			while($row = mysqli_fetch_assoc($select_users)) {
+				$user_id = $row['id'];
+				$user_role = $row['user_role'];
+				echo "<option value='{$user_id}'>{$user_role}</option>";
+			}
+			?>
+		</select>
 	</div>
 
 	<div class="form-group">
@@ -99,6 +95,7 @@
 		<label for="randSalt">Salt</label>
 		<input name="randSalt" type="text" class="form-control">
 	</div>
+
 
 	<div class="form-group">
 		<input type="submit" name="add_user" aria-labelledby="add_user" value="Add User" class="btn btn-primary">
