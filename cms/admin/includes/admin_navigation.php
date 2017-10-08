@@ -73,10 +73,24 @@
 					Comments</a>
 			</li>
 			<li>
-				<a href="users.php">
-					<i	class="fa fa-fw fa-users"></i> Users</a>
+				<a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown">
+					<i class="fa fa-fw fa-users"></i>
+					Users
+					<i class="fa fa-fw fa-caret-down"></i>
+				</a>
+				<ul id="users_dropdown" class="collapse">
+					<li>
+						<a href="users.php"><i class="fa fa-fw fa-align-center"></i>
+							View All Users
+						</a>
+					</li>
+					<li>
+						<a href="./users.php?source=add_user"><i class="fa fa-fw fa-plus-circle"></i>
+							Add a user
+						</a>
+					</li>
+				</ul>
 			</li>
-
 			<li>
 				<a href="proile.php">
 					<i class="fa fa-fw fa-user"></i>
