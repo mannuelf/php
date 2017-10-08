@@ -46,7 +46,7 @@
 			echo "<td>{$user_salt}</td>";
 			echo "<td><a href='users.php?unapprove='>unapprove</a></td>";
 			echo "<td><a href='users.php?approve='>approve</a></td>";
-			echo "<td><a href='users.php?delete='>delete</a></td>";
+			echo "<td><a href='users.php?delete=$user_id'>delete</a></td>";
 			echo "</tr>";
 		}
 	?>
@@ -55,23 +55,23 @@
 		// DELETE A COMMENT
 		if(isset($_GET['delete'])) {
 			$the_user_id = $_GET['delete'];
-			$query = "DELETE FROM cms.comments WHERE cms.comments.user_id = {$the_user_id}";
-			$delete_query = mysqli_query($dbConnection, $query);
-			header("Location: comments.php");
+			$query = "DELETE FROM cms.users WHERE cms.users.id = {$the_user_id}";
+			$delete_user_query = mysqli_query($dbConnection, $query);
+			header("Location: users.php");
 		}
 		// Approve a comment
 		if(isset($_GET['approve'])) {
 			$the_user_id = $_GET['approve'];
-			$query = "UPDATE cms.comments SET cms.comments.user_role = 'Approved' WHERE cms.comments.user_id = {$the_user_id}";
+			$query = "UPDATE cms.users SET cms.users.user_role = 'Approved' WHERE cms.users.id = {$the_user_id}";
 			$approve_user_query = mysqli_query($dbConnection, $query);
-			header("Location: comments.php");
+			header("Location: users.php");
 		}
 		// Unapprove a comment
 		if(isset($_GET['unapprove'])) {
 			$the_user_id = $_GET['unapprove'];
-			$query = "UPDATE cms.comments SET cms.comments.user_role = 'Unapproved' WHERE cms.comments.user_id = {$the_user_id}";
+			$query = "UPDATE cms.users SET cms.users.user_role = 'Unapproved' WHERE cms.users.id = {$the_user_id}";
 			$unapprove_user_query = mysqli_query($dbConnection, $query);
-			header("Location: comments.php");
+			header("Location: users.php");
 		}
 	?>
 	</tbody>

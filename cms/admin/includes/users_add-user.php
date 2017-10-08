@@ -34,7 +34,6 @@
 			'{$user_image}') ";
 
 		$create_user_query = mysqli_query($dbConnection, $query);
-		var_dump($query);
 		confirmQuery($create_user_query);
 	}
 ?>
@@ -48,7 +47,7 @@
 
 	<div class="form-group">
 		<label for="user_password">Password</label>
-		<input name="user_password" type="text" class="form-control">
+		<input name="user_password" type="password" class="form-control">
 	</div>
 
 	<div class="form-group">

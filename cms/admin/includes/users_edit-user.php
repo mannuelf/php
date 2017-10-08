@@ -3,14 +3,15 @@ if(isset($_POST['edit_user'])) {
 	global $dbConnection;
 
 	$user_id = $row['id'];
-	$user_name = $row['user_name'];
-	$user_password = $row['user_password'];
-	$user_firstname = $row['user_firstname'];
-	$user_secondname = $row['user_secondname'];
-	$user_email = $row['user_email'];
-	$user_role = $row['user_role'];
-	$user_image = $row['user_image'];
-	$user_temp_image = $row['user_image'];
+	$user_name = $_POST['user_name'];
+	$user_password = $_POST['user_password'];
+	$user_firstname = $_POST['user_firstname'];
+	$user_secondname = $_POST['user_secondname'];
+	$user_email = $_POST['user_email'];
+	$user_role = $_POST['user_role'];
+
+	$user_image = $_FILES['user_image']['name'];
+	$user_image_temp = $_FILES['user_image']['tmp_name'];
 
 	// move image to images folder
 	move_uploaded_file($user_image_temp, "../images/$user_image");
