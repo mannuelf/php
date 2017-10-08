@@ -23,16 +23,6 @@
 	</thead>
 	<tbody>
 	<?php
-		// DELETE A POST
-		if(isset($_GET['delete'])){
-			global $dbConnection;
-			$the_post_id = $_GET['delete'];
-			$query = "DELETE FROM cms.posts WHERE id = {$the_post_id}";
-			$delete_query = mysqli_query($dbConnection, $query);
-			confirmQuery($delete_query);
-		}
-	?>
-	<?php
 		while($row = mysqli_fetch_assoc($select_posts)) {
 			$post_id = $row['id'];
 			$post_title = $row['post_title'];
@@ -67,6 +57,16 @@
 				echo "<td><a href='./posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
 				echo "<td><a href='./posts.php?delete={$post_id}'>delete</a></td>";
 			echo "</tr>";
+		}
+	?>
+	<?php
+		// DELETE A POST
+		if(isset($_GET['delete'])){
+			global $dbConnection;
+			$the_post_id = $_GET['delete'];
+			$query = "DELETE FROM cms.posts WHERE id = {$the_post_id}";
+			$delete_query = mysqli_query($dbConnection, $query);
+			confirmQuery($delete_query);
 		}
 	?>
 	</tbody>
