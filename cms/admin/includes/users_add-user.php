@@ -1,5 +1,5 @@
 <?php
-	if(isset($_POST['create_user'])) {
+	if(isset($_POST['edit_user'])) {
 		global $dbConnection;
 
 		$user_name = $_POST['user_name'];
@@ -62,7 +62,7 @@
 
 	<div class="form-group">
 		<label for="user_email">Email</label>
-		<input name="user_email" type="text" class="form-control">
+		<input name="user_email" type="email" class="form-control">
 	</div>
 
 	<div class="form-group">
@@ -80,6 +80,6 @@
 	</div>
 
 	<div class="form-group">
-		<input type="submit" name="create_user" aria-labelledby="create_user" value="Add User" class="btn btn-primary">
+		<input type="submit" name="edit_user" aria-labelledby="edit_user" value="Edit User" class="btn btn-primary">
 	</div>
 </form>

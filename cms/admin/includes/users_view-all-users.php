@@ -19,6 +19,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
+		<th></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -46,6 +47,7 @@
 			echo "<td>{$user_salt}</td>";
 			echo "<td><a href='users.php?make_admin={$user_id}'>Admin</a></td>";
 			echo "<td><a href='users.php?make_subscriber={$user_id}'>Subscriber</a></td>";
+			echo "<td><a href='users.php?source=edit_user&edit_user={$user_id}'>edit</a></td>";
 			echo "<td><a href='users.php?delete={$user_id}'>delete</a></td>";
 			echo "</tr>";
 		}
