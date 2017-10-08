@@ -13,10 +13,10 @@
 		<th>Category</th>
 		<th>Status</th>
 		<th>Image</th>
-		<th>Date</th>
 		<th>Content</th>
 		<th>Tags</th>
 		<th>Comments</th>
+		<th>Date</th>
 		<th>Edit</th>
 		<th>Delete</th>
 	</tr>
@@ -29,6 +29,7 @@
 			$the_post_id = $_GET['delete'];
 			$query = "DELETE FROM cms.posts WHERE id = {$the_post_id}";
 			$delete_query = mysqli_query($dbConnection, $query);
+			confirmQuery($delete_query);
 		}
 	?>
 	<?php

@@ -17,9 +17,7 @@
 
 			$select_all_posts = mysqli_query($dbConnection, $query);
 
-			if ( ! $select_all_posts) {
-				echo mysqli_error($select_all_posts);
-			}
+			confirmQuery($select_all_posts);
 
 			while ($row = mysqli_fetch_assoc($select_all_posts)) {
 				$post_id = $row['id'];
@@ -69,7 +67,8 @@
 					$comment_query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved',now())";
 
 					$create_comment_query = mysqli_query($dbConnection, $comment_query);
-					$comment_query = "UPDATE cms.posts SET cms.posts.comment_count = cms.posts.comment_count + 1 WHERE cms.posts.id = {$the_post_id}";
+					$comment_query = "UPDATE cms.posts SET cms.posts.post_comment_count = cms.posts.post_comment_count + 1 WHERE cms.posts.id = $the_post_id ";
+					var_dump($comment_query);
 					$update_comment_count = mysqli_query($dbConnection, $comment_query);
 				}
 			?>
