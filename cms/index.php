@@ -11,7 +11,7 @@
 				<small>Every day there is something new to learn.</small>
 			</h1>
 			<?php
-			$query = "SELECT * FROM cms.posts";
+			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
 
 			$select_all_posts = mysqli_query($dbConnection, $query);
 
@@ -31,7 +31,12 @@
 				$post_image = $row['post_image'];
 				$post_content = $row['post_content'];
 				$post_tags = substr($row['post_tags'], 0, 50);
-				// break out of the while loop (meh looks dodgy but it works eh)
+				$post_status = $row['post_status'];
+
+				if($post_status !== 'Published') {
+					echo "<h1>NO POSTS TODAY</h1>";
+				} else {
+					// break out of the while loop (meh looks dodgy but it works eh)
 				?>
 				<h2>
 					<!--
@@ -58,7 +63,7 @@
 						class="glyphicon glyphicon-chevron-right"></span></a>
 				<hr>
 
-			<?php } ?>
+			<?php } } ?>
 
 			<!-- Pager -->
 			<ul class="pager">
