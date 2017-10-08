@@ -1,16 +1,16 @@
 <?php
-	if(isset($_POST['add_user'])) {
+	if(isset($_POST['create_user'])) {
 		global $dbConnection;
 
-		$user_id = $row['id'];
-		$user_name = $row['user_name'];
-		$user_password = $row['user_password'];
-		$user_firstname = $row['user_firstname'];
-		$user_secondname = $row['user_secondname'];
-		$user_email = $row['user_email'];
-		$user_role = $row['user_role'];
-		$user_image = $row['user_image'];
-		$user_temp_image = $row['user_image'];
+		$user_name = $_POST['user_name'];
+		$user_password = $_POST['user_password'];
+		$user_firstname = $_POST['user_firstname'];
+		$user_secondname = $_POST['user_secondname'];
+		$user_email = $_POST['user_email'];
+		$user_role = $_POST['user_role'];
+
+		$user_image = $_FILES['user_image']['name'];
+		$user_image_temp = $_FILES['user_image']['tmp_name'];
 
 		// move image to images folder
 		move_uploaded_file($user_image_temp, "../images/$user_image");
@@ -33,9 +33,9 @@
 			'{$user_role}',
 			'{$user_image}') ";
 
-		$create_post_query = mysqli_query($dbConnection, $query);
-
-		confirmQuery($create_post_query);
+		$create_user_query = mysqli_query($dbConnection, $query);
+		var_dump($query);
+		confirmQuery($create_user_query);
 	}
 ?>
 <h2>Add a user</h2>
@@ -69,17 +69,9 @@
 	<div class="form-group">
 		<label for="user_role">Role</label>
 		<select name="user_role" class="form-control">
-			<?php
-				global $dbConnection;
-				$query = "SELECT * FROM cms.users";
-				$select_users = mysqli_query($dbConnection, $query);
-				confirmQuery($select_users);
-				while($row = mysqli_fetch_assoc($select_users)) {
-					$user_id = $row['id'];
-					$user_role = $row['user_role'];
-					echo "<option value='{$user_id}'>{$user_role}</option>";
-				}
-			?>
+			<option value="select options">Select Options</option>
+			<option value="admin">Admin</option>
+			<option value="subscriber">Subscriber</option>
 		</select>
 	</div>
 
@@ -89,6 +81,6 @@
 	</div>
 
 	<div class="form-group">
-		<input type="submit" name="add_user" aria-labelledby="add_user" value="Add User" class="btn btn-primary">
+		<input type="submit" name="create_user" aria-labelledby="create_user" value="Add User" class="btn btn-primary">
 	</div>
 </form>

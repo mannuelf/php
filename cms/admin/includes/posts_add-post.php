@@ -7,7 +7,7 @@
 		$post_author = $_POST['post_author'];
 		$post_date = date('d-m-y');
 		$post_image = $_FILES['post_image']['name'];
-		$post_image_temp = $_FILES['post_image']['tmp_name'];
+		$post_image_temp = $_FILES['post_image']['name'];
 		$post_content = $_POST['post_content'];
 		$post_tags = $_POST['post_tags'];
 		$post_status = $_POST['post_status'];
