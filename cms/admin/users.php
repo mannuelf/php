@@ -31,10 +31,10 @@
 						$source = "";
 					}
 					switch($source) {
-						case "add_post":
+						case "add_user":
 							include "./includes/users_add-user.php";
 							break;
-						case "edit_post":
+						case "edit_user":
 							include "./includes/users_edit-user.php";
 							break;
 						default;
