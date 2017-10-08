@@ -11,7 +11,6 @@
 		$post_content = $_POST['post_content'];
 		$post_tags = $_POST['post_tags'];
 		$post_status = $_POST['post_status'];
-		$post_comment_count = 4;
 
 		// move image to images folder
 		move_uploaded_file($post_image_temp, "../images/$post_image");
@@ -23,8 +22,7 @@
 			post_image,
 			post_content,
 			post_tags,
-			post_status,
-			post_comment_count)";
+			post_status)";
 
 		$query .= "VALUES(
 			'{$post_title}',
@@ -33,8 +31,7 @@
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',
-			'{$post_status}',
-			'{$post_comment_count}') ";
+			'{$post_status}') ";
 
 		$create_post_query = mysqli_query($dbConnection, $query);
 

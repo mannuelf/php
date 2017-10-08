@@ -58,14 +58,19 @@
 			<!-- Blog Comments -->
 
 			<?php
+				// Create comment query
 				if(isset($_POST["create_comment"])) {
 					$the_post_id = $_GET['p_id'];
 					$comment_author = $_POST['comment_author'];
 					$comment_email = $_POST['comment_email'];
 					$comment_content = $_POST['comment_content'];
+
 					$comment_query = "INSERT INTO cms.comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
 					$comment_query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved',now())";
+
 					$create_comment_query = mysqli_query($dbConnection, $comment_query);
+					$comment_query = "UPDATE cms.posts SET cms.posts.comment_count = cms.posts.comment_count + 1 WHERE cms.posts.id = {$the_post_id}";
+					$update_comment_count = mysqli_query($dbConnection, $comment_query);
 				}
 			?>
 			<!-- Comments Form -->
