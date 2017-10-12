@@ -21,10 +21,10 @@
 		<h4>Login</h4>
 		<form action="includes/login.php" method="post">
 			<div class="form-group">
-				<div class="input-group">
+				<div class="form-group">
 					<input name="name" placeholder="name" type="text" class="form-control">
 				</div>
-				<div class="input-group">
+				<div class="form-group">
 					<input name="password" placeholder="Enter password" type="text" class="form-control">
 				</div>
 			</div>
