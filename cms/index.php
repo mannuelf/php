@@ -75,7 +75,7 @@
 				</li>
 			</ul>
 		</div>
-		<?php include "includes/sidebar.php" ?>
+		<?php include "sidebar.php" ?>
 	</div>
 	<!-- /.row -->
 	<?php include "includes/footer.php" ?>

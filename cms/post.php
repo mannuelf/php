@@ -124,7 +124,7 @@
 			<?php var_dump($comment_author,$comment_content); } ?>
 
 		</div>
-		<?php include "includes/sidebar.php" ?>
+		<?php include "sidebar.php" ?>
 	</div>
 	<!-- /.row -->
 	<?php include "includes/footer.php" ?>
