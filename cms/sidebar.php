@@ -1,6 +1,28 @@
 <!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
-
+	<!-- Login -->
+	<div class="well">
+		<h4>Login</h4>
+		<form action="./includes/login.php" method="post">
+			<div class="form-group">
+				<div class="form-group">
+					<input name="username" placeholder="username" type="text" class="form-control">
+				</div>
+				<div class="form-group">
+					<input name="password" placeholder="Enter password" type="password" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="submit" name="login">
+						Login
+						<span class="glyphicon glyphicon-log-in"></span>
+					</button>
+				</span>
+			</div>
+		</form>
+		<!-- /.input-group -->
+	</div>
 	<!-- Blog Search Well -->
 	<div class="well">
 		<h4>Blog Search</h4>
@@ -16,29 +38,7 @@
 		</form>
 		<!-- /.input-group -->
 	</div>
-	<!-- Blog Search Well -->
-	<div class="well">
-		<h4>Login</h4>
-		<form action="includes/login.php" method="post">
-			<div class="form-group">
-				<div class="form-group">
-					<input name="username" placeholder="username" type="text" class="form-control">
-				</div>
-				<div class="form-group">
-					<input name="password" placeholder="Enter password" type="password" class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="submit" name="login">
-						Login
-						<span class="glyphicon glyphicon-log-in"></span>
-					</button>
-				</span>
-			</div>
-		</form>
-		<!-- /.input-group -->
-	</div>
+
 	<!-- Blog Categories Well -->
 	<div class="well">
 		<?php

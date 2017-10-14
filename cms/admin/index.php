@@ -10,9 +10,14 @@
 				<div class="col-lg-12">
 					<h1 class="page-header">
 						Welcome to CMS Admin
-						<small>Author</small>
-						<?php if ($dbConnection) { echo "connected"; } ?>
+						<small>
+							<?php
+								echo $_SESSION['username'];
+							?>
+						</small>
 					</h1>
+
+
 
 					<ol class="breadcrumb">
 						<li>
