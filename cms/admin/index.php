@@ -10,7 +10,7 @@
 				<div class="col-lg-12">
 					<h1 class="page-header">
 						Welcome to CMS:
-						<span class="label-info img-rounded">
+						<span class="text-success">
 							<?php
 								echo $_SESSION['username'];
 							?>
