@@ -27,9 +27,7 @@
 			$db_user_password = $row['user_password'];
 
 			// validation
-			if ( $username !== $db_username && $password !== $db_user_password) {
-				header("Location: ../index.php");
-			} else if ($username == $db_username && $password == $db_user_password) {
+			if ( $username === $db_username && $password === $db_user_password) {
 				// assign variables to the session so that the admin page can use the data to render stuff
 				$_SESSION['username'] = $db_username;
 				$_SESSION['firstname'] = $db_firstname;
