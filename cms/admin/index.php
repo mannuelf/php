@@ -39,7 +39,12 @@
 									<i class="fa fa-file-text fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class='huge'>12</div>
+									<?php
+										$query = "SELECT * FROM cms.posts";
+										$select_all_posts = mysqli_query($dbConnection, $query);
+										$post_count = mysqli_num_rows($select_all_posts);
+									?>
+									<div class='huge'><?php echo $post_count; ?></div>
 									<div>Posts</div>
 								</div>
 							</div>
