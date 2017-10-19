@@ -1,4 +1,21 @@
 <?php include "includes/admin_header.php" ?>
+<?php
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['user_name'];
+		$query = "SELECT * FROM cms.users WHERE cms.users.user_name = '{$username}' ";
+		$select_users_query = mysqli_query($dbConnection, $query);
+		while ($row = mysqli_fetch_array($select_users_query)) {
+			$user_id = $row['id'];
+			$user_name = $row['user_name'];
+			$user_password = $row['user_password'];
+			$user_firstname = $row['user_firstname'];
+			$user_secondname = $row['user_secondname'];
+			$user_email = $row['user_email'];
+			$user_role = $row['user_role'];
+			$user_image = $row['user_image'];
+		}
+	}
+?>
 <div id="wrapper" class="categories">
 	<!-- Navigation -->
 	<?php include "includes/admin_navigation.php" ?>
