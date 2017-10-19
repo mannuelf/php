@@ -9,9 +9,9 @@
 				<div class="col-lg-12">
 					<h1 class="page-header">
 						<?php
-						if (isset($_SESSION['username'])) {
-							echo $_SESSION['username'];
-						}
+							if (isset($_SESSION['username'])) {
+								echo $_SESSION['username'];
+							}
 						?>
 					</h1>
 					<ol class="breadcrumb">
@@ -58,11 +58,11 @@
 							<select name="user_role" class="form-control">
 								<option value="subscriber"> Choose one</option>
 								<?php
-								if($user_role == 'admin') {
-									echo "<option value='subscriber'>Subscriber</option>";
-								} else {
-									echo "<option value='admin'>Admin</option>";
-								}
+									if($user_role == 'admin') {
+										echo "<option value='subscriber'>Subscriber</option>";
+									} else {
+										echo "<option value='admin'>Admin</option>";
+									}
 								?>
 							</select>
 						</div>
