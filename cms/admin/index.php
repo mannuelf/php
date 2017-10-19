@@ -66,7 +66,14 @@
 									<i class="fa fa-comments fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class='huge'>23</div>
+									<div class='huge'>
+										<?php
+											$query = "SELECT * FROM cms.comments";
+											$select_all_comments = mysqli_query($dbConnection, $query);
+											$comment_count = mysqli_num_rows($select_all_comments);
+											echo $comment_count;
+										?>
+									</div>
 									<div>Comments</div>
 								</div>
 							</div>
@@ -88,7 +95,14 @@
 									<i class="fa fa-user fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class='huge'>23</div>
+									<div class='huge'>
+										<?php
+											$query = "SELECT * FROM cms.users";
+											$select_all_users = mysqli_query($dbConnection, $query);
+											$users_count = mysqli_num_rows($select_all_users);
+											echo $users_count;
+										?>
+									</div>
 									<div> Users</div>
 								</div>
 							</div>
@@ -110,7 +124,14 @@
 									<i class="fa fa-list fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class='huge'>13</div>
+									<div class='huge'>
+										<?php
+											$query = "SELECT * FROM cms.categories";
+											$select_all_categories = mysqli_query($dbConnection, $query);
+											$categories_count = mysqli_num_rows($select_all_categories);
+											echo $categories_count;
+										?>
+									</div>
 									<div>Categories</div>
 								</div>
 							</div>
