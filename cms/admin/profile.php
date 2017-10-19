@@ -95,7 +95,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" name="edit_user" aria-labelledby="edit_user" value="Edit User" class="btn btn-primary">
+							<input type="submit" name="update_profile" aria-labelledby="update_profile" value="Update Profile" class="btn btn-primary">
 						</div>
 					</form>
 

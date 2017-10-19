@@ -64,14 +64,14 @@
 		// Make user Admin
 		if(isset($_GET['make_admin'])) {
 			$the_user_id = $_GET['make_admin'];
-			$query = "UPDATE cms.users SET cms.users.user_role = 'Admin' WHERE cms.users.id = {$the_user_id}";
+			$query = "UPDATE cms.users SET cms.users.user_role = 'admin' WHERE cms.users.id = {$the_user_id}";
 			$make_admin_query = mysqli_query($dbConnection, $query);
 			header("Location: users.php");
 		}
 		// Make user a subscriber
 		if(isset($_GET['make_subscriber'])) {
 			$the_user_id = $_GET['make_subscriber'];
-			$query = "UPDATE cms.users SET cms.users.user_role = 'Subscriber' WHERE cms.users.id = {$the_user_id}";
+			$query = "UPDATE cms.users SET cms.users.user_role = 'subscriber' WHERE cms.users.id = {$the_user_id}";
 			$make_subscriber_query = mysqli_query($dbConnection, $query);
 			header("Location: users.php");
 		}
