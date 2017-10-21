@@ -33,10 +33,7 @@
 				$post_tags = substr($row['post_tags'], 0, 50);
 				$post_status = $row['post_status'];
 
-				if($post_status !== 'Published') {
-					echo "<h1>NO POSTS TODAY</h1>";
-				} else {
-					// break out of the while loop (meh looks dodgy but it works eh)
+				if($post_status == 'published') {
 				?>
 				<h2>
 					<!--
