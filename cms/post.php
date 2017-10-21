@@ -49,7 +49,6 @@
 				<img src="images/<?php echo $post_image ?>" class="img-responsive" alt="<?php echo $post_title ?>">
 				<hr>
 				<p><?php echo $post_content ?></p>
-				<a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 				<hr>
 
 			<?php } ?>
