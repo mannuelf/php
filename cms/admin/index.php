@@ -157,9 +157,14 @@
 						var data = google.visualization.arrayToDataTable([
 							['Data', 'Count'],
 							<?php
-							// data
+								$elementText = ['Active posts', 'Comments', 'Categories', 'Users'];
+								$elementCount = [ $post_count, $comment_count, $categories_count, $users_count];
+
+								for ($i = 0; $i < 4; $i++) {
+									echo "['{$elementText[$i]}'" . "," . "{$elementCount[$i]}],";
+								}
 							?>
-							['Posts', 1000],
+							// ['Posts', 1000],
 						]);
 
 						var options = {
