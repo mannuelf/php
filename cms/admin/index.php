@@ -147,6 +147,38 @@
 				</div>
 			</div>
 			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<script type="text/javascript">
+						google.charts.load('current', {'packages':['bar']});
+						google.charts.setOnLoadCallback(drawChart);
+
+						function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+							['Data', 'Count'],
+							<?php
+							// data
+							?>
+							['Posts', 1000],
+						]);
+
+						var options = {
+							chart: {
+							title: '',
+							subtitle: '',
+							}
+						};
+
+						var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+						chart.draw(data, google.charts.Bar.convertOptions(options));
+						}
+					</script>
+					<div id="columnchart_material" style="width: auto; height: 500px;">
+				</div>
+				</div>
+			</div>
+			<!-- /.row -->
 		</div>
 		<!-- /.container-fluid -->
 	</div>
