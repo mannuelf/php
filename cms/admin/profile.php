@@ -98,6 +98,9 @@ if(isset($_POST['edit_user'])) {
 							}
 						?>
 						<div class="form-group">
+							<img src="../images/<?php echo $user_image?>" width="100px" alt="">
+						</div>
+						<div class="form-group">
 							<label for="user_name">Username</label>
 							<input name="user_name" type="text" value="<?php echo $user_name; ?>" placeholder="<?php echo $user_name; ?>" class="form-control">
 						</div>
@@ -138,9 +141,6 @@ if(isset($_POST['edit_user'])) {
 
 						<div class="form-group">
 							<label for="user_image">Image</label> <br>
-							<img src="../images/<?php echo $user_image?>" width="100px" alt="">
-						</div>
-						<div class="form-group">
 							<input name="user_image" type="file" class="form-control">
 						</div>
 
