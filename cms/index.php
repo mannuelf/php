@@ -52,8 +52,9 @@
 					</small>
 				</p>
 				<hr>
-				<img src="images/<?php echo $post_image ?>"
-					 class="img-responsive" alt="<?php echo $post_title ?>">
+				<a href="./post.php?p_id=<?php echo $post_id ?>">
+					<img src="images/<?php echo $post_image ?>" class="img-responsive" alt="<?php echo $post_title ?>">
+				</a>
 				<hr>
 				<p><?php echo $post_content ?></p>
 				<a class="btn btn-primary" href="./post.php?p_id=<?php echo $post_id ?>">Read More <span
