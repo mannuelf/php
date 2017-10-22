@@ -48,7 +48,8 @@ if(isset($_POST['edit_post'])) {
 	$query .= "WHERE cms.posts.post_category_id = '{$the_post_id}' ";
 
 	$edit_post = mysqli_query($dbConnection, $query);
-
+	var_dump($query);
+	var_dump($edit_post);
 	confirmQuery($edit_post);
 }
 
@@ -93,10 +94,21 @@ if(isset($_POST['edit_post'])) {
 		<label for="post_comment_count">Post Comment Count</label>
 		<input value="<?php echo $post_comment_count; ?>" name="post_comment_count" type="text" class="form-control">
 	</div>
+
 	<div class="form-group">
-		<label for="post_status">Post Status</label>
-		<input value="<?php echo $post_status; ?>" name="post_status" type="text" class="form-control">
+		<label for="post_status">Post Status</label> <br>
+		<select name="post_status" id="">
+			<option value='<?php echo $post_status; ?>' class="form-control"><?php echo $post_status; ?></option>
+			<?php
+				if ($post_status == 'published') {
+					echo "<option name='draft'>Draft</option>";
+				} else {
+					echo "<option name='published'>Published</option>";
+				}
+			?>
+		</select>
 	</div>
+
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
 		<textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control"><?php echo $post_content; ?></textarea>
