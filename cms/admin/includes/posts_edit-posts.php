@@ -48,8 +48,6 @@ if(isset($_POST['edit_post'])) {
 	$query .= "WHERE cms.posts.post_category_id = '{$the_post_id}' ";
 
 	$edit_post = mysqli_query($dbConnection, $query);
-	var_dump($query);
-	var_dump($edit_post);
 	confirmQuery($edit_post);
 }
 
