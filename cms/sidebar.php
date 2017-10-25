@@ -71,6 +71,6 @@
 	</div>
 
 	<!-- Side Widget Well -->
-	<?php include "widget.php"; ?>
+	<?php include "includes/widget.php"; ?>
 
 </div>
