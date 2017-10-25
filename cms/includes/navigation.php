@@ -15,8 +15,6 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<?php
-					global $dbConnection;
-
 					$query = "SELECT * FROM cms.categories";
 					$select_all_categories = mysqli_query($dbConnection, $query);
 
@@ -35,7 +33,7 @@
 					if(isset($_SESSION['user_role'])) {
 						if(isset($_GET['p_id'])) {
 							$thePostId = $_GET['p_id'];
-							echo "<li><a href='admin/post.php?source=edit_post&p_id={$thePostId}>Edit Post</a></li>";
+							echo "<li><a href='admin/post.php?source=edit_post&p_id={$thePostId}'>Edit Post</a></li>";
 						}
 					}
 				?>
