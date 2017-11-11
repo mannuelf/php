@@ -49,7 +49,10 @@ if(isset($_POST['edit_post'])) {
 
 	$edit_post = mysqli_query($dbConnection, $query);
 	confirmQuery($edit_post);
-	echo "<div class='bg-success alert'>post updated <a href='../post.php?p_id={$the_post_id}'>view post</a> or <a href='.	/posts.php?p_id={$the_post_id}'>edit more posts</a></div>";
+	echo "<div class='bg-success alert'>post updated 
+			<a href='../post.php?p_id={$the_post_id}'>View post</a> or 
+			<a href='./posts.php?p_id={$the_post_id}'>Edit more posts</a>
+		</div>";
 }
 
 ?>

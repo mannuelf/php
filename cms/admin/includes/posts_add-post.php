@@ -40,8 +40,10 @@
 		confirmQuery($create_post_query);
 		// get the last created post id
 		$the_post_id = mysqli_insert_id($dbConnection);
-		echo "<div class='bg-success alert'>Post created <a href='../post.php?p_id={$the_post_id}'>view post</a> or <a href='.	/posts.php?p_id={$the_post_id}'>edit more posts</a></div>";
-
+		echo "<div class='bg-success alert'>Post created 
+				<a href='../post.php?p_id={$the_post_id}'>View post</a> or 
+				<a href='./posts.php?p_id={$the_post_id}'>Edit more posts</a>
+			</div>";
 	}
 ?>
 
