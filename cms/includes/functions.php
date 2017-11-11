@@ -9,7 +9,7 @@ function confirmQuery($result) {
 	if ( ! $result) {
 		die("QUERY FAILED ." . mysqli_error($dbConnection));
 	} else {
-		echo "updated";
+		echo "";
 	}
 	return $result;
 }

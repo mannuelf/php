@@ -3,19 +3,21 @@
 <?php include "includes/header.php" ?>
 <?php include "includes/navigation.php" ?>
 
-
 <!-- Page Content -->
 <div class="container">
 	<?php
 		if (isset($_POST['submit'])) {
-			echo "It's working";
 			$username = $_POST['username'];
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 
-			echo $username = mysqli_real_escape_string($dbConnection, $username);
-			echo $email = mysqli_real_escape_string($dbConnection, $email);
-			echo $password = mysqli_real_escape_string($dbConnection, $password);
+			$username = mysqli_real_escape_string($dbConnection, $username);
+			$email = mysqli_real_escape_string($dbConnection, $email);
+			$password = mysqli_real_escape_string($dbConnection, $password);
+
+			$query = "SELECT randSalt FROM cms.users";
+			$selectRandSaltQuery = mysqli_query($dbConnection, $query);
+			confirmQuery($selectRandSaltQuery);
 		}
 	?>
 	<section id="login">
