@@ -21,20 +21,17 @@
 				<b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-fw fa-envelope"></i>
-						Inbox</a>
-				</li>
-				<li>
-					<a href="#"><i class="fa fa-fw fa-gear"></i>
-						Settings</a>
+					<a href="profile.php">
+						<i class="fa fa-fw fa-user"></i>
+						Profile
+					</a>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="../includes/logout.php"><i class="fa fa-fw fa-power-off"></i>
-						Log Out</a>
+					<a href="../includes/logout.php">
+						<i class="fa fa-fw fa-power-off"></i>
+						Log Out
+					</a>
 				</li>
 			</ul>
 		</li>
@@ -55,23 +52,25 @@
 				 </a>
 				<ul id="posts_dropdown" class="collapse">
 					<li>
-						<a href="posts.php"><i class="fa fa-fw fa-align-center"></i>
+						<a href="posts.php">
+							<i class="fa fa-fw fa-align-center"></i>
 							View All Posts
 						</a>
 					</li>
 					<li>
-						<a href="./posts.php?source=add_post"><i class="fa fa-fw fa-plus-circle"></i>
+						<a href="./posts.php?source=add_post">
+							<i class="fa fa-fw fa-plus-circle"></i>
 							Add a Post
 						</a>
 					</li>
 				</ul>
 			</li>
-
 			<li>
 				<a href="categories.php">
-					<i class="fa fa-fw fa-wrench"></i> Categories</a>
+					<i class="fa fa-fw fa-wrench"></i>
+					Categories
+				</a>
 			</li>
-
 			<li class="activ-e">
 				<a href="comments.php"><i class="fa fa-fw fa-comment"></i>
 					Comments</a>
