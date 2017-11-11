@@ -47,7 +47,7 @@ if (isset($_POST['checkBoxArray'])) {
 		<table class="table table-hover table-bordered">
 			<thead>
 			<tr>
-				<th><input id="jqSelectAllBoxes" type="checkbox"></th>
+				<th><input class="jqSelectAllBoxes" type="checkbox"></th>
 				<th>Id</th>
 				<th>Author</th>
 				<th>Title</th>
