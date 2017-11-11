@@ -4,6 +4,7 @@
 
 		date_default_timezone_set('UTC');
 		$post_title = $_POST['post_title'];
+		$post_category_id = $_POST['post_category_id'];
 		$post_author = $_POST['post_author'];
 		$post_date = date('d-m-y');
 		$post_image = $_FILES['post_image']['name'];
@@ -17,6 +18,7 @@
 
 		$query = "INSERT INTO cms.posts(
 			post_title,
+			post_category_id,
 			post_author,
 			post_date,
 			post_image,
@@ -26,16 +28,20 @@
 
 		$query .= "VALUES(
 			'{$post_title}',
+			'{$post_category_id}',
 			'{$post_author}',
-			'{$post_date}',
+			 NOW(),
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',
 			'{$post_status}') ";
 
 		$create_post_query = mysqli_query($dbConnection, $query);
-
 		confirmQuery($create_post_query);
+		// get the last created post id
+		$the_post_id = mysqli_insert_id($dbConnection);
+		echo "<div class='bg-success alert'>Post created <a href='../post.php?p_id={$the_post_id}'>view post</a> or <a href='.	/posts.php?p_id={$the_post_id}'>edit more posts</a></div>";
+
 	}
 ?>
 
@@ -48,7 +54,7 @@
 
 	<div class="form-group">
 		<label for="post_category_id">Post Category ID</label>
-		<select name="post_category" class="form-control">
+		<select name="post_category_id" class="form-control">
 			<?php
 				global $dbConnection;
 				$query = "SELECT * FROM cms.categories";
@@ -84,7 +90,11 @@
 
 	<div class="form-group">
 		<label for="post_status">Post Status</label>
-		<input name="post_status" type="text" class="form-control">
+		<select name="post_status" id="" class="form-control">
+			<option value="">Select Options</option>
+			<option value="published">Published</option>
+			<option value="draft">Draft</option>
+		</select>
 	</div>
 
 	<div class="form-group">
