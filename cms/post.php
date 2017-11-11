@@ -62,12 +62,17 @@
 					$comment_email = $_POST['comment_email'];
 					$comment_content = $_POST['comment_content'];
 
-					$comment_query = "INSERT INTO cms.comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
-					$comment_query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now())";
+					if (! empty($comment_author) && ! empty($comment_content) && ! empty($comment_author)) {
+						$comment_query = "INSERT INTO cms.comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
+						$comment_query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', now())";
 
-					$create_comment_query = mysqli_query($dbConnection, $comment_query);
-					$comment_query = "UPDATE cms.posts SET cms.posts.post_comment_count = post_comment_count + 1 WHERE cms.posts.id = {$the_post_id} ";
-					$update_comment_count = mysqli_query($dbConnection, $comment_query);
+						$create_comment_query = mysqli_query($dbConnection, $comment_query);
+						$comment_query = "UPDATE cms.posts SET cms.posts.post_comment_count = post_comment_count + 1 WHERE cms.posts.id = {$the_post_id} ";
+						$update_comment_count = mysqli_query($dbConnection, $comment_query);
+					} else {
+						echo "<script>alert('You cannot leave an empty comment');</script>";
+					}
+
 				}
 			?>
 			<!-- Comments Form -->
@@ -108,20 +113,18 @@
 					$comment_content = $row['comment_content'];
 					$comment_author = $row['comment_author'];
 				?>
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="http://placehold.it/64x64" alt="">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading">
-								<?php echo $comment_author; ?>
-								<small><?php echo $comment_date; ?></small>
-							</h4>
-							<?php echo $comment_content; ?>
-						</div>
+				<div class="media">
+					<a class="pull-left" href="#">
+						<img class="media-object" src="http://placehold.it/64x64" alt="">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<?php echo $comment_author; ?>
+							<small><?php echo $comment_date; ?></small>
+						</h4>
+						<?php echo $comment_content; ?>
 					</div>
-			<?php var_dump($comment_author,$comment_content); } ?>
-
+				</div>
 		</div>
 		<?php include "sidebar.php" ?>
 	</div>
