@@ -3,15 +3,22 @@ $query = "SELECT * FROM cms.posts";
 $select_posts = mysqli_query($dbConnection, $query);
 
 confirmQuery($select_posts);
+
+if (isset($_POST['checkBoxArray'])) {
+	foreach($_POST['checkBoxArray'] as $checkBoxValue) {
+		$bulkOptions = $_POST['bulkOptions'];
+		echo $checkBoxValue;
+	}
+}
 ?>
 <form action="" method="post">
 	<div class="row col-lg-12 col-md-12">
 		<div class="bulk-options-container col-xs-4">
-			<select name="" id="" class="form-control">
+			<select name="bulkOptions" id="" class="form-control">
 				<option value="">Select options</option>
-				<option value="">Publish</option>
-				<option value="">Draft</option>
-				<option value="">Delete</option>
+				<option value="publish">Publish</option>
+				<option value="draft">Draft</option>
+				<option value="delete">Delete</option>
 			</select>
 		</div>
 		<div class="col-xs-3">
