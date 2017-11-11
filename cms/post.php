@@ -130,3 +130,4 @@
 	</div>
 	<!-- /.row -->
 	<?php include "includes/footer.php" ?>
+</div>

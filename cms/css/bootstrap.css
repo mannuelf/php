@@ -6567,4 +6567,7 @@ button.close {
     display: none !important;
   }
 }
+.btn-custom {
+	background-color: limegreen;
+}
 /*# sourceMappingURL=bootstrap.css.map */
