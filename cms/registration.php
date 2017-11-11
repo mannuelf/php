@@ -11,6 +11,7 @@
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 
+			// escape information from before inserting it into the database
 			$username = mysqli_real_escape_string($dbConnection, $username);
 			$email = mysqli_real_escape_string($dbConnection, $email);
 			$password = mysqli_real_escape_string($dbConnection, $password);
@@ -18,6 +19,10 @@
 			$query = "SELECT randSalt FROM cms.users";
 			$selectRandSaltQuery = mysqli_query($dbConnection, $query);
 			confirmQuery($selectRandSaltQuery);
+		}
+
+		while ($row = mysqli_fetch_array($selectRandSaltQuery)) {
+			echo $salt = $row['randSalt'];
 		}
 	?>
 	<section id="login">

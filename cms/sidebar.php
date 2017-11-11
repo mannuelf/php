@@ -21,6 +21,10 @@
 				</span>
 			</div>
 		</form>
+		<a href="registration.php" class="btn btn-success">
+			Register
+			<span class="glyphicon glyphicon-log-in"></span>
+		</a>
 		<!-- /.input-group -->
 	</div>
 	<!-- Blog Search Well -->
