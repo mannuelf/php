@@ -38,7 +38,10 @@
 				</h2>
 				<p class="lead">
 					<small>
-						by <a href="index.php"><?php echo $post_author ?></a>
+						by
+						<a href="author-post.php?author=<?php echo $post_author ?>&p_id=<?php echo $post_id ?>">
+							<?php echo $post_author ?>
+						</a>
 						<span class="glyphicon glyphicon-time"></span>
 						Posted on <?php echo $post_date ?>
 						<span class="glyphicon glyphicon-tags"></span>

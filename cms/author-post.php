@@ -1,4 +1,5 @@
 <?php include "database/db.php" ?>
+<?php include "includes/functions.php" ?>
 <?php include "includes/header.php" ?>
 <?php include "includes/navigation.php" ?>
 <!-- Page Content -->
@@ -6,22 +7,18 @@
 	<div class="row">
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
-			<h1 class="page-header">
-				For the love of programming. <br>
-				<small>Every day there is something new to learn.</small>
-			</h1>
 			<?php
-			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
+
+			if(isset($_GET['p_id'])) {
+				$the_post_id = $_GET['p_id'];
+				$the_post_author_id = $_GET['author'];
+			}
+
+			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_author = '{$the_post_author_id}' ";
 
 			$select_all_posts = mysqli_query($dbConnection, $query);
 
-			if ( ! $select_all_posts) {
-				echo mysqli_error($select_all_posts);
-			}
-
-			if (isset($_GET['p_id'])) {
-				$post_id = $_GET['p_id'];
-			}
+			confirmQuery($select_all_posts);
 
 			while ($row = mysqli_fetch_assoc($select_all_posts)) {
 				$post_id = $row['id'];
@@ -30,10 +27,8 @@
 				$post_date = $row['post_date'];
 				$post_image = $row['post_image'];
 				$post_content = $row['post_content'];
-				$post_tags = substr($row['post_tags'], 0, 50);
-				$post_status = $row['post_status'];
-
-				if($post_status == 'published') {
+				$post_tags = $row['post_tags'];
+				// break out of the while loop (meh looks dodgy but it works eh)
 				?>
 				<h2>
 					<!--
@@ -44,38 +39,25 @@
 				</h2>
 				<p class="lead">
 					<small>
-						by
-						<a href="author-post.php?author=<?php echo $post_author ?>&p_id=<?php echo $post_id ?>">
-							<?php echo $post_author ?>
-						</a>
+						by <a href="index.php"><?php echo $post_author ?></a>
+						<span class="glyphicon glyphicon-time"></span>
 						Posted on <?php echo $post_date ?>
 						<span class="glyphicon glyphicon-tags"></span>
 						Tags: <?php echo $post_tags ?>
 					</small>
 				</p>
 				<hr>
-				<a href="./post.php?p_id=<?php echo $post_id ?>">
-					<img src="images/<?php echo $post_image ?>" class="img-responsive" alt="<?php echo $post_title ?>">
-				</a>
+				<img src="images/<?php echo $post_image ?>" class="img-responsive" alt="<?php echo $post_title ?>">
 				<hr>
 				<p><?php echo $post_content ?></p>
-				<a class="btn btn-primary" href="./post.php?p_id=<?php echo $post_id ?>">Read More <span
-						class="glyphicon glyphicon-chevron-right"></span></a>
 				<hr>
 
-			<?php } } ?>
-
-			<!-- Pager -->
-			<ul class="pager">
-				<li class="previous">
-					<a href="#">&larr; Older</a>
-				</li>
-				<li class="next">
-					<a href="#">Newer &rarr;</a>
-				</li>
-			</ul>
+			<?php } ?>
+			<hr>
 		</div>
+
 		<?php include "sidebar.php" ?>
 	</div>
 	<!-- /.row -->
 	<?php include "includes/footer.php" ?>
+</div>
