@@ -27,17 +27,16 @@
 			$password = crypt($password, $db_user_password);
 
 			// validation
-			if ( $username === $db_username && $password === $db_user_password) {
+			if ( $username !== $db_username && $password !== $db_user_password) {
+				header("Location: ../index.php");
+			} else {
 				// assign variables to the session so that the admin page can use the data to render stuff
 				$_SESSION['username'] = $db_username;
 				$_SESSION['firstname'] = $db_firstname;
 				$_SESSION['secondname'] = $db_secondname;
 				$_SESSION['user_role'] = $db_user_role;
 				$_SESSION['user_image'] = $db_user_image;
-
 				header("Location: ../admin/index.php");
-			} else {
-				header("Location: ../index.php");
 			}
 		}
 	}
