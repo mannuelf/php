@@ -2,11 +2,11 @@ tinymce.init({
 	selector: 'textarea'
 });
 
-console.log('scripts initiated.');
+console.log('scripts initiated...');
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-	$('.jqSelectAllBoxes').click(function(e) {
+	$('.jqSelectAllBoxes').click(function() {
 		if(this.checked) {
 			$('.jqCheckBoxes').each(function() {
 				console.log('checkIt');
@@ -19,6 +19,13 @@ $(document).ready(function(){
 				this.checked = false;
 			})
 		}
+	});
+
+	var div_box = "<div id='load-screen'><div id='loading'></div></div>";
+	$('body').prepend(div_box);
+
+	$('#load-screen').delay(700).fadeOut(600, function() {
+		$(this).remove();
 	});
 
 });
