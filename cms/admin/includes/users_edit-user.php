@@ -33,14 +33,24 @@
 		// move image to images folder
 		move_uploaded_file($user_image_temp, "../images/$user_image");
 
+		$query = "SELECT randSalt FROM cms.users";
+		$selectRandQuery = mysqli_query($dbConnection, $query);
+		if (! $selectRandQuery) {
+			confirmQuery($selectRandQuery);
+		}
+		// only do one for this one user, no need to loop over the table rows to get all the passwords
+		$row = mysqli_fetch_array($selectRandQuery);
+		$salt = $row['randSalt'];
+		$hashed_password = crypt($user_password, $salt);
+
 		$query = "UPDATE cms.users SET ";
-			$query .= "user_name = '{$user_name}', ";
-			$query .= "user_password = '{$user_password}', ";
-			$query .= "user_firstname = '{$user_firstname}', ";
-			$query .= "user_secondname = '{$user_secondname}', ";
-			$query .= "user_email = '{$user_email}', ";
-			$query .= "user_role = '{$user_role}', ";
-			$query .= "user_image = '{$user_image}' ";
+		$query .= "user_name = '{$user_name}', ";
+		$query .= "user_password = '{$hashed_password}', ";
+		$query .= "user_firstname = '{$user_firstname}', ";
+		$query .= "user_secondname = '{$user_secondname}', ";
+		$query .= "user_email = '{$user_email}', ";
+		$query .= "user_role = '{$user_role}', ";
+		$query .= "user_image = '{$user_image}' ";
 		$query .= "WHERE cms.users.id = {$the_user_id}";
 
 		$edit_user_query = mysqli_query($dbConnection, $query);
