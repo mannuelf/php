@@ -5,12 +5,10 @@
 	if (isset($_POST['login'])) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
 		$username = mysqli_real_escape_string($dbConnection, $username);
 		$password = mysqli_real_escape_string($dbConnection, $password);
 		$query = "SELECT * FROM cms.users WHERE cms.users.user_name = '{$username}'";
 		$select_user_query = mysqli_query($dbConnection, $query);
-
 
 		if ( ! $select_user_query) {
 			die("QUERY FAILED" . mysqli_error($dbConnection));
@@ -25,6 +23,8 @@
 			$db_user_role = $row['user_role'];
 			$db_user_image = $row['user_image'];
 			$db_user_password = $row['user_password'];
+
+			$password = crypt($password, $db_user_password);
 
 			// validation
 			if ( $username === $db_username && $password === $db_user_password) {

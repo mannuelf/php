@@ -20,6 +20,10 @@
 				$query = "SELECT randSalt FROM cms.users";
 				$selectRandSaltQuery = mysqli_query($dbConnection, $query);
 				confirmQuery($selectRandSaltQuery);
+
+				$row = mysqli_fetch_array($selectRandSaltQuery);
+				$salt = $row['randSalt'];
+				$password = crypt($password, $salt);
 				$message = "Your registration is complete";
 			} else {
 				$message = "Fields cannot be empty";
