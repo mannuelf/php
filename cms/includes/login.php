@@ -15,7 +15,6 @@
 		}
 
 		while ($row = mysqli_fetch_array($select_user_query)) {
-			var_dump('while here');
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];
@@ -40,6 +39,4 @@
 			}
 		}
 	}
-
-
 ?>
