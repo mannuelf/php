@@ -39,8 +39,8 @@
 				</h2>
 				<p class="lead">
 					<small>
-						by <a href="index.php"><?php echo $post_author ?></a>
-						<span class="glyphicon glyphicon-time"></span>
+						All Posts by <?php echo $post_author ?>
+
 						Posted on <?php echo $post_date ?>
 						<span class="glyphicon glyphicon-tags"></span>
 						Tags: <?php echo $post_tags ?>
