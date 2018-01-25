@@ -1,27 +1,27 @@
 <?php
 
 if (isset($_POST['checkBoxArray'])) {
-	foreach($_POST['checkBoxArray'] as $postId) {
+	foreach($_POST['checkBoxArray'] as $postValueId) {
 		$bulkOptions = $_POST['bulkOptions'];
 
 		switch($bulkOptions) {
 			case 'published':
-				$query = "UPDATE cms.posts SET cms.posts.post_status='{$bulkOptions}' WHERE cms.posts.id='{$postId}'";
+				$query = "UPDATE cms.posts SET cms.posts.post_status='{$bulkOptions}' WHERE cms.posts.id='{$postValueId}'";
 				$update_to_published_status = mysqli_query($dbConnection, $query);
 				confirmQuery($update_to_published_status);
 			break;
 			case 'draft':
-				$query = "UPDATE cms.posts SET cms.posts.post_status='{$bulkOptions}' WHERE cms.posts.id='{$postId}'";
+				$query = "UPDATE cms.posts SET cms.posts.post_status='{$bulkOptions}' WHERE cms.posts.id='{$postValueId}'";
 				$update_to_draft_status = mysqli_query($dbConnection, $query);
 				confirmQuery($update_to_draft_status);
 			break;
 			case 'delete':
-				$query = "DELETE FROM cms.posts WHERE cms.posts.id='{$postId}'";
+				$query = "DELETE FROM cms.posts WHERE cms.posts.id='{$postValueId}'";
 				$update_to_delete_status = mysqli_query($dbConnection, $query);
 				confirmQuery($update_to_delete_status);
 			break;
 			case 'clone':
-				$query = "SELECT * FROM cms.posts WHERE cms.posts.id='{$postId}'";
+				$query = "SELECT * FROM cms.posts WHERE cms.posts.id='{$postValueId}'";
 				$select_post_query = mysqli_query($dbConnection, $query);
 				confirmQuery($select_post_query);
 				while ($row = mysqli_fetch_assoc($select_post_query)) {
@@ -35,10 +35,19 @@ if (isset($_POST['checkBoxArray'])) {
 					$post_tags = $row['post_tags'];
 					$post_comment_count = $row['post_comment_count'];
 					$post_status = $row['post_status'];
+					$post_views_count = $row['post_views_count'];
 				}
 
-				$query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status) ";
-				$query .= "VALUES({$post_title}, {$post_author}, now(), {$post_date}, {$post_image}, {$post_content}, {$post_tags}, {$post_status})";
+				$query = "INSERT INTO cms.posts(id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_comment_count, post_category_id, post_views_count) ";
+				$query .= "VALUES({$post_id}, {$post_title}, {$post_author}, now(), 
+					{$post_image}, {$post_date}, {$post_image}, {$post_content}, 
+					{$post_tags}, {$post_status}, {$post_comment_count}, 
+					{$post_category_id}, {$post_views_count} )";
+
+				$create_post_query = mysqli_query($dbConnection, $query);
+
+				confirmQuery($create_post_query);
+				$the_post_id = mysqli_insert_id($dbConnection);
 
 			break;
 		}
@@ -87,7 +96,7 @@ if (isset($_POST['checkBoxArray'])) {
 				$query = "SELECT * FROM cms.posts ORDER BY cms.posts.id ASC ";
 				$select_posts = mysqli_query($dbConnection, $query);
 				confirmQuery($select_posts);
-				
+
 				while ($row = mysqli_fetch_assoc($select_posts)) {
 					$post_id = $row['id'];
 					$post_title = $row['post_title'];
