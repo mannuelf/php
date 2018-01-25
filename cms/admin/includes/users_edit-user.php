@@ -89,7 +89,7 @@
 	<div class="form-group">
 		<label for="user_role">Role</label>
 		<select name="user_role" class="form-control">
-			<option value="subscriber"> Choose one</option>
+			<option value="<?php echo $user_role; ?>"> <?php echo $user_role; ?> </option>
 			<?php
 				if($user_role == 'admin') {
 					echo "<option value='subscriber'>subscriber</option>";
