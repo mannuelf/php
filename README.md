@@ -5,7 +5,7 @@ php -S localhost:8000
 ```
 
 ### Front end
-http://0.0.0.0:8090/cms/
+http://0.0.0.0:8000/cms/
 
 ### Admin
-http://0.0.0.0:8090/cms/admin/
+http://0.0.0.0:8000/cms/admin/
