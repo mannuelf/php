@@ -34,7 +34,8 @@
 				$_SESSION['secondname'] = $db_secondname;
 				$_SESSION['user_role'] = $db_user_role;
 				$_SESSION['user_image'] = $db_user_image;
-				header("Location: ../admin/");
+
+				header("Location: ../admin/index.php");
 			} else {
 				header("Location: ../index.php");
 			}
