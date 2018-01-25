@@ -84,70 +84,70 @@ if (isset($_POST['checkBoxArray'])) {
 			</thead>
 			<tbody>
 			<?php
-			$query = "SELECT * FROM cms.posts ORDER BY cms.posts.id ASC ";
-			$select_posts = mysqli_query($dbConnection, $query);
+				$query = "SELECT * FROM cms.posts ORDER BY cms.posts.id ASC ";
+				$select_posts = mysqli_query($dbConnection, $query);
+				confirmQuery($select_posts);
+				
+				while ($row = mysqli_fetch_assoc($select_posts)) {
+					$post_id = $row['id'];
+					$post_title = $row['post_title'];
+					$post_category_id = $row['post_category_id'];
+					$post_author = $row['post_author'];
+					$post_date = $row['post_date'];
+					$post_image = $row['post_image'];
+					$post_content = $row['post_content'];
+					$post_tags = $row['post_tags'];
+					$post_comment_count = $row['post_comment_count'];
+					$post_status = $row['post_status'];
+					$post_views_count = $row['post_views_count'];
 
-			confirmQuery($select_posts);
-			while ($row = mysqli_fetch_assoc($select_posts)) {
-				$post_id = $row['id'];
-				$post_title = $row['post_title'];
-				$post_category_id = $row['post_category_id'];
-				$post_author = $row['post_author'];
-				$post_date = $row['post_date'];
-				$post_image = $row['post_image'];
-				$post_content = $row['post_content'];
-				$post_tags = $row['post_tags'];
-				$post_comment_count = $row['post_comment_count'];
-				$post_status = $row['post_status'];
-				$post_views_count = $row['post_views_count'];
+					echo "<tr>";
+					?>
+						<td><input class='jqCheckBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id; ?>'></td>
+					<?php
+					echo "<td>{$post_id}</td>";
+					echo "<td>{$post_author}</td>";
+					echo "<td>{$post_title}</td>";
 
-				echo "<tr>";
-				?>
-					<td><input class='jqCheckBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id; ?>'></td>
-				<?php
-				echo "<td>{$post_id}</td>";
-				echo "<td>{$post_author}</td>";
-				echo "<td>{$post_title}</td>";
-
-				// fetch the category title from the DB
-				$query = "SELECT * FROM cms.categories WHERE cms.categories.cat_id = {$post_category_id}";
-				$select_categories_id = mysqli_query($dbConnection, $query);
-				while ($row = mysqli_fetch_assoc($select_categories_id)) {
-					$cat_id = $row['cat_id'];
-					$cat_title = $row['cat_title'];
-					echo "<td>{$cat_title}</td>";
+					// fetch the category title from the DB
+					$query = "SELECT * FROM cms.categories WHERE cms.categories.cat_id = {$post_category_id}";
+					$select_categories_id = mysqli_query($dbConnection, $query);
+					while ($row = mysqli_fetch_assoc($select_categories_id)) {
+						$cat_id = $row['cat_id'];
+						$cat_title = $row['cat_title'];
+						echo "<td>{$cat_title}</td>";
+					}
+					echo "<td>{$post_status}</td>";
+					echo "<td><img src='../images/{$post_image}' width='100px'></td>";
+					echo "<td>{$post_content}</td>";
+					echo "<td>{$post_tags}</td>";
+					echo "<td>{$post_comment_count}</td>";
+					echo "<td>{$post_date}</td>";
+					echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
+					echo "<td><a href='./posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
+					echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?');\" href='./posts.php?delete={$post_id}'>delete</a></td>";
+					echo "<td> <a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>"; // send GET request to delete
+					echo "</tr>";
 				}
-				echo "<td>{$post_status}</td>";
-				echo "<td><img src='../images/{$post_image}' width='100px'></td>";
-				echo "<td>{$post_content}</td>";
-				echo "<td>{$post_tags}</td>";
-				echo "<td>{$post_comment_count}</td>";
-				echo "<td>{$post_date}</td>";
-				echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
-				echo "<td><a href='./posts.php?source=edit_post&p_id={$post_id}'>edit</a></td>";
-				echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?');\" href='./posts.php?delete={$post_id}'>delete</a></td>";
-				echo "<td> <a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>"; // send GET request to delete
-				echo "</tr>";
-			}
-			?>
-			<?php
-			// DELETE A POST
-			if (isset($_GET['delete'])) {
-				global $dbConnection;
-				$the_post_id = $_GET['delete'];
-				$query = "DELETE FROM cms.posts WHERE id = {$the_post_id}";
-				$delete_query = mysqli_query($dbConnection, $query);
-				confirmQuery($delete_query);
-			}
+				?>
+				<?php
+				// DELETE A POST
+				if (isset($_GET['delete'])) {
+					global $dbConnection;
+					$the_post_id = $_GET['delete'];
+					$query = "DELETE FROM cms.posts WHERE id = {$the_post_id}";
+					$delete_query = mysqli_query($dbConnection, $query);
+					confirmQuery($delete_query);
+				}
 
-			// reset the page view count
-			if (isset($_GET['reset'])) {
-				$the_post_id = $_GET['reset'];
+				// reset the page view count
+				if (isset($_GET['reset'])) {
+					$the_post_id = $_GET['reset'];
 
-				$query = "UPDATE cms.posts SET cms.posts.post_views_count = 0 WHERE cms.posts.id=" . mysqli_real_escape_string($dbConnection, $_GET['reset']) . " ";
-				$reset_query = mysqli_query($dbConnection, $query);
-				header("Location: posts.php");
-			}
+					$query = "UPDATE cms.posts SET cms.posts.post_views_count = 0 WHERE cms.posts.id=" . mysqli_real_escape_string($dbConnection, $_GET['reset']) . " ";
+					$reset_query = mysqli_query($dbConnection, $query);
+					header("Location: posts.php");
+				}
 			?>
 			</tbody>
 		</table>

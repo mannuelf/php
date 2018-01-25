@@ -30,7 +30,7 @@
 			'{$post_title}',
 			'{$post_category_id}',
 			'{$post_author}',
-			 NOW(),
+			 now(),
 			'{$post_image}',
 			'{$post_content}',
 			'{$post_tags}',

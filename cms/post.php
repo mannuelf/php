@@ -15,7 +15,6 @@
 				// increment the column by 1 every time for a post
 				$view_query = "UPDATE cms.posts SET cms.posts.post_views_count = cms.posts.post_views_count + 1 WHERE cms.posts.id = $the_post_id";
 				$send_query = mysqli_query($dbConnection, $view_query);
-				var_dump($send_query);
 				confirmQuery($send_query);
 
 				$query = "SELECT * FROM cms.posts WHERE cms.posts.id = $the_post_id ";

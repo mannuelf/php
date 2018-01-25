@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <?php
 	// kill the current user session, by assigning the session variable to null
 	$_SESSION['username'] = null;
