@@ -145,7 +145,7 @@ if(isset($_POST['edit_user'])) {
 						</div>
 
 						<div class="form-group">
-							<input type="submit" name="update_profile	" aria-labelledby="update_profile" value="Update Profile" class="btn btn-primary">
+							<input type="submit" name="update_profile" aria-labelledby="update_profile" value="Update Profile" class="btn btn-primary">
 						</div>
 					</form>
 

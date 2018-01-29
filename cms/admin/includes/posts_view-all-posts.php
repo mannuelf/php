@@ -38,7 +38,7 @@ if (isset($_POST['checkBoxArray'])) {
 					$post_views_count = $row['post_views_count'];
 				}
 
-				$query = "INSERT INTO cms.posts(id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_comment_count, post_category_id, post_views_count) ";
+				$query = "INSERT INTO posts(id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_comment_count, post_category_id, post_views_count) ";
 				$query .= "VALUES({$post_id}, {$post_title}, {$post_author}, now(), 
 					{$post_image}, {$post_date}, {$post_image}, {$post_content}, 
 					{$post_tags}, {$post_status}, {$post_comment_count}, 
