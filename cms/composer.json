@@ -1,0 +1,13 @@
+{
+    "name": "foundations/cms",
+    "description": "testing small blogging platform",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ce team",
+            "email": "tech@superbalist.com"
+        }
+    ],
+    "require": {}
+}
