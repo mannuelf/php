@@ -1,6 +1,13 @@
-<?php include "database/db.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php
+include "app/Models/Generic.php";
+include "database/db.php";
+include "includes/header.php";
+include "includes/navigation.php";
+
+use App\Models\Generic;
+
+?>
+
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -11,6 +18,7 @@
 				<small>Every day there is something new to learn.</small>
 			</h1>
 			<?php
+			
 			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
 
 			$select_all_posts = mysqli_query($dbConnection, $query);
