@@ -1,5 +1,7 @@
 <?php
-include "app/Models/Generic.php";
+
+require_once 'vendor/autoload.php';
+
 include "database/db.php";
 include "includes/header.php";
 include "includes/navigation.php";
@@ -18,20 +20,12 @@ use App\Models\Generic;
 				<small>Every day there is something new to learn.</small>
 			</h1>
 			<?php
-			
-			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
-
-			$select_all_posts = mysqli_query($dbConnection, $query);
-
-			if ( ! $select_all_posts) {
-				echo mysqli_error($select_all_posts);
-			}
 
 			if (isset($_GET['p_id'])) {
 				$post_id = $_GET['p_id'];
 			}
 
-			while ($row = mysqli_fetch_assoc($select_all_posts)) {
+			foreach (Generic::fetchPosts() as $row) {
 				$post_id = $row['id'];
 				$post_title = $row['post_title'];
 				$post_author = $row['post_author'];
