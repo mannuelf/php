@@ -72,7 +72,7 @@ use App\Models\Generic;
 				<?php
 					$count = Generic::fetchPostCount();
 					for($i = 1; $i <= $count; $i++) {
-						echo "<li><a href='$i'>$i</a></li>";
+						echo "<li><a href='index.php?page={$i}'>$i</a></li>";
 					}
 				?>
 			</ul>

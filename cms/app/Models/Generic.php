@@ -31,7 +31,7 @@ class Generic
 		$sql = "SELECT * FROM cms.posts";
 		$find_count = mysqli_query($db, $sql);
 		$count = mysqli_num_rows($find_count);
-		$count = ceil($count / 5);
+		$count = ceil($count / 6);
 		return $count;
 	}
 }
