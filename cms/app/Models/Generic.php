@@ -109,7 +109,7 @@ class Generic
 					%s, 
 					%d
 				)';
-			
+
 		$sql = sprintf(
 			$sql,
 			$data['the_post_id'],
