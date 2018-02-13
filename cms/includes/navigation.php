@@ -16,7 +16,7 @@
 			<ul class="nav navbar-nav">
 				<?php
 					$query = "SELECT * FROM cms.categories";
-					$select_all_categories = mysqli_query($dbConnection, $query);
+					$select_all_categories = mysqli_query($db, $query);
 
 					if(! $select_all_categories) {
 						echo mysqli_error($select_all_categories);

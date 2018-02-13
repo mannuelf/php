@@ -5,12 +5,23 @@ use App\Database\Connection;
 
 class Generic
 {
-	// static functions for each query
-	static function fetchPosts()
+	private $db;
+
+	/**
+	 * $db
+	 */
+	function __construct($db)
 	{
-		$db = Connection::connect();
+		$this->db = $db;
+	}
+
+	/**
+	 * return array
+	 */
+	function fetchPosts()
+	{
 		$sql = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
