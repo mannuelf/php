@@ -12,34 +12,12 @@
 						CMS welcome back -
 						<span class="text-success">
 							<?php
-								echo $_SESSION['username'];
+								if (isset($_SESSION['username'])) {
+									echo $_SESSION['username'];
+								}
 							?>
 						</span>
 					</h1>
-
-					<?php
-
-						$session = session_id();
-						$time = time();
-						$timeOutInSeconds = 60;
-						$timeOut = ($time -$timeOutInSeconds);
-
-						$query = "SELECT * FROM cms.users_online WHERE session = '{$session}'";
-						$sendQuery = mysqli_query($dbConnection, $query);
-
-						$count = mysqli_num_rows($sendQuery);
-						if ($count === null) {
-							mysqli_query($dbConnection, "INSERT INTO cms.users_online(session, time) VALUES('{$session}','{$time}')");
-						} else {
-							mysqli_query($dbConnection, "UPDATE cms.users_online SET time = '{$time}' WHERE session = '{$session}'");
-						}
-
-						$usersOnlineQuery = mysqli_query($dbConnection, "SELECT * FROM cms.users_online WHERE time > '{$timeOut}'");
-						var_dump($usersOnlineQuery);
-						$countUser = mysqli_num_rows($usersOnlineQuery);
-						var_dump($countUser);
-					?>
-					<h2><?php echo $countUser; ?></h2>
 					<ol class="breadcrumb">
 						<li>
 							<i class="fa fa-dashboard"></i> <a href="index.php">Dashboard</a>
