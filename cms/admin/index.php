@@ -1,5 +1,23 @@
 <?php include "includes/admin_header.php" ?>
+<?php
 
+
+$sesstion = session_id();
+$time = time();
+$timeOutInSeconds = 60;
+$timeOut = ($time -$timeOutInSeconds);
+
+$query = "SELECT * FROM cms.users_online WHERE session ='{$session}'";
+$sendQuery = mysqli_query($dbConnection, $query);
+
+$count = mysqli_num_rows($sendQuery);
+if ($count === NULL) {
+	mysqli_query($dbConnection, "INSERT cms.users_online(session, time) VALUES('{$session}','{$time}')");
+} else {
+
+}
+
+?>
 <div id="wrapper">
 	<!-- Navigation -->
 	<?php include "includes/admin_navigation.php" ?>
