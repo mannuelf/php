@@ -69,12 +69,12 @@ use App\Models\Generic;
 
 			<!-- Pager -->
 			<ul class="pager">
-				<li class="previous">
-					<a href="#">&larr; Older</a>
-				</li>
-				<li class="next">
-					<a href="#">Newer &rarr;</a>
-				</li>
+				<?php
+					$count = Generic::fetchPostCount();
+					for($i = 1; $i <= $count; $i++) {
+						echo "<li><a href='index.php?page={$i}'>$i</a></li>";
+					}
+				?>
 			</ul>
 		</div>
 		<?php include "sidebar.php" ?>
