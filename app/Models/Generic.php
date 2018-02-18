@@ -76,10 +76,26 @@ class Generic
 		return $row;
 	}
 
+	static function fetchPostCount()
+	{
+		$db = Connection::connect();
+		$sql = "SELECT * FROM csm.posts";
+		$query = mysqli_query($db, $sql);
+
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+
+		$row = mysqli_fetch_assoc($query);
+
+		return $row;
+
+	}
+
 	static function updatePostCounter($id)
 	{
 		$db = Connection::connect();
-		$sql = "UPDATE cms.posts SET cms.posts.post_views_count = cms.posts.post_views_count + 1 WHERE cms.posts.id = {$id}";
+		$sql = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
 		$query = mysqli_query($db, $sql);
 
 		if ( ! $query) {
