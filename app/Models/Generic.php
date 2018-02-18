@@ -86,16 +86,15 @@ class Generic
 			echo mysqli_error($query);
 		}
 
-		$row = mysqli_fetch_assoc($query);
+		$count = mysqli_num_rows($query);
 
-		return $row;
-
+		return $count;
 	}
 
 	static function updatePostCounter($id)
 	{
 		$db = Connection::connect();
-		$sql = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' ";
+		$sql = "UPDATE cms.posts SET cms.posts.post_views_count = cms.posts.post_views_count + 1 WHERE cms.posts.id = {$id}";
 		$query = mysqli_query($db, $sql);
 
 		if ( ! $query) {
