@@ -86,9 +86,9 @@ class Generic
 			echo mysqli_error($query);
 		}
 
-		$count = mysqli_num_rows($query);
+		$row = mysqli_fetch_assoc($query);
 
-		return $count;
+		return $row;
 	}
 
 	static function updatePostCounter($id)
