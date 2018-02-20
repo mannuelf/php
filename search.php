@@ -1,6 +1,14 @@
-<?php include "database/db.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php
+
+require_once 'vendor/autoload.php';
+
+include "database/db.php";
+include "includes/header.php";
+include "includes/navigation.php";
+
+use App\Models\Generic;
+?>
+
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -13,17 +21,11 @@
 			<?php
 			if (isset($_POST['submit'])) {
 				$search = $_POST['search'];
-				$query = "SELECT * FROM cms.posts WHERE post_tags LIKE '%$search%'";
-				$searchQuery = mysqli_query($dbConnection, $query);
-				if (!$searchQuery) {
-					die("QUERY FAILED" . mysqli_error($dbConnection));
-				}
-				$count = mysqli_num_rows($searchQuery);
-				if ($count == 0) {
+				$results = Generic::fetchSearchResults($search);
+				if (empty($results)) {
 					echo "<h2>No result.</h2>";
-				}
-				else {
-					while ($row = mysqli_fetch_assoc($searchQuery)) {
+				} else {
+					foreach ($results as $row) {
 						$post_title = $row['post_title'];
 						$post_author = $row['post_author'];
 						$post_date = $row['post_date'];
