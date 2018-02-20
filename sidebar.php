@@ -1,3 +1,4 @@
+<?php use App\Models\Generic; ?>
 <!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
 	<!-- Login -->
@@ -45,6 +46,7 @@
 
 	<!-- Blog Categories Well -->
 	<div class="well">
+<<<<<<< HEAD
 		<?php
 			$query = "SELECT * FROM cms.categories";
 
@@ -54,12 +56,14 @@
 				echo mysqli_error($select_all_categories);
 			}
 		?>
+=======
+>>>>>>> master
 		<h4>Blog Categories</h4>
 		<div class="row">
 			<div class="col-lg-6">
 				<ul class="list-unstyled">
 					<?php
-						while ($row = mysqli_fetch_assoc($select_all_categories)) {
+						foreach ( Generic::fetchCategories() as $row ) {
 							$cat_title = $row['cat_title'];
 							$cat_id = $row['cat_id'];
 							//send a parameter of the category id

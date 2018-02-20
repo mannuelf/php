@@ -21,6 +21,7 @@
 				$selectRandSaltQuery = mysqli_query($dbConnection, $query);
 				confirmQuery($selectRandSaltQuery);
 				$row = mysqli_fetch_array($selectRandSaltQuery);
+
 				$salt = $row['randSalt'];
 				$password = crypt($password, $salt);
 

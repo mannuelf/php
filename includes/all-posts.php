@@ -1,17 +1,11 @@
 <?php
-$query = "SELECT * FROM cms.posts";
 
-$select_all_posts = mysqli_query($dbConnection, $query);
-
-if (!$select_all_posts) {
-	echo mysqli_error($select_all_posts);
-}
 
 if(isset($_GET['p_id'])) {
 	$post_id = $_GET['p_id'];
 }
 
-while ($row = mysqli_fetch_assoc($select_all_posts)) {
+foreach (Generic::fetchPosts() as $row) {
 	$post_id = $row['id'];
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];
