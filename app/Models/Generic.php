@@ -5,11 +5,19 @@ use App\Database\Connection;
 
 class Generic
 {
-	// static functions for each query
-	static function fetchPosts()
-	{
-		$db = Connection::connect();
+	private $db;
 
+	/**
+	 * $db
+	 */
+	function __construct($db)
+	{
+		$this->db = $db;
+	}
+
+	// static functions for each query
+	function fetchPosts()
+	{
 		$per_page = 3;
 		if (isset($_GET['page'])) {
 			$page = $_GET['page'];
@@ -25,7 +33,7 @@ class Generic
 		}
 
 		$sql = "SELECT * FROM cms.posts WHERE cms.posts.post_status = 'Published' LIMIT $page_1, $per_page";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -40,17 +48,16 @@ class Generic
 	}
 
 	// return number of posts by counting the number of rows
-	static function fetchPostCount()
+	function fetchPostCount()
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM cms.posts";
-		$find_count = mysqli_query($db, $sql);
+		$find_count = mysqli_query($this->db, $sql);
 		$count = mysqli_num_rows($find_count);
 		$count = ceil($count / 5); // make int, not float
 		return $count;
 	}
 
-	static function pageNumberSetter()
+	function pageNumberSetter()
 	{
 		// TODO
 	}

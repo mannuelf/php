@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 // Bootstrap the application
-require_once 'app/bootstrap/start.php';
+require_once 'bootstrap/start.php';
 
 include "includes/header.php";
 include "includes/navigation.php";
@@ -71,7 +71,7 @@ use App\Models\Generic;
 			<!-- Pager -->
 			<ul class="pager">
 				<?php
-					$count = Generic::fetchPostCount();
+					$count = (new Generic($db))->fetchPostCount();
 					for($i = 1; $i <= $count; $i++) {
 						echo "<li><a href='index.php?page={$i}'>$i</a></li>";
 					}
