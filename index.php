@@ -72,9 +72,10 @@ use App\Models\Generic;
 			<ul class="pager">
 				<?php
 					$count = (new Generic($db))->fetchPostCount();
-					for($i = 1; $i <= $count; $i++) {
-						echo "<li><a href='index.php?page={$i}'>$i</a></li>";
-					}
+					var_dump($count);
+					// for($i = 1; $i <= $count; $i++) {
+					// 	echo "<li><a href='index.php?page={$i}'>$i</a></li>";
+					// }
 				?>
 			</ul>
 		</div>

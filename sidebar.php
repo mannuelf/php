@@ -46,24 +46,12 @@
 
 	<!-- Blog Categories Well -->
 	<div class="well">
-<<<<<<< HEAD
-		<?php
-			$query = "SELECT * FROM cms.categories";
-
-			$select_all_categories = mysqli_query($db, $query);
-
-			if (!$select_all_categories) {
-				echo mysqli_error($select_all_categories);
-			}
-		?>
-=======
->>>>>>> master
 		<h4>Blog Categories</h4>
 		<div class="row">
 			<div class="col-lg-6">
 				<ul class="list-unstyled">
 					<?php
-						foreach ( Generic::fetchCategories() as $row ) {
+						foreach ( (new Generic($db))->fetchCategories() as $row ) {
 							$cat_title = $row['cat_title'];
 							$cat_id = $row['cat_id'];
 							//send a parameter of the category id

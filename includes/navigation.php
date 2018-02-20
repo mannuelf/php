@@ -20,14 +20,7 @@ use App\Models\Generic;
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<?php
-<<<<<<< HEAD
-					$query = "SELECT * FROM cms.categories";
-					$select_all_categories = mysqli_query($db, $query);
-=======
->>>>>>> master
-
-
-					foreach(Generic::fetchCategories() as $row) {
+					foreach((new Generic($db))->fetchCategories() as $row) {
 						$cat_id = $row['cat_id'];
 						$cat_title = $row['cat_title'];
 						echo "<li><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
