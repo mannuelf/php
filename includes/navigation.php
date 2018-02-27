@@ -1,3 +1,8 @@
+<?php
+require_once 'vendor/autoload.php';
+
+use App\Models\Generic;
+?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -15,14 +20,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<?php
-					$query = "SELECT * FROM cms.categories";
-					$select_all_categories = mysqli_query($dbConnection, $query);
-
-					if(! $select_all_categories) {
-						echo mysqli_error($select_all_categories);
-					}
-
-					while($row = mysqli_fetch_assoc($select_all_categories)) {
+					foreach((new Generic($db))->fetchCategories() as $row) {
 						$cat_id = $row['cat_id'];
 						$cat_title = $row['cat_title'];
 						echo "<li><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";

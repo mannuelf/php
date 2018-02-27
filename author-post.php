@@ -1,7 +1,15 @@
-<?php include "database/db.php" ?>
-<?php include "includes/functions.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php
+
+require_once 'vendor/autoload.php';
+
+include "database/db.php";
+include "includes/header.php";
+include "includes/navigation.php";
+include "includes/functions.php";
+
+use App\Models\Generic;
+
+?>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
