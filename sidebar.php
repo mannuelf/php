@@ -51,7 +51,7 @@
 			<div class="col-lg-6">
 				<ul class="list-unstyled">
 					<?php
-						foreach ( Generic::fetchCategories() as $row ) {
+						foreach ( (new Generic($db))->fetchCategories() as $row ) {
 							$cat_title = $row['cat_title'];
 							$cat_id = $row['cat_id'];
 							//send a parameter of the category id

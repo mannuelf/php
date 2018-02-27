@@ -3,8 +3,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once 'vendor/autoload.php';
+// Bootstrap the application
+require_once 'bootstrap/start.php';
 
-include "database/db.php";
 include "includes/header.php";
 include "includes/navigation.php";
 
@@ -27,7 +28,7 @@ use App\Models\Generic;
 				$post_id = $_GET['p_id'];
 			}
 
-			foreach (Generic::fetchPosts() as $row) {
+			foreach ((new Generic($db))->fetchPosts() as $row) {
 				$post_id = $row['id'];
 				$post_title = $row['post_title'];
 				$post_author = $row['post_author'];
@@ -72,7 +73,7 @@ use App\Models\Generic;
 			<!-- Pager -->
 			<ul class="pager">
 				<?php
-					$count = Generic::fetchPostCount();
+					$count = (new Generic($db))->fetchPostCount();
 					for($i = 1; $i <= $count; $i++) {
 						echo "<li><a href='index.php?page={$i}'>$i</a></li>";
 					}

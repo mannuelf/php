@@ -3,20 +3,26 @@ namespace App\Database;
 
 class Connection
 {
-	public static $config = [
-		'host' => '127.0.0.1',
-		'user' => 'root',
-		'pass' => 'root',
-		'schema' => 'cms',
-	];
+	private $config = [];
 
-	public static function connect()
+	/**
+	 * array $config
+	 */
+	function __construct($config)
+	{
+		$this->config = $config;
+	}
+
+	/**
+	 * returns mysqli_connect
+	 */
+	function connect()
 	{
 		$dbConnection = mysqli_connect(
-			self::$config['host'],
-			self::$config['user'],
-			self::$config['pass'],
-			self::$config['schema']
+			$this->config['host'],
+			$this->config['user'],
+			$this->config['pass'],
+			$this->config['schema']
 		);
 
 		if (! $dbConnection) {
@@ -24,6 +30,5 @@ class Connection
 		}
 
 		return $dbConnection;
-
 	}
 }
