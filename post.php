@@ -1,6 +1,8 @@
 <?php
 require_once 'vendor/autoload.php';
-include "database/db.php";
+// Bootstrap the application
+require_once 'bootstrap/start.php';
+
 include "includes/functions.php";
 include "includes/header.php";
 include "includes/navigation.php";
@@ -18,10 +20,10 @@ use App\Models\Generic;
 					die();
 				}
 
-				$row = Generic::fetchPost($the_post_id);
+				$row = (new Generic($db))->fetchPost($the_post_id);
 
 				// increment the column by 1 every time for a post
-				Generic::updatePostCounter($the_post_id);
+				(new Generic($db))->updatePostCounter($the_post_id);
 
 				$post_id = $row['id'];
 				$post_title = $row['post_title'];
@@ -109,7 +111,7 @@ use App\Models\Generic;
 				$show_comment_query .= "AND cms.comments.comment_status = 'Approved' ";
 				$show_comment_query .= "ORDER BY cms.comments.comment_id DESC ";
 
-				$select_comment_query = mysqli_query($dbConnection, $show_comment_query);
+				$select_comment_query = mysqli_query($db, $show_comment_query);
 				confirmQuery($select_comment_query);
 
 				while ($row = mysqli_fetch_array($select_comment_query)) {

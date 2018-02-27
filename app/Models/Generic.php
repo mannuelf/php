@@ -5,12 +5,21 @@ use App\Database\Connection;
 
 class Generic
 {
+	private $db;
+
+	/**
+	 * $db
+	 */
+	function __construct($db)
+	{
+		$this->db = $db;
+	}
+
 	// static functions for each query
-	static function fetchPosts()
+	function fetchPosts()
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM posts WHERE posts.post_status = 'Published' ";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -25,11 +34,10 @@ class Generic
 	}
 
 
-	static function fetchCategories()
+	function fetchCategories()
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM categories ORDER BY categories.cat_title";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -43,11 +51,10 @@ class Generic
 		return $result;
 	}
 
-	static function fetchSearchResults($search)
+	function fetchSearchResults($search)
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM posts WHERE post_tags LIKE '%{$search}%'";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -61,11 +68,10 @@ class Generic
 		return $result;
 	}
 
-	static function fetchPost($id)
+	function fetchPost($id)
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM posts WHERE posts.id = {$id}";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -76,11 +82,10 @@ class Generic
 		return $row;
 	}
 
-	static function fetchPostCount()
+	function fetchPostCount()
 	{
-		$db = Connection::connect();
-		$sql = "SELECT * FROM csm.posts";
-		$query = mysqli_query($db, $sql);
+		$sql = "SELECT count(id) AS total_posts FROM posts WHERE posts.post_status = 'Published' ";
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
@@ -88,21 +93,20 @@ class Generic
 
 		$row = mysqli_fetch_assoc($query);
 
-		return $row;
+		return (int)$row['total_posts'];
 	}
 
-	static function updatePostCounter($id)
+	function updatePostCounter($id)
 	{
-		$db = Connection::connect();
 		$sql = "UPDATE posts SET posts.post_views_count = posts.post_views_count + 1 WHERE posts.id = {$id}";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
 	}
 
-	static function saveComment($data)
+	function saveComment($data)
 	{
 		/*
 		$comment_query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date)";
@@ -134,10 +138,5 @@ class Generic
 			'unapproved',
 			time()
 		);
-
 	}
-
-
-
 }
-
