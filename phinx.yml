@@ -4,7 +4,7 @@ paths:
 
 environments:
     default_migration_table: phinxlog
-    default_database: development
+    default_database: testing
     production:
         adapter: mysql
         host: localhost
@@ -19,14 +19,14 @@ environments:
         host: localhost
         name: cms
         user: root
-        pass: 'tumi'
+        pass: ''
         port: 3306
         charset: utf8
 
     testing:
         adapter: mysql
         host: localhost
-        name: testing_db
+        name: cms_test
         user: root
         pass: ''
         port: 3306
