@@ -9,17 +9,16 @@ class Generic
 	static function userLogin($username)
 	{
 		$db = Connection::connect();
-		$sql = "SELECT * FROM users WHERE users.user_name = '{$username}'";
+		$sql = "SELECT * FROM users WHERE user_name = '{$username}'";
 		$query = mysqli_query($db, $sql);
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
-		$user = [];
+		$result = [];
 		while ($row = mysqli_fetch_array($query)) {
-			$user[] = $row;
+			$result[] = $row;
 		}
-
-		return $user;
+		return $result;
 	}
 
 	// static functions for each query
@@ -28,32 +27,29 @@ class Generic
 		$db = Connection::connect();
 		$sql = "SELECT * FROM posts WHERE posts.post_status = 'Published' ";
 		$query = mysqli_query($db, $sql);
-
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
-
 		$result = [];
 		while ($row = mysqli_fetch_assoc($query)) {
 			$result[] = $row;
 		}
-
 		return $result;
 	}
 
-	static function fetchPostsByUser($the_post_author_id)
+	static function fetchPostsByAuthor($the_post_author)
 	{
 		$db = Connection::connect();
-		$sql = "SELECT * FROM posts WHERE post_author = '{$the_post_author_id}' ";
+		$sql = "SELECT * FROM posts WHERE post_author = '{$the_post_author}' ";
 		$query = mysqli_query($db, $sql);
-
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
-
-		$row = mysqli_fetch_assoc($query);
-
-		return $row;
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
+		return $result;
 	}
 
 
@@ -110,17 +106,18 @@ class Generic
 
 	static function fetchPostCount()
 	{
-		$db = Connection::connect();
-		$sql = "SELECT * FROM posts";
-		$query = mysqli_query($db, $sql);
+		// do the query
+		// fetch teh row
+		// get number
 
+		$db = Connection::connect();
+		$sql = "SELECT count(*) FROM posts";
+		$query = mysqli_query($db, $sql);
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
-
-		$row = mysqli_fetch_assoc($query);
-
-		return $row;
+		$row = mysqli_fetch_row($query);
+		return $row[0];
 	}
 
 	static function updatePostCounter($id)

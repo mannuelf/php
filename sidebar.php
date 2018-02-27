@@ -4,7 +4,7 @@
 	<!-- Login -->
 	<div class="well">
 		<h4>Login</h4>
-		<form action="./includes/login.php" method="post">
+		<form action="" method="post">
 			<div class="form-group">
 				<div class="form-group">
 					<input name="username" placeholder="username" type="text" class="form-control">

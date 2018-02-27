@@ -1,9 +1,10 @@
 <?php
-include '../database/db.php';
+
+session_start();
+
 require_once '../vendor/autoload.php';
 use App\Models\Generic;
 
-session_start();
 ?>
 
 <?php
