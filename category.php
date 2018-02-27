@@ -1,6 +1,10 @@
-<?php include "database/db.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php
+require_once 'vendor/autoload.php';
+// Bootstrap the application
+require_once 'bootstrap/start.php';
+include "includes/header.php";
+include "includes/navigation.php";
+?>
 <!-- Page Content -->
 <div class="container">
 	<div class="row">
@@ -19,7 +23,7 @@
 				}
 				$query = "SELECT * FROM cms.posts WHERE cms.posts.post_category_id = $post_category_id";
 
-				$select_all_posts = mysqli_query($dbConnection, $query);
+				$select_all_posts = mysqli_query($db, $query);
 
 				if ( !$select_all_posts) {
 					echo mysqli_error($select_all_posts);
