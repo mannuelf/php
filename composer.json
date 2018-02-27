@@ -14,5 +14,7 @@
 			"App\\": "app/"
 		}
 	},
-    "require": {}
+    "require": {
+        "robmorgan/phinx": "^0.9.2"
+    }
 }
