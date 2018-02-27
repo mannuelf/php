@@ -84,7 +84,7 @@ class Generic
 
 	function fetchPostCount()
 	{
-		$sql = "SELECT * FROM posts WHERE posts.post_status = 'Published' ";
+		$sql = "SELECT count(id) AS total_posts FROM posts WHERE posts.post_status = 'Published' ";
 		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
@@ -93,7 +93,7 @@ class Generic
 
 		$row = mysqli_fetch_assoc($query);
 
-		return $row;
+		return (int)$row['total_posts'];
 	}
 
 	function updatePostCounter($id)
