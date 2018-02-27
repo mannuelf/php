@@ -22,13 +22,7 @@ use App\Models\Generic;
 				$the_post_author_id = $_GET['author'];
 			}
 
-			$query = "SELECT * FROM cms.posts WHERE cms.posts.post_author = '{$the_post_author_id}' ";
-
-			$select_all_posts = mysqli_query($dbConnection, $query);
-
-			confirmQuery($select_all_posts);
-
-			while ($row = mysqli_fetch_assoc($select_all_posts)) {
+			foreach(Generic::fetchPostsByUser($the_post_author_id) as $row) {
 				$post_id = $row['id'];
 				$post_title = $row['post_title'];
 				$post_author = $row['post_author'];

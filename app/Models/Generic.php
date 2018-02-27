@@ -41,6 +41,21 @@ class Generic
 		return $result;
 	}
 
+	static function fetchPostsByUser($the_post_author_id)
+	{
+		$db = Connection::connect();
+		$sql = "SELECT * FROM posts WHERE post_author = '{$the_post_author_id}' ";
+		$query = mysqli_query($db, $sql);
+
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+
+		$row = mysqli_fetch_assoc($query);
+
+		return $row;
+	}
+
 
 	static function fetchCategories()
 	{
