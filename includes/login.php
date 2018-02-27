@@ -1,5 +1,11 @@
-<?php include "../database/db.php"; ?>
-<?php session_start(); ?>
+<?php
+include '../database/db.php';
+require_once '../vendor/autoload.php';
+use App\Models\Generic;
+
+session_start();
+
+?>
 
 <?php
 	if (isset($_POST['login'])) {
@@ -7,14 +13,8 @@
 		$password = $_POST['password'];
 		$username = mysqli_real_escape_string($dbConnection, $username);
 		$password = mysqli_real_escape_string($dbConnection, $password);
-		$query = "SELECT * FROM cms.users WHERE cms.users.user_name = '{$username}'";
-		$select_user_query = mysqli_query($dbConnection, $query);
 
-		if ( ! $select_user_query) {
-			die("QUERY FAILED" . mysqli_error($dbConnection));
-		}
-
-		while ($row = mysqli_fetch_array($select_user_query)) {
+		while (Generic::userLogin()) {
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];

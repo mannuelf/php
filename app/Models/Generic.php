@@ -5,6 +5,23 @@ use App\Database\Connection;
 
 class Generic
 {
+	// Login
+	static function userLogin($username)
+	{
+		$db = Connection::connect();
+		$sql = "SELECT * FROM users WHERE users.user_name = '{$username}'";
+		$query = mysqli_query($db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$user = [];
+		while ($row = mysqli_fetch_array($query)) {
+			$user[] = $row;
+		}
+
+		return $user;
+	}
+
 	// static functions for each query
 	static function fetchPosts()
 	{
@@ -79,7 +96,7 @@ class Generic
 	static function fetchPostCount()
 	{
 		$db = Connection::connect();
-		$sql = "SELECT * FROM csm.posts";
+		$sql = "SELECT * FROM posts";
 		$query = mysqli_query($db, $sql);
 
 		if ( ! $query) {
