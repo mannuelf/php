@@ -13,7 +13,7 @@ session_start();
 		$username = mysqli_real_escape_string($dbConnection, $username);
 		$password = mysqli_real_escape_string($dbConnection, $password);
 
-		foreach(Generic::userLogin($username) as $row) {
+		foreach (Generic::userLogin($username) as $row) {
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];
