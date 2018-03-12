@@ -20,7 +20,6 @@ use App\Models\Generic;
 				}
 				if ( ! empty($rows) ) {
 					foreach ((new Generic($db))->fetchPostsByAuthor($the_post_author) as $row) {
-
 						$post_id = $row['id'];
 						$post_title = $row['post_title'];
 						$post_author = $row['post_author'];

@@ -1,20 +1,17 @@
-<?php
-
-session_start();
-
+<?php session_start();
 require_once '../vendor/autoload.php';
 use App\Models\Generic;
-
 ?>
 
 <?php
 	if (isset($_POST['login'])) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$username = mysqli_real_escape_string($dbConnection, $username);
-		$password = mysqli_real_escape_string($dbConnection, $password);
 
-		$generic = new Generic ($db);
+		$username = mysqli_real_escape_string( (new Generic($db) ), $username);
+		$password = mysqli_real_escape_string( (new Generic($db) ), $password);
+
+		$generic = (new Generic($db));
 
 		foreach ($generic->userLogin($username) as $row) {
 			$db_id = $row['id'];
