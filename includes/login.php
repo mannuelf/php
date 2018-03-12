@@ -14,7 +14,9 @@ use App\Models\Generic;
 		$username = mysqli_real_escape_string($dbConnection, $username);
 		$password = mysqli_real_escape_string($dbConnection, $password);
 
-		foreach (Generic::userLogin($username) as $row) {
+		$generic = new Generic ($db);
+
+		foreach ($generic->userLogin($username) as $row) {
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];

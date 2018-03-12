@@ -17,11 +17,10 @@ class Generic
 	}
 
 	// Login
-	static function userLogin($username)
+	function userLogin($username)
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM users WHERE user_name = '{$username}'";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
@@ -38,7 +37,7 @@ class Generic
 		$sql = "SELECT * FROM posts WHERE posts.post_status = 'Published' ";
 
 		$query = mysqli_query($this->db, $sql);
-		
+
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
@@ -51,9 +50,8 @@ class Generic
 
 	static function fetchPostsByAuthor($the_post_author)
 	{
-		$db = Connection::connect();
 		$sql = "SELECT * FROM posts WHERE post_author = '{$the_post_author}' ";
-		$query = mysqli_query($db, $sql);
+		$query = mysqli_query($this->db, $sql);
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
