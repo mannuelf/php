@@ -1,17 +1,15 @@
 <?php
-$query = "SELECT * FROM cms.posts";
+require_once '../vendor/autoload.php';
+use App\Models\Generic;
+?>
 
-$select_all_posts = mysqli_query($dbConnection, $query);
-
-if ( ! $select_all_posts) {
-	echo mysqli_error($select_all_posts);
-}
+<?php
 
 if(isset($_GET['p_id'])) {
 	$post_id = $_GET['p_id'];
 }
 
-while ($row = mysqli_fetch_assoc($select_all_posts)) {
+while ($row = (new Generic($db))->fetchPosts()) {
 	$post_id = $row['id'];
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];
