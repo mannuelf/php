@@ -35,7 +35,6 @@ class UserSeeder extends AbstractSeed
 		$posts = $this->table('users');
 		$posts->insert($data)
 			->save();
-
 		$posts->truncate();
     }
 }

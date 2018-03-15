@@ -19,16 +19,16 @@ environments:
         host: localhost
         name: cms
         user: root
-        pass: 'tumi'
+        pass: ''
         port: 3306
         charset: utf8
 
     testing:
         adapter: mysql
         host: localhost
-        name: cms
+        name: cms_test
         user: root
-        pass: 'tumi'
+        pass: ''
         port: 3306
         charset: utf8
 
