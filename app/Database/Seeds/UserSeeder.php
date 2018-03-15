@@ -28,12 +28,14 @@ class UserSeeder extends AbstractSeed
 				'active' => 1,
 				'created_at' => date('Y-m-d H:i:s'),
 				'updated_at' => date('Y-m-d H:i:s'),
-				'deleted_at'       => date('Y-m-d H:i:s'),
+				//'deleted_at'       => date('Y-m-d H:i:s'),
 			]
 		];
 
 		$posts = $this->table('users');
 		$posts->insert($data)
 			->save();
+
+		$posts->truncate();
     }
 }
