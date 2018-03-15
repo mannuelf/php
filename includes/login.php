@@ -1,5 +1,9 @@
-<?php session_start();
+<?php
+
+// session_start();
 require_once '../vendor/autoload.php';
+// Bootstrap the application
+require_once '../bootstrap/start.php';
 use App\Models\Generic;
 ?>
 
@@ -26,6 +30,7 @@ use App\Models\Generic;
 
 			// validation
 			if ( $username !== $db_username && $password !== $db_user_password) {
+
 				header("Location: ../index.php");
 			} else {
 				// assign variables to the session so that the admin page can use the data to render stuff
