@@ -11,9 +11,6 @@ use App\Models\Generic;
 
 <?php
 	if (isset($_POST['login'])) {
-
-		echo 'inside login';
-
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
@@ -35,7 +32,6 @@ use App\Models\Generic;
 
 			// validation
 			if ( $username !== $db_username && $password !== $db_user_password) {
-
 				header("Location: ../index.php");
 			} else {
 				// assign variables to the session so that the admin page can use the data to render stuff

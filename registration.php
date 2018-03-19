@@ -1,7 +1,13 @@
-<?php include "database/db.php" ?>
-<?php include "includes/functions.php" ?>
-<?php include "includes/header.php" ?>
-<?php include "includes/navigation.php" ?>
+<?php
+require_once './vendor/autoload.php';
+// Bootstrap the application
+require_once './bootstrap/start.php';
+
+use App\Models\Generic;
+include "includes/functions.php";
+include "includes/header.php";
+include "includes/navigation.php";
+?>
 
 <!-- Page Content -->
 <div class="container">
@@ -13,23 +19,18 @@
 
 			if ( ! empty($username) && ! empty($email) && ! empty($password)) {
 				// escape information from before inserting it into the database
-				$username = mysqli_real_escape_string($dbConnection, $username);
-				$email = mysqli_real_escape_string($dbConnection, $email);
-				$password = mysqli_real_escape_string($dbConnection, $password);
+				$username = mysqli_real_escape_string($db, $username);
+				$email = mysqli_real_escape_string($db, $email);
+				$password = mysqli_real_escape_string($db, $password);
 
-				$query = "SELECT randSalt FROM cms.users";
-				$selectRandSaltQuery = mysqli_query($dbConnection, $query);
-				confirmQuery($selectRandSaltQuery);
+				$selectRandSaltQuery = mysqli_query((new Generic($db))->getRandomSalt(), $query);
+
 				$row = mysqli_fetch_array($selectRandSaltQuery);
 
 				$salt = $row['randSalt'];
+
 				$password = crypt($password, $salt);
-
-				$query = "INSERT INTO cms.users (user_name, user_password, user_email) ";
-				$query .= "VALUES('{$username}', '{$password}', '{$email}' )";
-				$registerUserQuery = mysqli_query($dbConnection, $query);
-				confirmQuery($registerUserQuery);
-
+				$registerUserQuery = (new Generic($db))->registerUser($username, $password, $email);
 				$message = "Your registration is complete";
 			} else {
 				$message = "Fields cannot be empty";
@@ -65,7 +66,6 @@
 
 							<input type="submit" name="submit" id="btn-login" class="btn btn-default btn-custom btn-lg btn-block" value="Register">
 						</form>
-
 					</div>
 				</div> <!-- /.col-xs-12 -->
 			</div> <!-- /.row -->

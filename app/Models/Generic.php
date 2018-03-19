@@ -167,4 +167,40 @@ class Generic
 			time()
 		);
 	}
+
+	function getRandomSalt()
+	{
+		$sql = "SELECT randSalt FROM users";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
+		var_dump($result);
+		return $result;
+	}
+
+	function getUsers()
+	{
+		$sql = "SELECT * FROM users";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
+
+	function registerUser($username, $password, $email)
+	{
+		$sql = "INSERT INTO users (user_name, user_password, user_email) 
+				VALUES('{$username}', '{$password}', '{$email}')";
+	}
 }

@@ -1,13 +1,12 @@
 <?php
+	require_once './vendor/autoload.php';
+	// Bootstrap the application
+	require_once './bootstrap/start.php';
 
-require_once './vendor/autoload.php';
-// Bootstrap the application
-require_once './bootstrap/start.php';
+	use App\Models\Generic;
 
-use App\Models\Generic;
-
-include "includes/header.php";
-include "includes/navigation.php";
+	include "includes/header.php";
+	include "includes/navigation.php";
 ?>
 
 <!-- Page Content -->
