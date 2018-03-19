@@ -1,12 +1,13 @@
 <?php
 
-require_once 'vendor/autoload.php';
-
-include "database/db.php";
-include "includes/header.php";
-include "includes/navigation.php";
+require_once './vendor/autoload.php';
+// Bootstrap the application
+require_once './bootstrap/start.php';
 
 use App\Models\Generic;
+
+include "includes/header.php";
+include "includes/navigation.php";
 ?>
 
 <!-- Page Content -->
@@ -21,11 +22,12 @@ use App\Models\Generic;
 			<?php
 			if (isset($_POST['submit'])) {
 				$search = $_POST['search'];
-				$results = Generic::fetchSearchResults($search);
-				if (empty($results)) {
+				$connectDb = (new Generic($db));
+				$result = $connectDb->fetchSearchResults($search);
+				if (empty($result)) {
 					echo "<h2>No result.</h2>";
 				} else {
-					foreach ($results as $row) {
+					foreach ($connectDb->fetchSearchResults($search) as $row) {
 						$post_title = $row['post_title'];
 						$post_author = $row['post_author'];
 						$post_date = $row['post_date'];

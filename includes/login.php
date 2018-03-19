@@ -4,11 +4,16 @@
 require_once '../vendor/autoload.php';
 // Bootstrap the application
 require_once '../bootstrap/start.php';
+
 use App\Models\Generic;
+
 ?>
 
 <?php
 	if (isset($_POST['login'])) {
+
+		echo 'inside login';
+
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 

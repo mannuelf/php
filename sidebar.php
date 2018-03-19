@@ -3,20 +3,17 @@
 	require_once './vendor/autoload.php';
 	// Bootstrap the application
 	require_once './bootstrap/start.php';
+
 	use App\Models\Generic;
-	echo 'TES';
+
 	if (isset($_POST['login'])) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		// echo $username;
-		// echo $password;
-		$generic = (new Generic($db));
-		// $username = mysqli_real_escape_string( $db , $username);
-		// $password = mysqli_real_escape_string( $db, $password);
+		$connectDb = (new Generic($db));
+		$username = mysqli_real_escape_string($db, $username);
+		$password = mysqli_real_escape_string($db, $password);
 
-
-
-		foreach ($generic->userLogin($username) as $row) {
+		foreach ($connectDb->userLogin($username) as $row) {
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];
@@ -24,15 +21,14 @@
 			$db_user_role = $row['user_role'];
 			$db_user_image = $row['user_image'];
 			$db_user_password = $row['user_password'];
-			echo $db_username;
-			echo $db_user_password;
 			$password = crypt($password, $db_user_password);
 
 			// validation
 			if ( $username !== $db_username && $password !== $db_user_password) {
-				
+				echo 'password failed';
 				header("Location: ../index.php");
 			} else {
+				echo 'logged in';
 				// assign variables to the session so that the admin page can use the data to render stuff
 				$_SESSION['username'] = $db_username;
 				$_SESSION['firstname'] = $db_firstname;
