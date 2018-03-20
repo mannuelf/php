@@ -25,10 +25,8 @@
 
 			// validation
 			if ( $username !== $db_username && $password !== $db_user_password) {
-				echo 'password failed';
 				header("Location: ../index.php");
 			} else {
-				echo 'logged in';
 				// assign variables to the session so that the admin page can use the data to render stuff
 				$_SESSION['username'] = $db_username;
 				$_SESSION['firstname'] = $db_firstname;
