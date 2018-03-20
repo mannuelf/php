@@ -1,20 +1,25 @@
-<?php include "../database/db.php"; ?>
-<?php session_start(); ?>
+<?php
+
+// session_start();
+require_once '../vendor/autoload.php';
+// Bootstrap the application
+require_once '../bootstrap/start.php';
+
+use App\Models\Generic;
+
+?>
 
 <?php
 	if (isset($_POST['login'])) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$username = mysqli_real_escape_string($dbConnection, $username);
-		$password = mysqli_real_escape_string($dbConnection, $password);
-		$query = "SELECT * FROM cms.users WHERE cms.users.user_name = '{$username}'";
-		$select_user_query = mysqli_query($dbConnection, $query);
 
-		if ( ! $select_user_query) {
-			die("QUERY FAILED" . mysqli_error($dbConnection));
-		}
+		$username = mysqli_real_escape_string( (new Generic($db) ), $username);
+		$password = mysqli_real_escape_string( (new Generic($db) ), $password);
 
-		while ($row = mysqli_fetch_array($select_user_query)) {
+		$generic = (new Generic($db));
+
+		foreach ($generic->userLogin($username) as $row) {
 			$db_id = $row['id'];
 			$db_firstname = $row['user_firstname'];
 			$db_secondname = $row['user_secondname'];

@@ -17,7 +17,6 @@ use App\Models\Generic;
 				$the_post_id = isset($_GET['p_id']) ? $_GET['p_id'] : null;
 				if( !$the_post_id) {
 					header("index.php");
-					die();
 				}
 
 				$row = (new Generic($db))->fetchPost($the_post_id);

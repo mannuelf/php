@@ -5,7 +5,7 @@ if(isset($_GET['p_id'])) {
 	$post_id = $_GET['p_id'];
 }
 
-foreach (Generic::fetchPosts() as $row) {
+foreach ( (new (Generic($db)))->fetchPosts() as $row) {
 	$post_id = $row['id'];
 	$post_title = $row['post_title'];
 	$post_author = $row['post_author'];

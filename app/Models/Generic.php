@@ -5,6 +5,7 @@ use App\Database\Connection;
 
 class Generic
 {
+
 	private $db;
 
 	/**
@@ -15,21 +16,49 @@ class Generic
 		$this->db = $db;
 	}
 
+	// Login
+	function userLogin($username)
+	{
+		$sql = "SELECT * FROM users WHERE user_name = '{$username}'";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_array($query)) {
+			$result[] = $row;
+		}
+		return $result;
+	}
+
 	// static functions for each query
 	function fetchPosts()
 	{
 		$sql = "SELECT * FROM posts WHERE posts.post_status = 'Published' ";
+
 		$query = mysqli_query($this->db, $sql);
 
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
-
 		$result = [];
 		while ($row = mysqli_fetch_assoc($query)) {
 			$result[] = $row;
 		}
+		return $result;
+	}
 
+	static function fetchPostsByAuthor($the_post_author)
+	{
+		$sql = "SELECT * FROM posts WHERE post_author = '{$the_post_author}' ";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
 		return $result;
 	}
 
@@ -38,7 +67,6 @@ class Generic
 	{
 		$sql = "SELECT * FROM categories ORDER BY categories.cat_title";
 		$query = mysqli_query($this->db, $sql);
-
 		if ( ! $query) {
 			echo mysqli_error($query);
 		}
@@ -138,5 +166,41 @@ class Generic
 			'unapproved',
 			time()
 		);
+	}
+
+	function getRandomSalt()
+	{
+		$sql = "SELECT randSalt FROM users";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
+		var_dump($result);
+		return $result;
+	}
+
+	function getUsers()
+	{
+		$sql = "SELECT * FROM users";
+		$query = mysqli_query($this->db, $sql);
+		if ( ! $query) {
+			echo mysqli_error($query);
+		}
+		$result = [];
+		while ($row = mysqli_fetch_assoc($query)) {
+			$result[] = $row;
+		}
+
+		return $result;
+	}
+
+	function registerUser($username, $password, $email)
+	{
+		$sql = "INSERT INTO users (user_name, user_password, user_email) 
+				VALUES('{$username}', '{$password}', '{$email}')";
 	}
 }

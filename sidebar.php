@@ -1,10 +1,49 @@
-<?php use App\Models\Generic; ?>
+<?php
+	// session_start();
+	require_once './vendor/autoload.php';
+	// Bootstrap the application
+	require_once './bootstrap/start.php';
+
+	use App\Models\Generic;
+
+	if (isset($_POST['login'])) {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$connectDb = (new Generic($db));
+		$username = mysqli_real_escape_string($db, $username);
+		$password = mysqli_real_escape_string($db, $password);
+
+		foreach ($connectDb->userLogin($username) as $row) {
+			$db_id = $row['id'];
+			$db_firstname = $row['user_firstname'];
+			$db_secondname = $row['user_secondname'];
+			$db_username = $row['user_name'];
+			$db_user_role = $row['user_role'];
+			$db_user_image = $row['user_image'];
+			$db_user_password = $row['user_password'];
+			$password = crypt($password, $db_user_password);
+
+			// validation
+			if ( $username !== $db_username && $password !== $db_user_password) {
+				header("Location: ../index.php");
+			} else {
+				// assign variables to the session so that the admin page can use the data to render stuff
+				$_SESSION['username'] = $db_username;
+				$_SESSION['firstname'] = $db_firstname;
+				$_SESSION['secondname'] = $db_secondname;
+				$_SESSION['user_role'] = $db_user_role;
+				$_SESSION['user_image'] = $db_user_image;
+				header("Location: ../admin/index.php");
+			}
+		}
+	}
+?>
 <!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
 	<!-- Login -->
 	<div class="well">
 		<h4>Login</h4>
-		<form action="./includes/login.php" method="post">
+		<form action="?" method="post">
 			<div class="form-group">
 				<div class="form-group">
 					<input name="username" placeholder="username" type="text" class="form-control">
@@ -19,13 +58,14 @@
 						Login
 						<span class="glyphicon glyphicon-log-in"></span>
 					</button>
+					<a href="registration.php" class="btn btn-success">
+						Register
+						<span class="glyphicon glyphicon-log-in"></span>
+					</a>
 				</span>
 			</div>
 		</form>
-		<a href="registration.php" class="btn btn-success">
-			Register
-			<span class="glyphicon glyphicon-log-in"></span>
-		</a>
+
 		<!-- /.input-group -->
 	</div>
 	<!-- Blog Search Well -->
