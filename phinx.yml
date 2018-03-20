@@ -19,7 +19,7 @@ environments:
         host: localhost
         name: cms
         user: root
-        pass: ''
+        pass: 'root'
         port: 3306
         charset: utf8
 
@@ -28,7 +28,7 @@ environments:
         host: localhost
         name: cms_test
         user: root
-        pass: ''
+        pass: 'root'
         port: 3306
         charset: utf8
 
