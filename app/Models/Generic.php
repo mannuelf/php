@@ -65,7 +65,7 @@ class Generic
 
 	function fetchCategories()
 	{
-		$sql = "SELECT * FROM categories ORDER BY categories.cat_title";
+		$sql = "SELECT * FROM categories ORDER BY cat_title";
 		$query = mysqli_query($this->db, $sql);
 		if ( ! $query) {
 			echo mysqli_error($query);
