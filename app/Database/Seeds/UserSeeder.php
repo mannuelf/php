@@ -35,6 +35,27 @@ class UserSeeder extends AbstractSeed
 		$posts = $this->table('users');
 		$posts->insert($data)
 			->save();
-		$posts->truncate();
+
+		$faker = Faker\Factory::create();
+		$data = [];
+		for ($i = 0; $i < 100; $i++) {
+			$data[] = [
+				'username'      => $faker->userName,
+				'password'      => sha1($faker->password),
+				'password_salt' => sha1('foo'),
+				'email'         => $faker->email,
+				'first_name'    => $faker->firstName,
+				'last_name'     => $faker->lastName,
+				'image' 		=> $faker->imageUrl(),
+				'role_id' 		=> $faker->randomDigit,
+				'active' 		=> 0,
+				'created_at'    => date('Y-m-d H:i:s'),
+				'updated_at'    => date('Y-m-d H:i:s'),
+			];
+		}
+
+		$this->insert('users', $data);
+		//$posts->truncate();
+
     }
 }
