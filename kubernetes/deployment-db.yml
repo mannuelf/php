@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-db
+  labels:
+    appdb: php-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-db
+  template:
+    metadata:
+      labels:
+        appdb: php-blog-db
+    spec:
+      containers:
+      - name: php-blog-db
+        image: mariadb:latest
+        env:
+        - name: PHP_BLOG
+          value: php-blog
+        ports:
+        - containerPort: 3080
+          name: web-port
