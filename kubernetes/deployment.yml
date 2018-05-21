@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-blog
+  labels:
+    app: php-blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-blog
+  template:
+    metadata:
+      labels:
+        app: php-blog
+    spec:
+      containers:
+      - name: php-blog
+        image: php:latest
+        env:
+        - name: PHP_BLOG
+          value: php-blog
+        ports:
+        - containerPort: 3080
+          name: web-port
