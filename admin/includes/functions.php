@@ -14,29 +14,42 @@ function confirmQuery($result) {
 
 function usersOnline()
 {
-	global $dbConnection;
+	if (isset($_GET['onlineusers'])) {
 
-	$session = session_id();
-	$time = time();
-	$timeOutInSeconds = 200;
-	$timeOut = ($time -$timeOutInSeconds);
+		if (! $dbConnection) {
+			session_start();
+			include("../includes/db.php");
 
-	$query = "SELECT * FROM cms.users_online WHERE cms.users_online.session = '{$session}'";
-	$sendQuery = mysqli_query($dbConnection, $query);
-	confirmQuery($sendQuery);
-	$count = mysqli_num_rows($sendQuery);
-	var_dump($count);
-	if ($count === NULL) {
-		mysqli_query($dbConnection, "INSERT INTO cms.users_online(cms.session, cms.time) VALUES('{$session}', '{$time}')");
-	} else {
-		mysqli_query($dbConnection, "UPDATE cms.users_online SET cms.users_online.time = '{$time}' WHERE cms.users_online.session = '{$session}'");
-	}
+			global $dbConnection;
 
-	$usersOnlineQuery = mysqli_query($dbConnection, "SELECT * FROM cms.users_online WHERE users_online.time > '{$timeOut}'");
+			$session = session_id();
+			$time = time();
+			$timeOutInSeconds = 200;
+			$timeOut = ($time -$timeOutInSeconds);
 
-	return $countUser = $countUser = mysqli_num_rows($usersOnlineQuery);
+			$query = "SELECT * FROM cms.users_online WHERE cms.users_online.session = '{$session}'";
+			$sendQuery = mysqli_query($dbConnection, $query);
+			confirmQuery($sendQuery);
+			$count = mysqli_num_rows($sendQuery);
+			var_dump($count);
+			if ($count === NULL) {
+				mysqli_query($dbConnection
+					, "INSERT INTO cms.users_online(cms.session, cms.time) VALUES('{$session}'
+					, '{$time}')");
+			} else {
+				mysqli_query($dbConnection
+					, "UPDATE cms.users_online SET cms.users_online.time = '{$time}' WHERE cms.users_online.session = '{$session}'");
+			}
 
+			$usersOnlineQuery = mysqli_query($dbConnection
+				, "SELECT * FROM cms.users_online WHERE users_online.time > '{$timeOut}'");
+
+			echo $countUser = $countUser = mysqli_num_rows($usersOnlineQuery);
+		}
+	} // GET REQUEST
 }
+
+usersOnline();
 
 /**
  * Add a new category
