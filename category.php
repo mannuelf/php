@@ -1,9 +1,16 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'vendor/autoload.php';
 // Bootstrap the application
 require_once 'bootstrap/start.php';
+
 include "includes/header.php";
 include "includes/navigation.php";
+
+use App\Models\Generic;
+
 ?>
 <!-- Page Content -->
 <div class="container">
@@ -19,21 +26,13 @@ include "includes/navigation.php";
 
 				if (isset($_GET['category'])) {
 					$post_category_id = $_GET['category'];
-
-				}
-				$query = "SELECT * FROM cms.posts WHERE cms.posts.post_category_id = $post_category_id";
-
-				$select_all_posts = mysqli_query($db, $query);
-
-				if ( !$select_all_posts) {
-					echo mysqli_error($select_all_posts);
 				}
 
 				if(isset($_GET['p_id'])) {
 					$post_id = $_GET['p_id'];
 				}
 
-				while ($row = mysqli_fetch_assoc($select_all_posts)) {
+				foreach ((new Generic($db))->fetchPosts() as $row) {
 					$post_id = $row['id'];
 					$post_title = $row['post_title'];
 					$post_author = $row['post_author'];
