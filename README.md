@@ -1,14 +1,18 @@
 # PHP
+
 To run files clone repo to your local and run command in root
 ```
 php -S localhost:8000
 ```
 
 ### Front end
-http://0.0.0.0:8000/cms/
+
+http://localhost:8000/
 
 ### Admin
-http://0.0.0.0:8000/cms/admin/
+
+http://localhost:8000/admin/
 
 ### Development
-All the code for the front-end and cms are in the `cms` folder.
+
+Run a local PHP server keep it simple for now.
